@@ -1,0 +1,7 @@
+J4 {
+    Program           = Statement+
+    Statement         = FuncDec | FuncCall | Conditional | Loops | Exp 
+    FuncDec           = "Function" id "(" (Param ("," Param)*)? ")" "\\n"
+    Type              = "Nothing" | "Number" | "String" | "Boolean" | ( "(" Type ("," Type)* ")" "->" Type )
+    Param             = id ":" Type 
+}
