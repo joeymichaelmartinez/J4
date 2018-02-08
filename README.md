@@ -29,6 +29,7 @@ J4 pulls inspiration from Swift, ELM, Python, and Lua
 * Number: `2`, `8.0`, `3.1415926`
 * Boolean: `true`, `false`
 * String: `“a”`, `“hello world”`, `“\“We have escape characters!\””`
+* Function: `addOne(x)`
 * Array: [`“a”`, `false`, `8.0`, `hello world”`]
 * Object: `{name:“Sally”, age:25, getName(), getAge()}`
 * Comments: `~ Single line comment`
