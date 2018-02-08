@@ -4,7 +4,7 @@
   "description": "Uses mocha to test our compiler to ensure it runs correctly.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/joeymichaelmartinez/J4/issues"
   },
-  "homepage": "https://github.com/joeymichaelmartinez/J4#readme"
+  "homepage": "https://github.com/joeymichaelmartinez/J4#readme",
+  "devDependencies": {
+    "mocha": "^5.0.0"
+  }
 }
