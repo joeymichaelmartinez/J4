@@ -1,4 +1,4 @@
-
+<img src = "J4 Icon.png" alt = "J4 Logo" width = 400 />
 
 ## Introduction
 
@@ -104,7 +104,7 @@ struct Color
         self.red   = red
         self.green = green
         self.blue  = blue
-    
+
     init(white: Number)
         red   = white
         green = white
