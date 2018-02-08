@@ -29,6 +29,7 @@ J4 pulls inspiration from Swift, ELM, Python, and Lua
 * Number: `2`, `8.0`, `3.1415926`
 * Boolean: `true`, `false`
 * String: `“a”`, `“hello world”`, `“\“We have escape characters!\””`
+* Function: `addOne(x)`
 * Array: [`“a”`, `false`, `8.0`, `hello world”`]
 * Object: `{name:“Sally”, age:25, getName(), getAge()}`
 * Comments: `~ Single line comment`
@@ -102,15 +103,15 @@ __Object Declarations__
 struct Color
     Number red, green, blue
     init(red: Number, green: Number, blue: Number)
-        self.red   = red
-        self.green = green
-        self.blue  = blue
+        self.red   <- red
+        self.green <- green
+        self.blue  <- blue
 
     init(white: Number)
-        red   = white
-        green = white
-        blue  = white
+        red   <- white
+        green <- white
+        blue  <- white
 
-Color magenta = new Color(red: 1.0, green: 0.0, blue: 1.0)
-Color halfGray = new Color(white: 0.5)
+Color magenta <- new Color(red: 1.0, green: 0.0, blue: 1.0)
+Color halfGray <- new Color(white: 0.5)
 ```
