@@ -1,0 +1,19 @@
+{
+  "name": "j4_packages",
+  "version": "1.0.0",
+  "description": "Uses mocha to test our compiler to ensure it runs correctly.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeymichaelmartinez/J4.git"
+  },
+  "author": "Joey Martinez, John Hardy, J Goocher, and Jackson Watkins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joeymichaelmartinez/J4/issues"
+  },
+  "homepage": "https://github.com/joeymichaelmartinez/J4#readme"
+}
