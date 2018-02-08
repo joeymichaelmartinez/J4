@@ -1,4 +1,4 @@
-<img src = "J4 Icon.png" alt = "J4 Logo" width = 800 />
+<img src = "J4 Icon.png" alt = "J4 Logo" width = 400 />
 
 ## Introduction
 
