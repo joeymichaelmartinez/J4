@@ -1,7 +1,78 @@
 J4 {
-    Program           = Statement+
-    Statement         = FuncDec | FuncCall | Conditional | Loops | Exp 
-    FuncDec           = "Function" id "(" (Param ("," Param)*)? ")" "\\n"
-    Type              = "Nothing" | "Number" | "String" | "Boolean" | ( "(" Type ("," Type)* ")" "->" Type )
-    Param             = id ":" Type 
+    Program           = Block
+    Block             = Statement+
+    IndentedBlock     = indent Block dedent
+    Statement         = If                          --if
+                      | Loops                       --loops
+                      | Exp                         --expression
+                      | Declaration                 --declarations
+                      | Assignment                  --assignment
+                      | Break                       --break
+    Declarations      = FuncDec                     --functionDeclaration
+                      | VarDeclaration              --variableDeclaration
+                      | ArrayDeclaration            --arrayDeclaration
+                      | ObjDeclaration              --objectDeclaration
+    Break             =  "break"
+    VarDeclaration    = Type id ("," id)*                                                                       --varInstantiation
+                      | Type id ("," id)* "<-" Exp ("," Exp)*                                                   --varInstantiationAndDeclaration
+                      | "Function" "(" FuncDecType ")" "->" id ("," id)*                                        --varInstantiationForFunction
+                      | "Function" "(" FuncDecType ")" "->" id ("," id)* "<-" FunctionExp ("," FunctionExp)*    --varInstantiationAndDeclarationForFunction
+                      | id id("," id)*                                                                          --varInstantiationForObject
+                      | id id("," id)* "<-" ObjExp ("," ObjExp)                                                 --varInstantiationAndDeclarationForObject
+    Assignment        = id ("," id)* "<-" Exp ("," Exp)*                     --varAssignment
+                      | id ("," id)* "<-" FunctionExp ("," FunctionExp)*     --varAssignmentForFunction
+                      | id id("," id)* "<-" ObjExp ("," ObjExp)              --varAssignmentForObject
+    FunctionExp       = id | AnonymousFunctDec
+    ObjExp            = id | ObjInstantiation
+
+    ObjDeclaration    = "struct" id "\\n" indent Block? (ObjInit Block?)+ dedent
+    ObjInit           = "init" "(" (id ":" FuncDecType ("," id ":" FuncDecType)*)? ")" IndentedBlock
+    ObjInstantiation  = "new" id "(" Exp ("," Exp)* ")"
+
+    ArrayDeclaration  = Type "[]" id
+
+    FuncDec           = "Function" id "(" (id ":" FuncDecParam ("," id ":" FuncDecParam)*)? ")" "->" FuncDecType "\\n" indent Block "return" Exp dedent
+    AnonymousFunctDec = "Function" "(" (id ":" FuncDecParam ("," id ":" FuncDecParam)*)? ")" "->" FuncDecType "\\n" indent Block "return" Exp dedent
+    FuncDecType       = "Nothing" | "Number" | "String" | "Boolean" | FuncAsParam | "Number" "[]" | "String" "[]" | "Boolean" "[]" | FuncAsParam "[]"
+    FuncDecParam      = id ":" FuncDecType
+    FuncAsParam       = ( "(" FuncDecType ("," FuncDecType)* ")" "->" FuncDecType )
+
+    Type              = "Nothing" | "Number" | "String" | "Boolean" | "Function"
+    If                = "if" Exp "\\n" IndentedBlock ElseIf* Else?
+    ElseIf            = "else if" Exp "\\n" IndentedBlock
+    Else              = ("else" "\\n" IndentedBlock)
+    Loops             = For | While
+    For               = "for" ForParam1 "," Exp ("," Assignment)? "\\n" IndentedBlock
+    ForParam1         = "Number" id "<-" Exp | id
+    While             = "while" Exp "\\n" IndentedBlock
+
+    Exp               = Exp1 ("and" Exp1)* | Exp1 ("or" Exp1)*
+    Exp1              = Exp2 (relop Exp2)?
+    Exp2              = Exp3 (addop Exp3)*
+    Exp3              = Exp4 (mulop Exp4)*
+    Exp4              = Exp5 ("^"  Exp5)? | "abs" Exp5
+    Exp5              = prefixop Exp6
+    Exp6              = boollit |  numlit | strlit | Call | VarExp "." Exp6 | VarExp | "(" Exp ")"
+
+    Call              = VarExp "(" Args ")"
+    VarExp            = VarExp "[" Exp "]" | id
+    Args              = ListOf<Exp, ",">
+
+    id                = ~keyword ("_" | letter) idrest*
+    idrest            = "_" | alnum
+    numlit            = digit+ ("." digit+)?
+    boollit           = "true" | "false"
+    strlit            = "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
+
+    keyword           =  ( "not" | "true" | "false" | "Number" | "String" | "Boolean" | "while" | "for" | "break" | "or" | "and" | "if" | "else" | "return") ~idrest
+    escape            = "\\" ("\\" | "\"" | "n")            --simple
+                        | "\\u{" hexDigit+ "}"              --codepoint
+    space            :=  " " | "\t" | "\n" | comment
+    comment           = "~" (~"\n" any)* "\n"
+    relop             = ">" | "<" | "=" | ">=" | "<="
+    addop             = "+" | "-"
+    mulop             = "*" | "/" | "%"
+    prefixop          =  "-" | "not"
+    indent            =  "⇨"
+    dedent            =  "⇦"
 }
