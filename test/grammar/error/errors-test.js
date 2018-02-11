@@ -2,7 +2,7 @@ const fs = require('fs');
 const assert = require('assert');
 const parse = require('../../../syntax/parser');
 
-const TEST_DIR = "./"
+const TEST_DIR = "./test/grammar/error"
 
 describe('The grammar', () => {
   fs.readdirSync(TEST_DIR).forEach((name) => {

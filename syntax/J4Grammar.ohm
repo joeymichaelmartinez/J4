@@ -10,15 +10,15 @@ J4 {
                       | Call                       --call
                       | Break                       --break
                       | "return" Exp?               --return
-    Declarations      = FuncDec                     --functionDeclaration
+    Declaration       = FuncDec                     --functionDeclaration
                       | VarDeclaration              --variableDeclaration
                       | ArrayDeclaration            --arrayDeclaration
                       | ObjDeclaration              --objectDeclaration
     Break             =  "break"
     VarDeclaration    = Type id ("," id)*                                                                       --varInstantiation
                       | Type id ("," id)* "<-" Exp ("," Exp)*                                                   --varInstantiationAndDeclaration
-                      | "Function" "(" FuncDecType ")" "->" id ("," id)*                                        --varInstantiationForFunction
-                      | "Function" "(" FuncDecType ")" "->" id ("," id)* "<-" FunctionExp ("," FunctionExp)*    --varInstantiationAndDeclarationForFunction
+                      | "Function" "(" Type ")" "->" id ("," id)*                                        --varInstantiationForFunction
+                      | "Function" "(" Type ")" "->" id ("," id)* "<-" FunctionExp ("," FunctionExp)*    --varInstantiationAndDeclarationForFunction
                       | id id("," id)*                                                                          --varInstantiationForObject
                       | id id("," id)* "<-" ObjExp ("," ObjExp)                                                 --varInstantiationAndDeclarationForObject
     Assignment        = id ("," id)* "<-" Exp ("," Exp)*                     --varAssignment
@@ -28,36 +28,42 @@ J4 {
     ObjExp            = id | ObjInstantiation
 
     ObjDeclaration    = "struct" id newline indent Block? (ObjInit Block?)+ dedent
-    ObjInit           = "init" "(" (id ":" FuncDecType ("," id ":" FuncDecType)*)? ")" IndentedBlock
+    ObjInit           = "init" "(" (id ":" Type ("," id ":" Type)*)? ")" IndentedBlock
     ObjInstantiation  = "new" id "(" Exp ("," Exp)* ")"
 
     ArrayDeclaration  = Type "[]" id
 
-    FuncDec           = "Function" id "(" (id ":" FuncDecParam ("," id ":" FuncDecParam)*)? ")" "->" FuncDecType newline IndentedBlock
-    AnonymousFunctDec = "Function" "(" (id ":" FuncDecParam ("," id ":" FuncDecParam)*)? ")" "->" FuncDecType newline IndentedBlock
-    FuncDecType       = "Nothing" | "Number" | "String" | "Boolean" | FuncAsParam | "Number" "[]" | "String" "[]" | "Boolean" "[]" | FuncAsParam "[]"
-    FuncDecParam      = id ":" FuncDecType
-    FuncAsParam       = ( "(" FuncDecType ("," FuncDecType)* ")" "->" FuncDecType )
+    FuncDec           = "Function" id "(" (id ":" FuncDecParam ("," id ":" FuncDecParam)*)? ")" "->" Type newline IndentedBlock
+    AnonymousFunctDec = "Function" "(" (id ":" FuncDecParam ("," id ":" FuncDecParam)*)? ")" "->" Type newline IndentedBlock
+    Type              = "Nothing" | "Number" | "String" | "Boolean" | FuncAsParam
+                      | "Number[]" | "String[]" | "Boolean[]" | "(" FuncAsParam ")[]" --types
+    FuncDecParam      = id ":" Type
+    FuncAsParam       = "(" Type ("," Type)* ")" "->" Type
 
-    Type              = "Nothing" | "Number" | "String" | "Boolean" | "Function"
+
     If                = "if" Exp newline IndentedBlock ElseIf* Else?
     ElseIf            = "else if" Exp newline IndentedBlock
     Else              = ("else" newline IndentedBlock)
     Loops             = For | While
     For               = "for" ForParam1 "," Exp ("," Assignment)? newline IndentedBlock
-    ForParam1         = "Number" id "<-" Exp | id
+    ForParam1         = "Number" id "<-" Exp                           --forLoopParameterOneDeclaration
+                      | id                                             --forLoopParameterOnePassedVariable
     While             = "while" Exp newline IndentedBlock
 
     Exp               = Exp1 ("and" Exp1)* | Exp1 ("or" Exp1)*
     Exp1              = Exp2 (relop Exp2)?
     Exp2              = Exp3 (addop Exp3)*
     Exp3              = Exp4 (mulop Exp4)*
-    Exp4              = Exp5 ("^"  Exp5)? | "abs" Exp5
+    Exp4              = Exp5 ("^"  Exp5)?
     Exp5              = prefixop Exp6
-    Exp6              = boollit |  numlit | strlit | Call | VarExp "." Exp6 | VarExp | "(" Exp ")"
+    Exp6              = boollit |  numlit | strlit | Call
+                      | VarExp "." Exp6                                 --dotOperator
+                      | VarExp
+                      | "(" Exp ")"                                     --parethesis
 
     Call              = VarExp "(" Args ")"
-    VarExp            = VarExp "[" Exp "]" | id
+    VarExp            = VarExp "[" Exp "]"                              --arrayReferencing
+                      | id
     Args              = ListOf<Exp, ",">
 
     id                = ~keyword ("_" | letter) idrest*
