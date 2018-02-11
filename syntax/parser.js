@@ -86,6 +86,8 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
 /* eslint-enable no-unused-vars */
 
 module.exports = (text) => {
+  console.log(withIndentsAndDedents(text));
+  withIndentsAndDedents("I AM IN SO MUCH PAIN");
   const match = grammar.match(withIndentsAndDedents(text));
   if (!match.succeeded()) {
     throw new Error(`Syntax Error: ${match.message}`);

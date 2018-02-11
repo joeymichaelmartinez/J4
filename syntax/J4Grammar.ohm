@@ -3,12 +3,13 @@ J4 {
     Block             = Statement+
     IndentedBlock     = indent Block dedent
     Statement         = If                          --if
+                      | Call                        --call
                       | Loops                       --loops
                       | Exp                         --expression
                       | Declaration                 --declarations
                       | Assignment                  --assignment
-                      | Call                        --call
                       | Break                       --break
+                      | IndentedBlock               --indentedBlock
                       | "return" Exp? newline       --return
     Declaration       = FuncDec                     --functionDeclaration
                       | VarDeclaration              --variableDeclaration
@@ -45,17 +46,17 @@ J4 {
     ElseIf            = "else if" Exp newline IndentedBlock
     Else              = ("else" newline IndentedBlock)
     Loops             = For | While
-    For               = "for" ForParam1 "," Exp ("," Assignment)? newline IndentedBlock
+    For               = "for" ForParam1 "," Exp ("," Assignment)? IndentedBlock
     ForParam1         = "Number" id "<-" Exp                           --forLoopParameterOneDeclaration
                       | id                                             --forLoopParameterOnePassedVariable
-    While             = "while" Exp newline IndentedBlock
+    While             = "while" Exp IndentedBlock
 
     Exp               = Exp1 ("and" Exp1)* | Exp1 ("or" Exp1)*
     Exp1              = Exp2 (relop Exp2)?
     Exp2              = Exp3 (addop Exp3)*
     Exp3              = Exp4 (mulop Exp4)*
     Exp4              = Exp5 ("^"  Exp5)?
-    Exp5              = prefixop Exp6
+    Exp5              = prefixop? Exp6
     Exp6              = boollit |  numlit | strlit | Call
                       | VarExp "." Exp6                                 --dotOperator
                       | VarExp
@@ -72,10 +73,10 @@ J4 {
     boollit           = "true" | "false"
     strlit            = "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
 
-    keyword           =  ( "not" | "true" | "false" | "Number" | "String" | "Boolean" | "while" | "for" | "break" | "or" | "and" | "if" | "else" | "return") ~idrest
+    keyword           =  ( "not" | "true" | "false" | "Number" | "String" | "Boolean" | "while" | "for" | "break" | "or" | "and" | "if" | "else" | "return" | "struct") ~idrest
     escape            = "\\" ("\\" | "\"" | "n")            --simple
                         | "\\u{" hexDigit+ "}"              --codepoint
-    newline           = "\n"+
+    newline           = "\\n"+
     space            :=  " " | "\t" | "\n" | comment
     comment           = "~" (~"\n" any)* "\n"
     relop             = ">" | "<" | "=" | ">=" | "<="
