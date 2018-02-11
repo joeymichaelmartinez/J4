@@ -1,0 +1,5 @@
+Number x <- Ball.y
+f(x, 2+2)       ~function calls
+f("hi")
+f(x)
+return 5
