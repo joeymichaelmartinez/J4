@@ -1,2 +1,2 @@
 struct Color
-    Number red, green, blue
+Number red, green, blue

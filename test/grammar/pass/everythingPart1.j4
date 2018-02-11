@@ -1,0 +1,9 @@
+Function p(e:Number) -> Number
+ Number x, y, z <- 10, 5, 6
+actions(9, b*b, 1)
+if false
+ print(5/7*27.310)
+else if p
+ dog()
+else if 2
+ print(dog())
