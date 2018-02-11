@@ -4,7 +4,7 @@
   "description": "Uses mocha to test our compiler to ensure it runs correctly.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/**/*test.js"
   },
   "repository": {
     "type": "git",
