@@ -2,6 +2,8 @@ const fs = require('fs');
 const assert = require('assert');
 const parse = require('../../syntax/parser');
 
+const TEST_DIR = ".."
+
 describe('The grammar', () => {
   fs.readdirSync(__dirname).forEach((name) => {
     if (name.endsWith('.j4')) {
