@@ -17,7 +17,7 @@
 module.exports = (source) => {
   const stack = [0];
   let result = '';
-  const text = source.endsWith('\n') ? source : `${source}\n`;
+  const text = source.endsWith('\n') ? source : `${source}\n`
   const linePattern = /( *)([^\n]*\n)/g;
 
   for (let match = linePattern.exec(text); match !== null; match = linePattern.exec(text)) {
