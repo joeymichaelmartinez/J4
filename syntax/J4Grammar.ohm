@@ -7,7 +7,7 @@ J4 {
                       | Exp                         --expression
                       | Declaration                 --declarations
                       | Assignment                  --assignment
-                      |  Call                       --call
+                      | Call                       --call
                       | Break                       --break
                       | "return" Exp?               --return
     Declarations      = FuncDec                     --functionDeclaration
