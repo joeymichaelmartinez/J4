@@ -1,5 +1,5 @@
 J4 {
-    Program           = Block
+    Program           = newline* Block newline*
     Block             = Statement+
     IndentedBlock     = indent Block dedent
     Statement         = If                          --if
@@ -7,7 +7,9 @@ J4 {
                       | Exp                         --expression
                       | Declaration                 --declarations
                       | Assignment                  --assignment
+                      |  Call                       --call
                       | Break                       --break
+                      | "return" Exp?               --return
     Declarations      = FuncDec                     --functionDeclaration
                       | VarDeclaration              --variableDeclaration
                       | ArrayDeclaration            --arrayDeclaration
@@ -25,26 +27,26 @@ J4 {
     FunctionExp       = id | AnonymousFunctDec
     ObjExp            = id | ObjInstantiation
 
-    ObjDeclaration    = "struct" id "\\n" indent Block? (ObjInit Block?)+ dedent
+    ObjDeclaration    = "struct" id newline indent Block? (ObjInit Block?)+ dedent
     ObjInit           = "init" "(" (id ":" FuncDecType ("," id ":" FuncDecType)*)? ")" IndentedBlock
     ObjInstantiation  = "new" id "(" Exp ("," Exp)* ")"
 
     ArrayDeclaration  = Type "[]" id
 
-    FuncDec           = "Function" id "(" (id ":" FuncDecParam ("," id ":" FuncDecParam)*)? ")" "->" FuncDecType "\\n" indent Block "return" Exp dedent
-    AnonymousFunctDec = "Function" "(" (id ":" FuncDecParam ("," id ":" FuncDecParam)*)? ")" "->" FuncDecType "\\n" indent Block "return" Exp dedent
+    FuncDec           = "Function" id "(" (id ":" FuncDecParam ("," id ":" FuncDecParam)*)? ")" "->" FuncDecType newline indent Block "return" Exp dedent
+    AnonymousFunctDec = "Function" "(" (id ":" FuncDecParam ("," id ":" FuncDecParam)*)? ")" "->" FuncDecType newline indent Block "return" Exp dedent
     FuncDecType       = "Nothing" | "Number" | "String" | "Boolean" | FuncAsParam | "Number" "[]" | "String" "[]" | "Boolean" "[]" | FuncAsParam "[]"
     FuncDecParam      = id ":" FuncDecType
     FuncAsParam       = ( "(" FuncDecType ("," FuncDecType)* ")" "->" FuncDecType )
 
     Type              = "Nothing" | "Number" | "String" | "Boolean" | "Function"
-    If                = "if" Exp "\\n" IndentedBlock ElseIf* Else?
-    ElseIf            = "else if" Exp "\\n" IndentedBlock
-    Else              = ("else" "\\n" IndentedBlock)
+    If                = "if" Exp newline IndentedBlock ElseIf* Else?
+    ElseIf            = "else if" Exp newline IndentedBlock
+    Else              = ("else" newline IndentedBlock)
     Loops             = For | While
-    For               = "for" ForParam1 "," Exp ("," Assignment)? "\\n" IndentedBlock
+    For               = "for" ForParam1 "," Exp ("," Assignment)? newline IndentedBlock
     ForParam1         = "Number" id "<-" Exp | id
-    While             = "while" Exp "\\n" IndentedBlock
+    While             = "while" Exp newline IndentedBlock
 
     Exp               = Exp1 ("and" Exp1)* | Exp1 ("or" Exp1)*
     Exp1              = Exp2 (relop Exp2)?
@@ -67,6 +69,7 @@ J4 {
     keyword           =  ( "not" | "true" | "false" | "Number" | "String" | "Boolean" | "while" | "for" | "break" | "or" | "and" | "if" | "else" | "return") ~idrest
     escape            = "\\" ("\\" | "\"" | "n")            --simple
                         | "\\u{" hexDigit+ "}"              --codepoint
+    newline           = "\n"+
     space            :=  " " | "\t" | "\n" | comment
     comment           = "~" (~"\n" any)* "\n"
     relop             = ">" | "<" | "=" | ">=" | "<="
