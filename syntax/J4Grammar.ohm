@@ -7,9 +7,9 @@ J4 {
                       | Exp                         --expression
                       | Declaration                 --declarations
                       | Assignment                  --assignment
-                      | Call                       --call
+                      | Call                        --call
                       | Break                       --break
-                      | "return" Exp?               --return
+                      | "return" Exp? newline       --return
     Declaration       = FuncDec                     --functionDeclaration
                       | VarDeclaration              --variableDeclaration
                       | ArrayDeclaration            --arrayDeclaration
