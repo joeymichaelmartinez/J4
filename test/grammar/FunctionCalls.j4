@@ -1,0 +1,5 @@
+Function addOne(x: Number) -> Number
+    return x+1
+
+   Function twice(f:(Number) -> Number, x:Number) -> Number
+    return f(f(x))

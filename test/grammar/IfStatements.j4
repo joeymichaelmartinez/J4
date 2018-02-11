@@ -1,0 +1,6 @@
+if i=2                                         
+    f(i)                                             
+else if i>5                                    
+    g(i)  
+else
+    h(i) 

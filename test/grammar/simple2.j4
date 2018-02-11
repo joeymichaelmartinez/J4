@@ -1,0 +1,6 @@
+for Number i <-      1, i< -1    , i = i + 1
+  f(i)
+
+for Number i <-1, i<(-1), i = i + 1
+  x<-2
+
