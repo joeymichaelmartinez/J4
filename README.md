@@ -21,7 +21,7 @@ J4 pulls inspiration from Swift, ELM, Python, and Lua
 * Additive: `+`, `-`
 * Multiplicative: `*`, `/`, `%`
 * Exponentiation: `^`
-* Relational: `<`, `>`, `>=`, `<=`, `=`, `not =`
+* Relational: `<`, `>`, `>=`, `<=`, `=`
 * Boolean: `and`, `or`
 
 ### Data Types
@@ -43,13 +43,13 @@ __Variable Declarations__
 ```
 String name <- "j4"                               let name = “j4”
 Number age <- 1                                   var age = 1
-Boolean true -> hasArrows                         let hasArrows = true
+Boolean hasArrows <- true                         let hasArrows = true
 ```
 
 __Constant Declarations__
 
 ```
-Const Number PI = 3.14159265359                   const PI = 3.14159265359
+Const Number PI <- 3.14159265359                   const PI = 3.14159265359
 ```
 
 __Arithmetic__
@@ -112,6 +112,6 @@ struct Color
         green <- white
         blue  <- white
 
-Color magenta <- new Color(red: 1.0, green: 0.0, blue: 1.0)
-Color halfGray <- new Color(white: 0.5)
+Color magenta <- new Color(1.0, 0.0, 1.0)
+Color halfGray <- new Color(0.5)
 ```
