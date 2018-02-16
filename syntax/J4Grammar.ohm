@@ -77,8 +77,8 @@ J4 {
   relop       =  "<=" | "<" | "=" | "!=" | ">=" | ">"
   mulop       =  "*" | "/" | "%"
   prefixop    =  "-" | "not"
-  indent      =  "{"
-  dedent      =  "}"
+  indent      =  "⇨"
+  dedent      =  "⇦"
 
   newline     =  "\n"+ | "\r"+
   space      :=  " " | "\t" | comment

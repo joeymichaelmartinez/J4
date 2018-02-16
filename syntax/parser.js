@@ -90,5 +90,5 @@ module.exports = (text) => {
   if (!match.succeeded()) {
     throw new Error(`Syntax Error: ${match.message}`);
   }
-  return astGenerator(match).ast();
+  //return astGenerator(match).ast();
 };

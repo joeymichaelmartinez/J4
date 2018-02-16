@@ -35,7 +35,7 @@ module.exports = (source) => {
     } else if (indent > stack[stack.length - 1]) {
       // This line has moved in, so push the new level and emit an indent token
       stack.push(indent);
-      result += `{${content}`;
+      result += `⇨${content}`;
     } else {
       // We've come out, so keep popping and emitting dedent tokens until done or error
       for (let dedents = 1; true; dedents += 1) {
@@ -43,7 +43,7 @@ module.exports = (source) => {
         if (indent > next) {
           throw new Error('Indent Error');
         } else if (indent === next) {
-          result += `${'}'.repeat(dedents)}${content}`;
+          result += `${'⇦'.repeat(dedents)}${content}`;
           break;
         }
       }
@@ -52,7 +52,7 @@ module.exports = (source) => {
 
   // Add in any required dedents at the end
   if (stack.length > 1) {
-    result += `${'}'.repeat(stack.length - 1)}\n`;
+    result += `${'⇦'.repeat(stack.length - 1)}\n`;
   }
   return result;
 };
