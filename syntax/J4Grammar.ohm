@@ -80,7 +80,7 @@ J4 {
   indent      =  "{"
   dedent      =  "}"
 
-  newline     =  ";"+ | "\n"+ | "\r"+
+  newline     =  "\n"+ | "\r"+
   space      :=  " " | "\t" | comment
   comment     =  "~" (~"\n" any)*
 }
