@@ -14,7 +14,7 @@ J4 {
               |  VarExps "<-" Exps                                       -- assign
               |  Call                                                    -- call
               |  (&While | &For) "break"                                 -- break
-              |  &Function "return"                                      -- return
+              |  &Function "return" dedent                                     -- return
   Suite       =  newline indent Stmt+ dedent                             -- large
   While       =  "while" Exp Suite                                       -- while
   For         =  "for" ForParam1 "," Exp "," SimpleStmt? Suite           -- for
@@ -86,5 +86,5 @@ J4 {
 
   newline     =  "\n"+ | "\r\n"+
   space      :=  " " | "\t" | comment
-  comment     =  "~" (~"\n" any)*
+  comment     =  "~" (~"\n" any)* newline | "~" (~"\r\n" any)* newline | "{~" (~"~}" any)* "~}"
 }
