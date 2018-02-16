@@ -9,46 +9,54 @@ J4 {
               |  "Function" id "(" Params ")" "->" Type Suite    -- def
               |  "struct" id Suite                               -- struct
               |  "init" "(" Params ")" Suite                     -- init
-  SimpleStmt  =  Type Ids "<-" Exps               -- vardeclAndAssign
-              |  Type Ids                         -- vardec
-              |  VarExps "<-" Exps                -- assign
-              |  Call                             -- call
-              |  "break"                          -- break
-              |  "return" Exp?                    -- return
-  Suite       =  newline indent Stmt+ dedent              -- large
-  ForParam1   =  Type id "<-" Exp               -- loopingVarDec
-              |  id                               -- outsideVar
+  SimpleStmt  =  Type Ids "<-" Exps                              -- vardeclAndAssign
+              |  Type Ids                                        -- vardec
+              |  VarExps "<-" Exps                               -- assign
+              |  Call                                            -- call
+              |  "break"                                         -- break
+              |  "return" Exp?                                   -- return
+  Suite       =  newline indent Stmt+ dedent                     -- large
+  ForParam1   =  Type id "<-" Exp                                -- loopingVarDec
+              |  id                                              -- outsideVar
 
   Exp         =  Exp1 (logicop Exp1)*
-  Exp1        =  Exp2 relop Exp2                  -- binary
+  Exp1        =  Exp2 relop Exp2                                 -- binary
               |  Exp2
-  Exp2        =  Exp2 addop Exp3                  -- binary
+  Exp2        =  Exp2 addop Exp3                                 -- binary
               |  Exp3
-  Exp3        =  Exp3 mulop Exp4                  -- binary
+  Exp3        =  Exp3 mulop Exp4                                 -- binary
               |  Exp4
-  Exp4        =  Exp5 "^" Exp5                    -- binary
+  Exp4        =  Exp5 "^" Exp5                                   -- binary
               |  Exp5
-  Exp5        =  prefixop Exp6                    -- unary
+  Exp5        =  prefixop Exp6                                   -- unary
               |  Exp6
   Exp6        =  boollit
               |  numlit
               |  strlit
               |  Call
               |  VarExp
-              |  "(" Exp ")"                      -- parens
-  Call        =  VarExp "(" Args ")"              -- regCall
-              |  "new" VarExp "(" Args ")"        -- objCreation
+              |  "(" Exp ")"                                    -- parens
+  Call        =  VarExp "(" Args ")"                            -- regCall
+              |  "new" VarExp "(" Args ")"                      -- objCreation
 
-  Type        = "Nothing" | "Number" | "String" | "Boolean" | FuncAsType | id
-              | "Number[]" | "String[]" | "Boolean[]" | "(" FuncAsType ")[]" --types
-              | id"[]"                                                       --ArrayOfObj
+  Type        = "Nothing"
+              | "Number"
+              | "String"
+              | "Boolean"
+              | FuncAsType
+              | id
+              | "Number[]"
+              | "String[]"
+              | "Boolean[]"
+              | "(" FuncAsType ")[]"                           --types
+              | id"[]"                                         --ArrayOfObj
   FuncAsType = "(" Type ("," Type)* ")" "->" Type
 
   Exps        =  NonemptyListOf<Exp, ",">
   Ids         =  NonemptyListOf<id, ",">
-  VarExp      =  VarExp "[" Exp "]"               -- subscripted
-              |  id"."id                          -- dotOperator
-              |  id                               -- simple
+  VarExp      =  VarExp "[" Exp "]"                            -- subscripted
+              |  id"."id                                       -- dotOperator
+              |  id                                            -- simple
   VarExps     =  NonemptyListOf<VarExp, ",">
   Param       =  id (":" Type)?
   Params      =  ListOf<Param, ",">
@@ -62,8 +70,8 @@ J4 {
   numlit      =  digit+ ("." digit+)?
   boollit     =  "true" | "false"
   strlit      = "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
-  escape      = "\\" ("\\" | "\"" | "n")          -- simple
-              | "\\u{" hexDigit+ "}"              -- codepoint
+  escape      = "\\" ("\\" | "\"" | "n")                       -- simple
+              | "\\u{" hexDigit+ "}"                           -- codepoint
   logicop     =  "and" | "or"
   addop       =  "+" | "-"
   relop       =  "<=" | "<" | "=" | "!=" | ">=" | ">"
@@ -72,7 +80,7 @@ J4 {
   indent      =  "{"
   dedent      =  "}"
 
-  newline     =  ";"+ | "\n"+
+  newline     =  ";"+ | "\n"+ | "\r"+
   space      :=  " " | "\t" | comment
   comment     =  "~" (~"\n" any)*
 }
