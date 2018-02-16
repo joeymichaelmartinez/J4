@@ -18,12 +18,12 @@ module.exports = (source) => {
   const stack = [0];
   let result = '';
   const text = source.endsWith('\n') ? source : `${source}\n`;
-  const linePattern = /( *)(([^\n]*\n) | ([^\n]*\r\n))/g;//Finally windows friendly
+  const linePattern = /( *)([^\n]*\n)/g;
 
   for (let match = linePattern.exec(text); match !== null; match = linePattern.exec(text)) {
     const [indent, content] = [match[1].length, match[2]];
 
-    if (content === '\n' || content === '\r\n') {//Windows friendly
+    if (content === '\n') {
       // Empty line
       result += content;
     } else if (/\s/.test(content[0])) {
