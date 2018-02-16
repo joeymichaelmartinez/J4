@@ -48,8 +48,8 @@ J4 {
               | "Number[]"
               | "String[]"
               | "Boolean[]"
-              | "(" FuncAsType ")[]"                           --types
-              | id"[]"                                         --ArrayOfObj
+              | "(" FuncAsType ")[]"                           -- types
+              | id"[]"                                         -- ArrayOfObj
   FuncAsType = "(" Type ("," Type)* ")" "->" Type
 
   Exps        =  NonemptyListOf<Exp, ",">

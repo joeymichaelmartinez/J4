@@ -14,14 +14,6 @@ describe('The grammar', () => {
           done();
         });
       });
-    } else if (name.endsWith('.error')) {
-      it(`detects a syntax error in ${name}`, (done) => {
-        fs.readFile(`${TEST_DIR}/${name}`, 'utf-8', (err, input) => {
-          // We always wrap Ohm failures in an error with text "Syntax Error"
-          assert.throws(() => parse(input), /Syntax Error/);
-          done();
-        });
-      });
     }
   });
 });
