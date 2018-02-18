@@ -86,5 +86,5 @@ J4 {
 
   newline     =  "\n"+ | "\r\n"+
   space      :=  " " | "\t" | comment
-  comment     =  "~" (~"\n" any)* newline | "~" (~"\r\n" any)* newline | "{~" (~"~}" any)* "~}"
+  comment     =  "~" (~"\n" any)* &newline | "~" (~"\r\n" any)* &newline | "(~" (~"~)" any)* "~)"
 }

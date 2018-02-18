@@ -1,19 +1,19 @@
 Function hello() -> Nothing  ~This is a function call
-  print(a)                   ~This will print a
+  print(a)                  (~This will print a~)
 
-{~ This 
-    is 
-  a 
-        Multi 
-  line 
-comment 
-~}
+(~ This
+    is
+  a
+        Multi
+  line
+comment
+~)
 
-           {~ This is also a multi line comment, but it is only on this line ~}
+           (~ This is also a multi line comment, but it is only on this line ~)
 
 
 
-{~ {~ Nested {~
- multi line comments 
+(~ (~ Nested (~
+ multi line comments
 
- ~}
+ ~)
