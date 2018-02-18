@@ -87,4 +87,3 @@ J4 {
   space      :=  " " | "\t" | comment | multicmnt
   comment     =  "~" (~newline any)* &newline
   multicmnt   =  "(~" (~"~)" any)* "~)"
-}
