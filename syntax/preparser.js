@@ -18,7 +18,7 @@ module.exports = (source) => {
   const stack = [0];
   let result = '';
   let text = source.endsWith('\n') ? source : `${source}\n`;
-  text = text.replace(/\(\~([\s\S]*?)\~\)/gm, '').replace(/\~.*\n/g, '\n');
+  text = text.replace(/(?:\r\n|\r|\n)/g, '\n').replace(/\(\~([\s\S]*?)\~\)/gm, '').replace(/\~.*\n/g, '\n');
   const linePattern = /( *)([^\n]*\n)/g;
 
   for (let match = linePattern.exec(text); match !== null; match = linePattern.exec(text)) {
