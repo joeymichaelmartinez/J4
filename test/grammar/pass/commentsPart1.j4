@@ -3,8 +3,8 @@
 Function hello() -> Nothing
   print(a)
 
-~This is another comment
-~And another
+  ~This is another comment
+  ~And another
 
 (~ This
 is

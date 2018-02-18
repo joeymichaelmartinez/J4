@@ -85,5 +85,6 @@ J4 {
 
   newline     =  "\n"+ | "\r\n"+
   space      :=  " " | "\t" | comment | multicmnt
-  comment     =  "~" (~newline any)* &newline
-  multicmnt   =  "(~" (~"~)" any)* "~)"
+  comment     =  indent* "~" (~newline any)* &newline dedent*
+  multicmnt   =  indent* "(~" (~"~)" any)* "~)" dedent*
+}
