@@ -13,13 +13,13 @@ J4 {
               |  Type Ids                                                -- vardec
               |  VarExps "<-" Exps                                       -- assign
               |  Call                                                    -- call
-              |  (&While | &For) "break"                                 -- break
-              |  &Function "return" dedent                                     -- return
+              |  "break"                                                 -- break
+              |  "return" Exp?                                           -- return
   Suite       =  newline indent Stmt+ dedent                             -- large
   While       =  "while" Exp Suite                                       -- while
   For         =  "for" ForParam1 "," Exp "," SimpleStmt? Suite           -- for
   Function    =  "Function" id "(" Params ")" "->" Type FuncBlock        -- functionDec
-  FuncBlock   =  newline indent Stmt* ("return" Exp? newline)? dedent    -- return
+  FuncBlock   =  newline indent Stmt* ("return" Exp? newline)? Stmt* dedent    -- functionBlock
   ForParam1   =  Type id "<-" Exp                                        -- loopingVarDec
               |  id                                                      -- outsideVar
 
@@ -86,5 +86,8 @@ J4 {
 
   newline     =  "\n"+ | "\r\n"+
   space      :=  " " | "\t" | comment
-  comment     =  "~" (~"\n" any)* &newline | "~" (~"\r\n" any)* &newline | "(~" (~"~)" any)* "~)"
+  comment     =  "~" (~newline any)* newline                   -- singleLineComment
+              |  indent "~" (~newline any)* newline dedent     -- singleLineIndentedComment
+              |  "(~" (~"~)" any)* "~)" newline                -- multiLineComment
+              |  indent "(~" (~"~)" any)* "~)" newline dedent  -- multiLineIndentedComment
 }
