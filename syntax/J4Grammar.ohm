@@ -85,9 +85,5 @@ J4 {
   dedent      =  "⇦"
 
   newline     =  "\n"+ | "\r\n"+
-  space      :=  " " | "\t" | comment
-  comment     =  "~" (~newline any)* newline                   -- singleLineComment
-              |  indent "~" (~newline any)* newline dedent     -- singleLineIndentedComment
-              |  "(~" (~"~)" any)* "~)" newline                -- multiLineComment
-              |  indent "(~" (~"~)" any)* "~)" newline dedent  -- multiLineIndentedComment
+  space      :=  " " | "\t"
 }
