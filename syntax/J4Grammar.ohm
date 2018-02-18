@@ -6,7 +6,7 @@ J4 {
               |  If
               |  Function
               |  "struct" id Suite                                       -- struct
-              |  "init" "(" Params ")" Suite                             -- init
+              |  "init" "(" Params ")" Suite?                            -- init
   SimpleStmt  =  Type Ids "<-" Exps                                      -- vardeclAndAssign
               |  Type Ids                                                -- vardec
               |  VarExps "<-" Exps                                       -- assign
@@ -17,7 +17,7 @@ J4 {
   While       =  "while" Exp Suite                                       -- while
   For         =  "for" ForParam1 "," Exp "," SimpleStmt? Suite           -- for
   If          =  "if" Exp Suite ("else if" Exp Suite)* ("else" Suite)?   -- if
-  Function    =  "Function" id "(" Params ")" "->" Type FuncBlock        -- functionDec
+  Function    =  "Function" id "(" Params ")" "->" Type FuncBlock?       -- functionDec
   FuncBlock   =  newline indent Stmt* ("return" Exp? newline)? Stmt* dedent    -- functionBlock
   ForParam1   =  Type id "<-" Exp                                        -- loopingVarDec
               |  id                                                      -- outsideVar
