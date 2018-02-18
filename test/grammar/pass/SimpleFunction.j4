@@ -1,0 +1,3 @@
+Function hello() -> Nothing
+  return 4
+  ~This is another comment
