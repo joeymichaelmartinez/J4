@@ -1,32 +1,32 @@
 ~ This is a comment
 
 Function hello() -> Nothing
-  print(a)                   
+  print(a)
 
-  ~This is another comment
-  ~And another
+~This is another comment
+~And another
 
-{~ This 
-is 
-a 
-Multi 
-line 
-comment 
-~}
+(~ This
+is
+a
+Multi
+line
+comment
+~)
 
-{~ This is also a multi line comment, but it is only on this line ~}
+(~ This is also a multi line comment, but it is only on this line ~)
 
-{~ commented out code containing nested one line comments
+(~ commented out code containing nested one line comments
 Function hello() -> Nothing  ~This is a function call
   print(a)                   ~A function call to print
 
-~}
+~)
 
-{~ {~ Nested {~
- multi line comments 
+(~ (~ Nested (~
+ multi line comments
 
-~}
+~)
 
 ~
 
-{~~}
+(~~)

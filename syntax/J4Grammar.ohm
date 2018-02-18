@@ -1,11 +1,9 @@
 J4 {
-  Program     =  newline* Stmt+ newline*
+  Program     =  newline* Stmt (Stmt | newline)*
   Stmt        =  SimpleStmt newline                                      -- simple
               |  While
               |  For
-              |  "if" Exp Suite
-                 ("else if" Exp Suite)*
-                 ("else" Suite)?                                         -- if
+              |  If
               |  Function
               |  "struct" id Suite                                       -- struct
               |  "init" "(" Params ")" Suite                             -- init
@@ -14,10 +12,11 @@ J4 {
               |  VarExps "<-" Exps                                       -- assign
               |  Call                                                    -- call
               |  (&While | &For) "break"                                 -- break
-              |  &Function "return" dedent                                     -- return
+              |  "return" dedent                                         -- return
   Suite       =  newline indent Stmt+ dedent                             -- large
   While       =  "while" Exp Suite                                       -- while
   For         =  "for" ForParam1 "," Exp "," SimpleStmt? Suite           -- for
+  If          =  "if" Exp Suite ("else if" Exp Suite)* ("else" Suite)?   -- if
   Function    =  "Function" id "(" Params ")" "->" Type FuncBlock        -- functionDec
   FuncBlock   =  newline indent Stmt* ("return" Exp? newline)? dedent    -- return
   ForParam1   =  Type id "<-" Exp                                        -- loopingVarDec
@@ -85,6 +84,7 @@ J4 {
   dedent      =  "⇦"
 
   newline     =  "\n"+ | "\r\n"+
-  space      :=  " " | "\t" | comment
-  comment     =  "~" (~"\n" any)* newline | "~" (~"\r\n" any)* newline | "{~" (~"~}" any)* "~}"
+  space      :=  " " | "\t" | comment | multicmnt
+  comment     =  "~" (~newline any)* &newline
+  multicmnt   =  "(~" (~"~)" any)* "~)"
 }
