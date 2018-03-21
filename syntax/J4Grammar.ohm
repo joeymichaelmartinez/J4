@@ -1,29 +1,25 @@
 J4 {
-  Program     =  newline* Stmt (Stmt | newline)*
+  Program     =  newline* Stmt+ newline*
   Stmt        =  SimpleStmt newline                                      -- simple
-              |  While
-              |  For
-              |  If
-              |  Function
+              |  "while" Exp Suite                                       -- while
+              |  "for" ForParam "," Exp "," SimpleStmt? Suite           -- for
+              |  "if" Exp Suite ("else if" Exp Suite)* ("else" Suite)?   -- if
+              |  "Function" id "(" Params | "Nothing" ")" "->" (Type | "Nothing") Suite? -- functionDec
               |  "struct" id Suite                                       -- struct
               |  "init" "(" Params ")" Suite?                            -- init
   SimpleStmt  =  Type Ids "<-" Exps                                      -- vardeclAndAssign
-              |  Type Ids                                                -- vardec
+              |  Type Ids                                                -- vardecl
               |  VarExps "<-" Exps                                       -- assign
               |  Call                                                    -- call
+              |  CreateObj                                               -- createObj
               |  "break"                                                 -- break
               |  "return" Exp?                                           -- return
-  Suite       =  newline indent Stmt+ dedent                             -- large
-  While       =  "while" Exp Suite                                       -- while
-  For         =  "for" ForParam1 "," Exp "," SimpleStmt? Suite           -- for
-  If          =  "if" Exp Suite ("else if" Exp Suite)* ("else" Suite)?   -- if
-  Function    =  "Function" id "(" Params | "Nothing" ")" "->" FuncResult FuncBlock? -- functionDec
-  FuncResult  =  Type | "Nothing"
-  FuncBlock   =  newline indent Stmt* ("return" Exp? newline)? Stmt* dedent    -- functionBlock
-  ForParam1   =  Type id "<-" Exp                                        -- loopingVarDec
+  Suite       =  newline indent Stmt+ dedent
+  ForParam    =  Type id "<-" Exp                                        -- loopingVarDec
               |  id                                                      -- outsideVar
-
-  Exp         =  Exp1 (logicop Exp1)*
+  Exp         =  Exp1 ("and" Exp1)*                                      -- and
+              |  Exp1 ("or" Exp1)*                                       -- or
+              |  Exp1
   Exp1        =  Exp2 relop Exp2                                         -- binary
               |  Exp2
   Exp2        =  Exp2 addop Exp3                                         -- binary
@@ -40,8 +36,8 @@ J4 {
               |  Call
               |  VarExp
               |  "(" Exp ")"                                            -- parens
-  Call        =  VarExp "(" Args ")"                                    -- regCall
-              |  "new" VarExp "(" Args ")"                              -- objCreation
+  Call        =  VarExp "(" Args ")"
+  CreateObj   = "new" VarExp "(" Args ")"
 
   Type        = Type "[]"
               | "Number"
@@ -60,7 +56,7 @@ J4 {
               |  id"."id                                               -- dotOperator
               |  id                                                    -- simple
   VarExps     =  NonemptyListOf<VarExp, ",">
-  Param       =  id (":" Type)?
+  Param       =  id (":" Type)
   Params      =  ListOf<Param, ",">
   Arg         =  Exp
   Args        =  ListOf<Arg, ",">
@@ -74,7 +70,6 @@ J4 {
   strlit      = "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
   escape      = "\\" ("\\" | "\"" | "n")                               -- simple
               | "\\u{" hexDigit+ "}"                                   -- codepoint
-  logicop     =  "and" | "or"
   addop       =  "+" | "-"
   relop       =  "<=" | "<" | "=" | "!=" | ">=" | ">"
   mulop       =  "*" | "/" | "%"

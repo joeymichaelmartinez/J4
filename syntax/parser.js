@@ -42,7 +42,7 @@ function unpack(a) {
   return a.length === 0 ? null : a[0];
 }
 
-/* eslint-disable no-unused-vars *//*
+eslint-disable no-unused-vars
 const astGenerator = grammar.createSemantics().addOperation('ast', {
   Program(_1, body, _2) { return new Program(body.ast()); },
   Stmt_simple(statement, _) { return statement.ast(); },
@@ -53,37 +53,37 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     const cases = tests.map((test, index) => new Case(test, bodies[index]));
     return new IfStatement(cases, unpack(lastSuite.ast()));
   },
-  Stmt_def(_1, id, _2, params, _3, suite) {
-    return new FunctionDeclaration(id.ast(), params.ast(), suite.ast());
+  Stmt_functionDec(_1, id, _2, params, _3, _4, type, suite) {
+    return new FunctionDeclaration(id.ast(), params.ast(), type.ast(), suite.ast());
   },
-  SimpleStmt_vardecl(_1, v, _2, e) { return new VariableDeclaration(v.ast(), e.ast()); },
+  SimpleStmt_vardeclAndAssign(type, v, _, e) { return new VariableDeclaration(type.ast(), v.ast(), e.ast()); },
+  SimpleStmt_vardecl(type, v) { return new VariableDeclaration(type.ast(), v.ast(), undefined ); },
   SimpleStmt_assign(v, _, e) { return new AssignmentStatement(v.ast(), e.ast()); },
   SimpleStmt_break(_) { return new BreakStatement(); },
   SimpleStmt_return(_, e) { return new ReturnStatement(unpack(e.ast())); },
-  SimpleStmt_call(c) { return new CallStatement(c.ast()); },
-  Suite_small(_1, statement, _2) { return [statement.ast()]; },
-  Suite_large(_1, _2, _3, statements, _4) { return statements.ast(); },
+  Suite(_1, _2, statements, _3) { return statements.ast(); },
   Exp_or(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
   Exp_and(left, op, right) { return new BinaryExpression(op.ast(), right.ast()); },
   Exp1_binary(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
   Exp2_binary(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
   Exp3_binary(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
-  Exp4_unary(op, operand) { return new UnaryExpression(op.ast(), operand.ast()); },
-  Exp5_parens(_1, expression, _2) { return expression.ast(); },
+  Exp4_binary(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
+  Exp5_unary(op, operand) { return new UnaryExpression(op.ast(), operand.ast()); },
+  Exp6_parens(_1, expression, _2) { return expression.ast(); },
   Call(callee, _1, args, _2) { return new Call(callee.ast(), args.ast()); },
   VarExp_subscripted(v, _1, e, _2) { return new SubscriptedExpression(v.ast(), e.ast()); },
   VarExp_simple(id) { return new IdentifierExpression(id.ast()); },
-  Param(id, _, exp) { return new Parameter(id.ast(), unpack(exp.ast())); },
-  Arg(id, _, exp) { return new Argument(unpack(id.ast()), exp.ast()); },
+  Param(id, _, type) { return new Parameter(id.ast(), type.ast()); },
+  Arg(exp) { return new Argument(exp.ast()); },
   NonemptyListOf(first, _, rest) { return [first.ast(), ...rest.ast()]; },
   EmptyListOf() { return []; },
   boollit(_) { return new BooleanLiteral(!!this.sourceString); },
-  numlit(_1, _2, _3, _4, _5, _6) { return new NumericLiteral(+this.sourceString); },
+  numlit(_1, _2, _3) { return new NumericLiteral(+this.sourceString); },
   strlit(_1, chars, _6) { return new StringLiteral(this.sourceString); },
   id(_1, _2) { return this.sourceString; },
   _terminal() { return this.sourceString; },
-});*/
-/* eslint-enable no-unused-vars */
+});
+eslint-enable no-unused-vars
 
 module.exports = (text) => {
   const match = grammar.match(withIndentsAndDedents(text));
