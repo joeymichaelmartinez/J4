@@ -52,7 +52,7 @@ J4 {
   Exps        =  NonemptyListOf<Exp, ",">
   Ids         =  NonemptyListOf<id, ",">
   VarExp      =  VarExp "[" Exp "]"                                    -- subscripted
-              |  id"."id                                               -- dotOperator
+              |  VarExp "." id ("(" Args ")")?                         -- dotOperator
               |  id                                                    -- simple
   VarExps     =  NonemptyListOf<VarExp, ",">
   Param       =  id (":" Type)

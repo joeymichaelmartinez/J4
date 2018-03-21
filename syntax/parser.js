@@ -26,10 +26,12 @@ const ForStatement = require('../ast/for-statement')
 const FunctionDeclaration = require('../ast/function-declaration');
 const ObjectDeclaration = require('../ast/object-declaration');
 const ObjectConstuctor = require('../ast/object-contructor');
+const ForParam = require('../ast/for-loop-param');
 const BinaryExpression = require('../ast/binary-expression');
 const UnaryExpression = require('../ast/unary-expression');
 const IdentifierExpression = require('../ast/identifier-expression');
 const SubscriptedExpression = require('../ast/subscripted-expression');
+const dotOperatorExpression = require('../ast/dot-operator-expression');
 const Call = require('../ast/call');
 const ObjectInstantiation = require('../ast/object-instantiation');
 const Type = require('../ast/type');
@@ -61,14 +63,16 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Stmt_functionDec(_1, id, _2, params, _3, _4, type, suite) {
     return new FunctionDeclaration(id.ast(), params.ast(), type.ast(), suite.ast());
   },
-  Stmt_struct(_1, id, suite){ return new ObjectDeclaration(id.ast(), suite.ast()); }
-  Stmt_init(_1, _2, params, _3, suite){ return new ObjectConstructor(params.ast(), suite.ast()); }
+  Stmt_struct(_1, id, suite){ return new ObjectDeclaration(id.ast(), suite.ast()); },
+  Stmt_init(_1, _2, params, _3, suite){ return new ObjectConstructor(params.ast(), suite.ast()); },
   SimpleStmt_vardeclAndAssign(type, v, _, e) { return new VariableDeclaration(type.ast(), v.ast(), e.ast()); },
   SimpleStmt_vardecl(type, v) { return new VariableDeclaration(type.ast(), v.ast(), undefined ); },
   SimpleStmt_assign(v, _, e) { return new AssignmentStatement(v.ast(), e.ast()); },
   SimpleStmt_break(_) { return new BreakStatement(); },
   SimpleStmt_return(_, e) { return new ReturnStatement(unpack(e.ast())); },
   Suite(_1, _2, statements, _3) { return statements.ast(); },
+  ForParam_loopingVarDec(type, id, _1, e) { return new ForParam(type.ast(), id.ast(), e.ast()) },
+  ForParam_outsideVar(id) { return new ForParam(undefined, id.ast(), undefined) },
   Exp_or(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
   Exp_and(left, op, right) { return new BinaryExpression(op.ast(), right.ast()); },
   Exp1_binary(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
@@ -84,6 +88,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Type_typeArrayOfFunction(_1, type, _2, _3) { return new Type(type.ast()); },
   VarExp_subscripted(v, _1, e, _2) { return new SubscriptedExpression(v.ast(), e.ast()); },
   VarExp_simple(id) { return new IdentifierExpression(id.ast()); },
+  VarExp_dotOperator(v, _1, id, _2, args, _3) { return new dotOperatorExpression(v.ast(), id.ast(), args.ast()) },
   Param(id, _, type) { return new Parameter(id.ast(), type.ast()); },
   Arg(exp) { return new Argument(exp.ast()); },
   NonemptyListOf(first, _, rest) { return [first.ast(), ...rest.ast()]; },
