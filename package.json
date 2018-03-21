@@ -1,9 +1,11 @@
 {
   "name": "j4_packages",
   "version": "1.0.0",
-  "description": "Uses mocha to test our compiler to ensure it runs correctly.",
-  "main": "index.js",
+  "description": "Uses eslint for code linting and mocha to test our compiler to ensure it runs correctly.",
+  "main": "README.md",
   "scripts": {
+    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore .",
+    "pretest": "./node_modules/.bin/eslint.cmd --ignore-path .gitignore .",
     "test": "mocha test/**/*test.js"
   },
   "repository": {
@@ -17,9 +19,8 @@
   },
   "homepage": "https://github.com/joeymichaelmartinez/J4#readme",
   "devDependencies": {
+    "eslint": "^4.19.0",
+    "ohm-js": "^0.14.0",
     "mocha": "^5.0.0"
-  },
-  "dependencies": {
-    "ohm-js": "^0.14.0"
   }
 }

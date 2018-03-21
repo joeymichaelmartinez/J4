@@ -10,9 +10,9 @@
  *       rules. If there are any errors, this function will throw an error.
  */
 
-const fs = require('fs');
-const ohm = require('ohm-js');
-const withIndentsAndDedents = require('./preparser');
+const fs = require("fs");
+const ohm = require("ohm-js");
+const withIndentsAndDedents = require("./preparser");
 
 const Program = require('../ast/program');
 const VariableDeclaration = require('../ast/variable-declaration');
@@ -39,11 +39,11 @@ const BooleanLiteral = require('../ast/boolean-literal');
 const NumericLiteral = require('../ast/numeric-literal');
 const StringLiteral = require('../ast/string-literal');
 
-const grammar = ohm.grammar(fs.readFileSync('./syntax/J4Grammar.ohm'));
+const grammar = ohm.grammar(fs.readFileSync("./syntax/J4Grammar.ohm"));
 
 // Ohm turns `x?` into either [x] or [], which we should clean up for our AST.
 function unpack(a) {
-  return a.length === 0 ? null : a[0];
+    return a.length === 0 ? null : a[0];
 }
 
 eslint-disable no-unused-vars
@@ -97,9 +97,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
 eslint-enable no-unused-vars
 
 module.exports = (text) => {
-  const match = grammar.match(withIndentsAndDedents(text));
-  if (!match.succeeded()) {
-    throw new Error(`Syntax Error: ${match.message}`);
-  }
-  return true;//astGenerator(match).ast();//TODO implement astGenerator
+    const match = grammar.match(withIndentsAndDedents(text));
+    if (!match.succeeded()) {
+        throw new Error(`Syntax Error: ${match.message}`);
+    }
+    return true;//astGenerator(match).ast();//TODO implement astGenerator
 };
