@@ -1,0 +1,12 @@
+struct Color
+    Number red, green, blue
+    init(red:Number, green:Number, blue:Number)
+        self.red   <- red
+        self.green <- green
+        self.blue  <- blue
+    init(white: Number)
+        red   <- white
+        green <- white
+        blue  <- white
+Color magenta <- new Color(1.0,0.0,1.0)
+Color halfGray <- new Color(0.5)
