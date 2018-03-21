@@ -22,12 +22,19 @@ const ReturnStatement = require("../ast/return-statement");
 const IfStatement = require("../ast/if-statement");
 const Case = require("../ast/case");
 const WhileStatement = require("../ast/while-statement");
+const ForStatement = require("../ast/for-statement");
 const FunctionDeclaration = require("../ast/function-declaration");
+const ObjectDeclaration = require("../ast/object-declaration");
+const ObjectConstructor = require("../ast/object-constructor");
+const ForParam = require("../ast/for-loop-param");
 const BinaryExpression = require("../ast/binary-expression");
 const UnaryExpression = require("../ast/unary-expression");
 const IdentifierExpression = require("../ast/identifier-expression");
 const SubscriptedExpression = require("../ast/subscripted-expression");
+const dotOperatorExpression = require("../ast/dot-operator-expression");
 const Call = require("../ast/call");
+const ObjectInstantiation = require("../ast/object-instantiation");
+const Type = require("../ast/type");
 const Parameter = require("../ast/parameter");
 const Argument = require("../ast/argument");
 const BooleanLiteral = require("../ast/boolean-literal");
@@ -46,6 +53,7 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Program(_1, body, _2) { return new Program(body.ast()); },
     Stmt_simple(statement, _) { return statement.ast(); },
     Stmt_while(_, test, suite) { return new WhileStatement(test.ast(), suite.ast()); },
+    Stmt_for(_1, forparam, _2, test, _3, statement, suite) { return new ForStatement(forparam.ast(), test.ast(), unpack(statement.ast()), suite.ast()); },
     Stmt_if(_1, firstTest, firstSuite, _2, moreTests, moreSuites, _3, lastSuite) {
         const tests = [firstTest.ast(), ...moreTests.ast()];
         const bodies = [firstSuite.ast(), ...moreSuites.ast()];
@@ -55,12 +63,16 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Stmt_functionDec(_1, id, _2, params, _3, _4, type, suite) {
         return new FunctionDeclaration(id.ast(), params.ast(), type.ast(), suite.ast());
     },
+    Stmt_struct(_1, id, suite){ return new ObjectDeclaration(id.ast(), suite.ast()); },
+    Stmt_init(_1, _2, params, _3, suite){ return new ObjectConstructor(params.ast(), suite.ast()); },
     SimpleStmt_vardeclAndAssign(type, v, _, e) { return new VariableDeclaration(type.ast(), v.ast(), e.ast()); },
     SimpleStmt_vardecl(type, v) { return new VariableDeclaration(type.ast(), v.ast(), undefined ); },
     SimpleStmt_assign(v, _, e) { return new AssignmentStatement(v.ast(), e.ast()); },
     SimpleStmt_break(_) { return new BreakStatement(); },
     SimpleStmt_return(_, e) { return new ReturnStatement(unpack(e.ast())); },
     Suite(_1, _2, statements, _3) { return statements.ast(); },
+    ForParam_loopingVarDec(type, id, _1, e) { return new ForParam(type.ast(), id.ast(), e.ast()); },
+    ForParam_outsideVar(id) { return new ForParam(undefined, id.ast(), undefined); },
     Exp_or(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
     Exp_and(left, op, right) { return new BinaryExpression(op.ast(), right.ast()); },
     Exp1_binary(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
@@ -70,8 +82,13 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Exp5_unary(op, operand) { return new UnaryExpression(op.ast(), operand.ast()); },
     Exp6_parens(_1, expression, _2) { return expression.ast(); },
     Call(callee, _1, args, _2) { return new Call(callee.ast(), args.ast()); },
+    CreateObj(_1, v, _2, args, _3) { return new ObjectInstantiation(v.ast(), args.ast()); },
+    Type(type) { return new Type(type.ast()); },
+    Type_typeOfArray(type, _) { return new Type(type.ast()); },
+    Type_typeArrayOfFunction(_1, type, _2, _3) { return new Type(type.ast()); },
     VarExp_subscripted(v, _1, e, _2) { return new SubscriptedExpression(v.ast(), e.ast()); },
     VarExp_simple(id) { return new IdentifierExpression(id.ast()); },
+    VarExp_dotOperator(v, _1, id, _2, args, _3) { return new dotOperatorExpression(v.ast(), id.ast(), args.ast()); },
     Param(id, _, type) { return new Parameter(id.ast(), type.ast()); },
     Arg(exp) { return new Argument(exp.ast()); },
     NonemptyListOf(first, _, rest) { return [first.ast(), ...rest.ast()]; },

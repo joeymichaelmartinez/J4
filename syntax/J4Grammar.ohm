@@ -45,15 +45,14 @@ J4 {
               | "Boolean"
               | FuncAsType
               | id
-              | "(" FuncAsType ")[]"                                   -- types
-              | id"[]"                                                 -- ArrayOfObj
+              | "(" FuncAsType ")" "[]"                                -- typeArrayOfFunction
 
   FuncAsType = "(" Type ("," Type)* ")" "->" Type
 
   Exps        =  NonemptyListOf<Exp, ",">
   Ids         =  NonemptyListOf<id, ",">
   VarExp      =  VarExp "[" Exp "]"                                    -- subscripted
-              |  id"."id                                               -- dotOperator
+              |  VarExp "." id ("(" Args ")")?                         -- dotOperator
               |  id                                                    -- simple
   VarExps     =  NonemptyListOf<VarExp, ",">
   Param       =  id (":" Type)
