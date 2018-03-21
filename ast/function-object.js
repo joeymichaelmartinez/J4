@@ -6,9 +6,9 @@ module.exports = class FunctionObject {
   // Functions like print and sqrt which are pre-defined are known as
   // "external" functions because they are not declared in the current
   // module and we therefore don't generate code for them.
-  get isExternal() {
-    return !this.function.body;
-  }
+  // get isExternal() {
+  //   return !this.function.body;
+  // }
 
   // analyze(context) {
   //   // Each parameter will be declared in the function's scope, mixed in

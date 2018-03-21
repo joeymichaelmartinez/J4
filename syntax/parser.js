@@ -13,7 +13,7 @@
 const fs = require('fs');
 const ohm = require('ohm-js');
 const withIndentsAndDedents = require('./preparser');
-/*
+
 const Program = require('../ast/program');
 const VariableDeclaration = require('../ast/variable-declaration');
 const AssignmentStatement = require('../ast/assignment-statement');
@@ -22,7 +22,6 @@ const ReturnStatement = require('../ast/return-statement');
 const IfStatement = require('../ast/if-statement');
 const Case = require('../ast/case');
 const WhileStatement = require('../ast/while-statement');
-const CallStatement = require('../ast/call-statement');
 const FunctionDeclaration = require('../ast/function-declaration');
 const BinaryExpression = require('../ast/binary-expression');
 const UnaryExpression = require('../ast/unary-expression');
@@ -34,7 +33,7 @@ const Argument = require('../ast/argument');
 const BooleanLiteral = require('../ast/boolean-literal');
 const NumericLiteral = require('../ast/numeric-literal');
 const StringLiteral = require('../ast/string-literal');
-*/
+
 const grammar = ohm.grammar(fs.readFileSync('./syntax/J4Grammar.ohm'));
 
 // Ohm turns `x?` into either [x] or [], which we should clean up for our AST.

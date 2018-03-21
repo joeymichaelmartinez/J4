@@ -6,17 +6,17 @@ module.exports = class UnaryExpression {
     Object.assign(this, { op, operand });
   }
 
-  analyze(context) {
-    this.operand.analyze(context);
-  }
-
-  optimize() {
-    this.operand = this.operand.optimize();
-    if (this.op === 'not' && this.operand instanceof BooleanLiteral) {
-      return BooleanLiteral(!this.operand.value);
-    } else if (this.op === '-' && this.operand instanceof NumericLiteral) {
-      return new NumericLiteral(-this.operand.value);
-    }
-    return this;
-  }
+  // analyze(context) {
+  //   this.operand.analyze(context);
+  // }
+  //
+  // optimize() {
+  //   this.operand = this.operand.optimize();
+  //   if (this.op === 'not' && this.operand instanceof BooleanLiteral) {
+  //     return BooleanLiteral(!this.operand.value);
+  //   } else if (this.op === '-' && this.operand instanceof NumericLiteral) {
+  //     return new NumericLiteral(-this.operand.value);
+  //   }
+  //   return this;
+  // }
 };

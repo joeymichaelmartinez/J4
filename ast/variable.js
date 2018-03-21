@@ -3,11 +3,11 @@ module.exports = class Variable {
     this.id = id;
   }
 
-  analyze(/* context */) { // eslint-disable-line class-methods-use-this
-    // Someday we'll have types and we can do something here...
-  }
-
-  optimize() {
-    return this;
-  }
+  // analyze(/* context */) { // eslint-disable-line class-methods-use-this
+  //   // Someday we'll have types and we can do something here...
+  // }
+  //
+  // optimize() {
+  //   return this;
+  // }
 };

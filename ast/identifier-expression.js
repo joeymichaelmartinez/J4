@@ -9,11 +9,11 @@ module.exports = class IdentifierExpression {
   // expression keeps a reference to the variable, function, or parameter to
   // which it refers. The referent is found at semantic analysis time (not at
   // parse time).
-  analyze(context) {
-    this.referent = context.lookup(this.id);
-  }
+  // analyze(context) {
+  //   this.referent = context.lookup(this.id);
+  // }
 
-  optimize() {
-    return this;
-  }
+  // optimize() {
+  //   return this;
+  // }
 };
