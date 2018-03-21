@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore .",
     "pretest": "./node_modules/.bin/eslint.cmd --ignore-path .gitignore .",
-    "test": "mocha Homework2/test/**/*test.js"
+    "test": "mocha test/**/*test.js"
   },
   "repository": {
     "type": "git",
