@@ -2,9 +2,9 @@ J4 {
   Program     =  newline* Stmt+ newline*
   Stmt        =  SimpleStmt newline                                      -- simple
               |  "while" Exp Suite                                       -- while
-              |  "for" ForParam "," Exp "," SimpleStmt? Suite           -- for
+              |  "for" ForParam "," Exp "," SimpleStmt? Suite            -- for
               |  "if" Exp Suite ("else if" Exp Suite)* ("else" Suite)?   -- if
-              |  "Function" id "(" Params | "Nothing" ")" "->" (Type | "Nothing") Suite? -- functionDec
+              |  "Function" id "(" (Params | "Nothing") ")" "->" (Type | "Nothing") Suite? -- functionDec
               |  "struct" id Suite                                       -- struct
               |  "init" "(" Params ")" Suite?                            -- init
   SimpleStmt  =  Type Ids "<-" Exps                                      -- vardeclAndAssign
@@ -39,7 +39,7 @@ J4 {
   Call        =  VarExp "(" Args ")"
   CreateObj   = "new" VarExp "(" Args ")"
 
-  Type        = Type "[]"
+  Type        = Type "[]"                                               -- typeOfArray
               | "Number"
               | "String"
               | "Boolean"
