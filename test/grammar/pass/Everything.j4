@@ -2,19 +2,22 @@ a <- 42
 Function hello() -> Nothing
  print(a)
 Function actions(a:Number, b:Number, c:Number) -> Nothing
- Number x <- 9
- Boolean y <- true
- if x < 3 and (9 / 2 = b or 7*(false%2))
-  while true
-   x <- 2
- else if false
-  print("hello", dog)
+  Number x <- 9
+  Number b <- 9
+  Boolean y <- true
+  if x < 3 and (9 / 2 = b or 7 * (b % 2) = 20)
+    while true
+    x <- 2
+  else if false
+   print("hello", dog)
+
 Function p(e:Number) -> Number
- Number x, y, z <- 10, 5, 6
+  Number x, y, z <- 10, 5, 6
+
 actions(9, b*b, 1)
 if false
- print(5/7*27.310)
+  print(5/7*27.310)
 else if p
- dog()
+  dog()
 else if 2
- print(dog())
+  print(dog())
