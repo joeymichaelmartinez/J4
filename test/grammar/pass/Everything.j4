@@ -7,7 +7,7 @@ Function actions(a:Number, b:Number, c:Number) -> Nothing
   Boolean y <- true
   if x < 3 and (9 / 2 = b or 7 * (b % 2) = 20)
     while true
-    x <- 2
+      x <- 2
   else if false
    print("hello", dog)
 

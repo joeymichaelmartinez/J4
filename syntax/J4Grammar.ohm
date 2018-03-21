@@ -17,8 +17,8 @@ J4 {
   Suite       =  newline indent Stmt+ dedent
   ForParam    =  Type id "<-" Exp                                        -- loopingVarDec
               |  id                                                      -- outsideVar
-  Exp         =  Exp1 ("and" Exp1)*                                      -- and
-              |  Exp1 ("or" Exp1)*                                       -- or
+  Exp         =  Exp1 ("and" Exp1)+                                      -- and
+              |  Exp1 ("or" Exp1)+                                       -- or
               |  Exp1
   Exp1        =  Exp2 relop Exp2                                         -- binary
               |  Exp2
@@ -34,6 +34,7 @@ J4 {
               |  numlit
               |  strlit
               |  Call
+              |  CreateObj
               |  VarExp
               |  "(" Exp ")"                                            -- parens
   Call        =  VarExp "(" Args ")"
