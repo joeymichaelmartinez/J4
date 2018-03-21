@@ -4,8 +4,7 @@
   "description": "Uses eslint for code linting and mocha to test our compiler to ensure it runs correctly.",
   "main": "README.md",
   "scripts": {
-    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore .",
-    "pretest": "./node_modules/.bin/eslint.cmd --ignore-path .gitignore .",
+    "pretest": "eslint **/*.js --ignore-pattern node_modules/",
     "test": "mocha test/**/*test.js"
   },
   "repository": {
