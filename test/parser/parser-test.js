@@ -15,10 +15,8 @@ describe("The parser", () => {
             it(`produces the correct AST for ${name}`, (done) => {
                 fs.readFile(`${__dirname}/${name}`, "utf-8", (err, input) => {
                     const ast = parse(input);
-                    console.log(ast);//eslint-disable-line
                     fs.readFile(`${__dirname}/${name}.json`, "utf-8", (_err, expected) => {
-                        assert.ok(expected);
-                        //assert.deepEqual(ast, JSON.parse(expected));
+                        assert.deepEqual(ast, JSON.parse(expected));
                         done();
                     });
                 });

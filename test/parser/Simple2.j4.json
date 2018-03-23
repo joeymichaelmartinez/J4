@@ -1,12 +1,56 @@
 {
-    "Program": {
-        "statements": [
-            "ForStatement", {
-                "forparam": ["Object"],
-                "test": ["Object"],
-                "iteration": ["Object"],
-                "body": ["Array"] 
-            } 
-        ] 
+  "statements": [
+    {
+      "body": [
+        {
+          "args": [
+            {
+              "expression": {
+                "value": 2
+              }
+            }
+          ],
+          "callee": {
+            "id": "f"
+          }
+        }
+      ],
+      "forparam": {
+        "expression": {
+          "value": 2
+        },
+        "id": "i",
+        "type": {
+          "type": "Number"
+        }
+      },
+      "iteration": {
+        "sources": [
+          {
+            "left": {
+              "id": "z"
+            },
+            "op": "+",
+            "right": {
+              "value": 1
+            }
+          }
+        ],
+        "targets": [
+          {
+            "id": "z"
+          }
+        ]
+      },
+      "test": {
+        "left": {
+          "id": "y"
+        },
+        "op": "<",
+        "right": {
+          "value": 2
+        }
+      }
     }
+  ]
 }

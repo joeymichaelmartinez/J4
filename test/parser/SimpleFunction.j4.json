@@ -1,10 +1,67 @@
 {
-  "Program": {
-      "statements": [ 
-          "FunctionDeclaration", { 
-              "id": "'hello'", 
-              "function": ["Object"] 
-          } 
-      ] 
-  }
+  "statements": [
+    {
+      "function": {
+        "body": [
+          [
+            {
+              "sources": [
+                {
+                  "value": 2
+                }
+              ],
+              "targets": [
+                {
+                  "id": "x"
+                }
+              ]
+            },
+            {
+              "ids": [
+                "y"
+              ],
+              "initializers": [
+                {
+                  "value": 7
+                }
+              ],
+              "type": {
+                "type": "Number"
+              }
+            },
+            {
+              "alternate": null,
+              "cases": [
+                {
+                  "body": [
+                    {
+                      "returnValue": {
+                        "id": "x"
+                      }
+                    }
+                  ],
+                  "test": {
+                    "value": true
+                  }
+                }
+              ]
+            }
+          ]
+        ],
+        "id": "hello",
+        "params": [
+          {
+            "defaultExpression": {
+              "type": "Number"
+            },
+            "id": "x"
+          }
+        ],
+        "returntype": {
+          "type": "Nothing"
+        }
+      },
+      "id": "hello"
+    }
+  ]
 }

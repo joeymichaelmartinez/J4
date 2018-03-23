@@ -1,9 +1,17 @@
-"Program" {
-    "statements": [ 
-        "VariableDeclaration" { 
-            "type": ["Object"], 
-            "ids": ["Array"], 
-            "initializers": ["Array"] 
-        } 
-    ] 
+{
+  "statements": [
+    {
+      "ids": [
+        "x"
+      ],
+      "initializers": [
+        {
+          "value": 5
+        }
+      ],
+      "type": {
+        "type": "Number"
+      }
+    }
+  ]
 }

@@ -44,101 +44,28 @@
     √ matches the program WhileStatements.j4
 
   The parser
-"Program" {
-  statements: [ AssignmentStatement { targets: [Array], sources: [Array] } ] }
-    √ produces the correct AST for Arithmetic.j4
-Program {
-  statements:
-   [ VariableDeclaration { type: [Object], ids: [Array], initializers: [Array] },
-     VariableDeclaration { type: [Object], ids: [Array], initializers: [Array] } ] }
-    √ produces the correct AST for Assignment.j4
-Program {
-  statements:
-   [ ForStatement {
-       forparam: [Object],
-       test: [Object],
-       iteration: [Object],
-       body: [Array] },
-     FunctionDeclaration { id: 'hello', function: [Object] } ] }
-    √ produces the correct AST for commentsPart1.j4
-Program {
-  statements: [ FunctionDeclaration { id: 'hello', function: [Object] } ] }
-    √ produces the correct AST for CommentsPart2.j4
-Program {
-  statements:
-   [ AssignmentStatement { targets: [Array], sources: [Array] },
-     FunctionDeclaration { id: 'hello', function: [Object] },
-     FunctionDeclaration { id: 'actions', function: [Object] },
-     FunctionDeclaration { id: 'p', function: [Object] },
-     Call { callee: [Object], args: [Array] },
-     IfStatement { cases: [Array], alternate: null } ] }
-    √ produces the correct AST for Everything.j4
-Program {
-  statements:
-   [ FunctionDeclaration { id: 'p', function: [Object] },
-     Call { callee: [Object], args: [Array] },
-     IfStatement { cases: [Array], alternate: null } ] }
-    √ produces the correct AST for EverythingPart1.j4
-Program {
-  statements:
-   [ AssignmentStatement { targets: [Array], sources: [Array] },
-     FunctionDeclaration { id: 'hello', function: [Object] },
-     FunctionDeclaration { id: 'actions', function: [Object] } ] }
-    √ produces the correct AST for EverythingPart2.j4
-    2) produces the correct AST for FunctionCalls.j4
-Program {
-  statements: [ IfStatement { cases: [Array], alternate: [Array] } ] }
-    √ produces the correct AST for IfStatements.j4
-Program {
-  statements:
-   [ AssignmentStatement { targets: [Array], sources: [Array] },
-     AssignmentStatement { targets: [Array], sources: [Array] } ] }
-    √ produces the correct AST for MostlyEmpty.j4
-Program {
-  statements:
-   [ ObjectDeclaration { id: 'Color', body: [Array] },
-     VariableDeclaration { type: [Object], ids: [Array], initializers: [Array] },
-     VariableDeclaration { type: [Object], ids: [Array], initializers: [Array] } ] }
-    √ produces the correct AST for Object.j4
-Program {
-  statements:
-   [ AssignmentStatement { targets: [Array], sources: [Array] },
-     AssignmentStatement { targets: [Array], sources: [Array] } ] }
-    √ produces the correct AST for Simple.j4
-Program {
-  statements:
-   [ ForStatement {
-       forparam: [Object],
-       test: [Object],
-       iteration: [Object],
-       body: [Array] } ] }
+    2) produces the correct AST for Arithmetic.j4
+    3) produces the correct AST for Assignment.j4
+    4) produces the correct AST for commentsPart1.j4
+    5) produces the correct AST for CommentsPart2.j4
+    6) produces the correct AST for Everything.j4
+    7) produces the correct AST for EverythingPart1.j4
+    8) produces the correct AST for EverythingPart2.j4
+    9) produces the correct AST for FunctionCalls.j4
+    10) produces the correct AST for IfStatements.j4
+    11) produces the correct AST for MostlyEmpty.j4
+    12) produces the correct AST for Object.j4
+    13) produces the correct AST for Simple.j4
     √ produces the correct AST for Simple2.j4
-Program {
-  statements: [ FunctionDeclaration { id: 'hello', function: [Object] } ] }
-    √ produces the correct AST for simpleComment.j4
-Program {
-  statements:
-   [ ForStatement {
-       forparam: [Object],
-       test: [Object],
-       iteration: [Object],
-       body: [Array] } ] }
-    √ produces the correct AST for SimpleForLoop.j4
-Program {
-  statements: [ FunctionDeclaration { id: 'hello', function: [Object] } ] }
+    14) produces the correct AST for simpleComment.j4
+    15) produces the correct AST for SimpleForLoop.j4
     √ produces the correct AST for SimpleFunction.j4
-Program {
-  statements: [ VariableDeclaration { type: [Object], ids: [Array], initializers: [Array] } ] }
     √ produces the correct AST for test-comments.j4
-Program {
-  statements:
-   [ WhileStatement { test: [Object], body: [Array] },
-     AssignmentStatement { targets: [Array], sources: [Array] } ] }
     √ produces the correct AST for WhileStatements.j4
 
 
-  47 passing (394ms)
-  2 failing
+  34 passing (419ms)
+  15 failing
 
   1) The grammar
        matches the program FunctionCalls.j4:
@@ -204,6 +131,62 @@ Action stack (most recent call last):
       at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
 
   2) The parser
+       produces the correct AST for Arithmetic.j4:
+     Uncaught SyntaxError: Unexpected token { in JSON at position 10
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  3) The parser
+       produces the correct AST for Assignment.j4:
+     Uncaught SyntaxError: Unexpected token { in JSON at position 10
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  4) The parser
+       produces the correct AST for commentsPart1.j4:
+     Uncaught SyntaxError: Unexpected token { in JSON at position 10
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  5) The parser
+       produces the correct AST for CommentsPart2.j4:
+     Uncaught SyntaxError: Unexpected token { in JSON at position 10
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  6) The parser
+       produces the correct AST for Everything.j4:
+     Uncaught SyntaxError: Unexpected token { in JSON at position 10
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  7) The parser
+       produces the correct AST for EverythingPart1.j4:
+     Uncaught SyntaxError: Unexpected token { in JSON at position 65
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  8) The parser
+       produces the correct AST for EverythingPart2.j4:
+     Uncaught SyntaxError: Unexpected token P in JSON at position 0
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  9) The parser
        produces the correct AST for FunctionCalls.j4:
      Uncaught missingSemanticAction: Missing semantic action for 'FuncAsType' in operation 'ast'
 Action stack (most recent call last):
@@ -265,3 +248,166 @@ Action stack (most recent call last):
       at fs.readFile (test\parser\parser-test.js:17:33)
       at tryToString (fs.js:513:3)
       at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  10) The parser
+       produces the correct AST for IfStatements.j4:
+     Uncaught SyntaxError: Unexpected token { in JSON at position 57
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  11) The parser
+       produces the correct AST for MostlyEmpty.j4:
+     Uncaught SyntaxError: Unexpected token { in JSON at position 64
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  12) The parser
+       produces the correct AST for Object.j4:
+     Uncaught SyntaxError: Unexpected token { in JSON at position 63
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  13) The parser
+       produces the correct AST for Simple.j4:
+     Uncaught SyntaxError: Unexpected token } in JSON at position 253
+      at JSON.parse (<anonymous>)
+      at fs.readFile (test\parser\parser-test.js:19:52)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  14) The parser
+       produces the correct AST for simpleComment.j4:
+
+      Uncaught AssertionError [ERR_ASSERTION]: Program {
+  statements: [ FunctionDeclaration { id: 'hello', function: [Object] } ] } deepEqual { Program: { statements: [ 'FunctionDeclaration', [Object] ] } }
+      + expected - actual
+
+       {
+      -  "statements": [
+      -    {
+      -      "function": {
+      -        "body": [
+      -          [
+      -            {
+      -              "args": [
+      -                {
+      -                  "expression": {
+      -                    "id": "a"
+      -                  }
+      -                }
+      -              ]
+      -              "callee": {
+      -                "id": "print"
+      -              }
+      -            }
+      -          ]
+      +  "Program": {
+      +    "statements": [
+      +      "FunctionDeclaration"
+      +      {
+      +        "function": [
+      +          "Object"
+               ]
+      -        "id": "hello"
+      -        "params": []
+      -        "returntype": {
+      -          "type": "Nothing"
+      -        }
+      +        "id": "'hello'"
+             }
+      -      "id": "hello"
+      -    }
+      -  ]
+      +    ]
+      +  }
+       }
+      
+      at fs.readFile (test\parser\parser-test.js:19:32)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  15) The parser
+       produces the correct AST for SimpleForLoop.j4:
+
+      Uncaught AssertionError [ERR_ASSERTION]: Program {
+  statements: 
+   [ ForStatement {
+       forparam: [Object],
+       test: [Object],
+       iteration: [Object],
+      deepEqual {}
+      + expected - actual
+
+      -{
+      -  "statements": [
+      -    {
+      -      "body": [
+      -        {
+      -          "sources": [
+      -            {
+      -              "value": 1
+      -            }
+      -          ]
+      -          "targets": [
+      -            {
+      -              "id": "j"
+      -            }
+      -          ]
+      -        }
+      -      ]
+      -      "forparam": {
+      -        "expression": {
+      -          "value": 1
+      -        }
+      -        "id": "i"
+      -        "type": {
+      -          "type": "Number"
+      -        }
+      -      }
+      -      "iteration": {
+      -        "sources": [
+      -          {
+      -            "left": {
+      -              "id": "i"
+      -            }
+      -            "op": "+"
+      -            "right": {
+      -              "value": 1
+      -            }
+      -          }
+      -        ]
+      -        "targets": [
+      -          {
+      -            "id": "i"
+      -          }
+      -        ]
+      -      }
+      -      "test": {
+      -        "left": {
+      -          "id": "i"
+      -        }
+      -        "op": "<"
+      -        "right": {
+      -          "op": "-"
+      -          "operand": {
+      -            "value": 1
+      -          }
+      -        }
+      -      }
+      -    }
+      -  ]
+      -}
+      +{}
+      
+      at fs.readFile (test\parser\parser-test.js:19:32)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+
+

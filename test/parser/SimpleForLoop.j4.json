@@ -1,2 +1,59 @@
-for Number i <- 1, i < -1  , i <- i + 1
- j <- 1
+{
+  "statements": [
+    {
+      "body": [
+        {
+          "sources": [
+            {
+              "value": 1
+            }
+          ],
+          "targets": [
+            {
+              "id": "j"
+            }
+          ]
+        }
+      ],
+      "forparam": {
+        "expression": {
+          "value": 1
+        },
+        "id": "i",
+        "type": {
+          "type": "Number"
+        }
+      },
+      "iteration": {
+        "sources": [
+          {
+            "left": {
+              "id": "i"
+            },
+            "op": "+",
+            "right": {
+              "value": 1
+            }
+          }
+        ],
+        "targets": [
+          {
+            "id": "i"
+          }
+        ]
+      },
+      "test": {
+        "left": {
+          "id": "i"
+        },
+        "op": "<",
+        "right": {
+          "op": "-",
+          "operand": {
+            "value": 1
+          }
+        }
+      }
+    }
+  ]
+}

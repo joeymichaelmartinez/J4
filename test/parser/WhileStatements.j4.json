@@ -1,14 +1,114 @@
 {
-    "Program": {
-        "statements": [ 
-            "WhileStatement", { 
-                "test": ["Object"], 
-                "body": ["Array"] 
+  "statements": [
+    {
+      "body": [
+        {
+          "args": [
+            {
+              "expression": {
+                "id": "i"
+              }
+            }
+          ],
+          "callee": {
+            "id": "f"
+          }
+        },
+        {
+          "sources": [
+            {
+              "value": 2
+            }
+          ],
+          "targets": [
+            {
+              "id": "x"
+            }
+          ]
+        },
+        {
+          "body": [
+            {
+              "sources": [
+                {
+                  "value": 3
+                }
+              ],
+              "targets": [
+                {
+                  "id": "x"
+                }
+              ]
             },
-            "AssignmentStatement", { 
-                "targets": ["Array"], 
-                "sources": ["Array"] 
-            } 
-        ] 
+            {
+              "sources": [
+                {
+                  "left": {
+                    "id": "j"
+                  },
+                  "op": "+",
+                  "right": {
+                    "value": 1
+                  }
+                }
+              ],
+              "targets": [
+                {
+                  "id": "j"
+                }
+              ]
+            }
+          ],
+          "test": {
+            "left": {
+              "id": "j"
+            },
+            "op": "<",
+            "right": {
+              "value": 8
+            }
+          }
+        },
+        {
+          "sources": [
+            {
+              "left": {
+                "id": "i"
+              },
+              "op": "+",
+              "right": {
+                "value": 1
+              }
+            }
+          ],
+          "targets": [
+            {
+              "id": "i"
+            }
+          ]
+        }
+      ],
+      "test": {
+        "left": {
+          "id": "i"
+        },
+        "op": "<",
+        "right": {
+          "value": 7
+        }
+      }
+    },
+    {
+      "sources": [
+        {
+          "value": 2
+        }
+      ],
+      "targets": [
+        {
+          "id": "x"
+        }
+      ]
     }
+  ]
 }
