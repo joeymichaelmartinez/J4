@@ -1,13 +1,16 @@
-a <- 42
-
-Function hello() -> Nothing
-  print(a)
-
-Function actions(a:Number, b:Number, c:Number) -> Nothing
-  Number x <- 9
-  Boolean y <- true
-  if x < 3 and (9 / 2 = b or 7*(false%2))
-    while true
-      x <- 2
-  else if false
-    print("hello", dog)
+Program {
+  "statements":
+    [ "AssignmentStatement" {
+      "targets": ["Array"],
+      "sources": ["Array"]
+      },
+      "FunctionDeclaration" {
+        "id": "hello",
+        "function": ["Object"]
+      },
+      "FunctionDeclaration" {
+        "id": "actions",
+        "function": ["Object"]
+      }
+    ]
+}

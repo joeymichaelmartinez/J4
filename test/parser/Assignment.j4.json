@@ -1,2 +1,14 @@
-String name <- "j4"
-Number x <- 4
+"Program" {
+  "statements": [
+    "VariableDeclaration" {
+      "type": ["Object"],
+      "ids": ["Array"],
+      "initializers": ["Array"]
+    },
+     "VariableDeclaration" {
+       "type": ["Object"],
+       "ids": ["Array"],
+       "initializers": ["Array"]
+       }
+  ]
+}

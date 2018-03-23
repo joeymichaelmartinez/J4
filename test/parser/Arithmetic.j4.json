@@ -1,1 +1,8 @@
-x <- ((4 + 3) * (10 - 1) ^ 2) / 4 
+"Program" {
+  "statements": [
+    "AssignmentStatement" {
+      "targets": ["Array"],
+      "sources": ["Array"] 
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+
+> j4_packages@1.0.0 pretest C:\Users\John\Documents\School Related\CMSI\CMSI 488\J4
+> eslint **/*.js --ignore-pattern node_modules/
+
+
+> j4_packages@1.0.0 test C:\Users\John\Documents\School Related\CMSI\CMSI 488\J4
+> mocha test/**/*test.js
+
+
+
+  The grammar
+    √ detects a syntax error in bad-exponents.error
+    √ detects a syntax error in bad-expressions.error
+    √ detects a syntax error in bad-function-another-one.error
+    √ detects a syntax error in bad-function-param.error
+    √ detects a syntax error in bad-functions.error
+    √ detects a syntax error in bad-if-statement.error
+    √ detects a syntax error in bad-object.error
+    √ detects a syntax error in bad-string-declaration.error
+    √ detects a syntax error in bad-while-loop.error
+    √ detects a syntax error in badComment.error
+    √ detects a syntax error in no-indent.error
+    √ detects a syntax error in poor-indentation.error
+    √ detects a syntax error in wrong-number-declaration.error
+
+  The grammar
+    √ matches the program Arithmetic.j4
+    √ matches the program Assignment.j4
+    √ matches the program commentsPart1.j4
+    √ matches the program CommentsPart2.j4
+    √ matches the program Everything.j4
+    √ matches the program EverythingPart1.j4
+    √ matches the program EverythingPart2.j4
+    1) matches the program FunctionCalls.j4
+    √ matches the program IfStatements.j4
+    √ matches the program MostlyEmpty.j4
+    √ matches the program Object.j4
+    √ matches the program Simple.j4
+    √ matches the program Simple2.j4
+    √ matches the program simpleComment.j4
+    √ matches the program SimpleForLoop.j4
+    √ matches the program SimpleFunction.j4
+    √ matches the program test-comments.j4
+    √ matches the program WhileStatements.j4
+
+  The parser
+"Program" {
+  statements: [ AssignmentStatement { targets: [Array], sources: [Array] } ] }
+    √ produces the correct AST for Arithmetic.j4
+Program {
+  statements:
+   [ VariableDeclaration { type: [Object], ids: [Array], initializers: [Array] },
+     VariableDeclaration { type: [Object], ids: [Array], initializers: [Array] } ] }
+    √ produces the correct AST for Assignment.j4
+Program {
+  statements:
+   [ ForStatement {
+       forparam: [Object],
+       test: [Object],
+       iteration: [Object],
+       body: [Array] },
+     FunctionDeclaration { id: 'hello', function: [Object] } ] }
+    √ produces the correct AST for commentsPart1.j4
+Program {
+  statements: [ FunctionDeclaration { id: 'hello', function: [Object] } ] }
+    √ produces the correct AST for CommentsPart2.j4
+Program {
+  statements:
+   [ AssignmentStatement { targets: [Array], sources: [Array] },
+     FunctionDeclaration { id: 'hello', function: [Object] },
+     FunctionDeclaration { id: 'actions', function: [Object] },
+     FunctionDeclaration { id: 'p', function: [Object] },
+     Call { callee: [Object], args: [Array] },
+     IfStatement { cases: [Array], alternate: null } ] }
+    √ produces the correct AST for Everything.j4
+Program {
+  statements:
+   [ FunctionDeclaration { id: 'p', function: [Object] },
+     Call { callee: [Object], args: [Array] },
+     IfStatement { cases: [Array], alternate: null } ] }
+    √ produces the correct AST for EverythingPart1.j4
+Program {
+  statements:
+   [ AssignmentStatement { targets: [Array], sources: [Array] },
+     FunctionDeclaration { id: 'hello', function: [Object] },
+     FunctionDeclaration { id: 'actions', function: [Object] } ] }
+    √ produces the correct AST for EverythingPart2.j4
+    2) produces the correct AST for FunctionCalls.j4
+Program {
+  statements: [ IfStatement { cases: [Array], alternate: [Array] } ] }
+    √ produces the correct AST for IfStatements.j4
+Program {
+  statements:
+   [ AssignmentStatement { targets: [Array], sources: [Array] },
+     AssignmentStatement { targets: [Array], sources: [Array] } ] }
+    √ produces the correct AST for MostlyEmpty.j4
+Program {
+  statements:
+   [ ObjectDeclaration { id: 'Color', body: [Array] },
+     VariableDeclaration { type: [Object], ids: [Array], initializers: [Array] },
+     VariableDeclaration { type: [Object], ids: [Array], initializers: [Array] } ] }
+    √ produces the correct AST for Object.j4
+Program {
+  statements:
+   [ AssignmentStatement { targets: [Array], sources: [Array] },
+     AssignmentStatement { targets: [Array], sources: [Array] } ] }
+    √ produces the correct AST for Simple.j4
+Program {
+  statements:
+   [ ForStatement {
+       forparam: [Object],
+       test: [Object],
+       iteration: [Object],
+       body: [Array] } ] }
+    √ produces the correct AST for Simple2.j4
+Program {
+  statements: [ FunctionDeclaration { id: 'hello', function: [Object] } ] }
+    √ produces the correct AST for simpleComment.j4
+Program {
+  statements:
+   [ ForStatement {
+       forparam: [Object],
+       test: [Object],
+       iteration: [Object],
+       body: [Array] } ] }
+    √ produces the correct AST for SimpleForLoop.j4
+Program {
+  statements: [ FunctionDeclaration { id: 'hello', function: [Object] } ] }
+    √ produces the correct AST for SimpleFunction.j4
+Program {
+  statements: [ VariableDeclaration { type: [Object], ids: [Array], initializers: [Array] } ] }
+    √ produces the correct AST for test-comments.j4
+Program {
+  statements:
+   [ WhileStatement { test: [Object], body: [Array] },
+     AssignmentStatement { targets: [Array], sources: [Array] } ] }
+    √ produces the correct AST for WhileStatements.j4
+
+
+  47 passing (394ms)
+  2 failing
+
+  1) The grammar
+       matches the program FunctionCalls.j4:
+     Uncaught missingSemanticAction: Missing semantic action for 'FuncAsType' in operation 'ast'
+Action stack (most recent call last):
+  ast > Program
+  ast > default action for '_iter'
+  ast > default action for 'Stmt'
+  ast > Stmt_functionDec
+  ast > default action for 'Params'
+  ast > default action for 'ListOf'
+  ast > NonemptyListOf
+  ast > Param
+  ast > Type
+  ast > FuncAsType
+      at createError (node_modules\ohm-js\src\errors.js:20:9)
+      at Object.missingSemanticAction (node_modules\ohm-js\src\errors.js:201:11)
+      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:369:20)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.Type (syntax\parser.js:86:39)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.Param (syntax\parser.js:92:62)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.NonemptyListOf (syntax\parser.js:94:52)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.Stmt_functionDec (syntax\parser.js:64:57)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at node_modules\ohm-js\src\Semantics.js:356:57
+      at Array.map (<anonymous>)
+      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:356:23)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.Program (syntax\parser.js:53:53)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at module.exports (syntax\parser.js:109:32)
+      at fs.readFile (test\grammar\pass\grammar-test.js:12:31)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+  2) The parser
+       produces the correct AST for FunctionCalls.j4:
+     Uncaught missingSemanticAction: Missing semantic action for 'FuncAsType' in operation 'ast'
+Action stack (most recent call last):
+  ast > Program
+  ast > default action for '_iter'
+  ast > default action for 'Stmt'
+  ast > Stmt_functionDec
+  ast > default action for 'Params'
+  ast > default action for 'ListOf'
+  ast > NonemptyListOf
+  ast > Param
+  ast > Type
+  ast > FuncAsType
+      at createError (node_modules\ohm-js\src\errors.js:20:9)
+      at Object.missingSemanticAction (node_modules\ohm-js\src\errors.js:201:11)
+      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:369:20)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.Type (syntax\parser.js:86:39)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.Param (syntax\parser.js:92:62)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.NonemptyListOf (syntax\parser.js:94:52)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.Stmt_functionDec (syntax\parser.js:64:57)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at node_modules\ohm-js\src\Semantics.js:356:57
+      at Array.map (<anonymous>)
+      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:356:23)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Semantics.Wrapper.Program (syntax\parser.js:53:53)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at module.exports (syntax\parser.js:109:32)
+      at fs.readFile (test\parser\parser-test.js:17:33)
+      at tryToString (fs.js:513:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)

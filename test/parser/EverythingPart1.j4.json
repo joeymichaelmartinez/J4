@@ -1,16 +1,12 @@
-Program {
-  "statements":
-    [ "AssignmentStatement" {
-      "targets": ["Array"],
-      "sources": ["Array"]
-      },
-      "FunctionDeclaration" {
-        "id": "hello",
-        "function": ["Object"]
-      },
-      "FunctionDeclaration" {
-        "id": "actions",
-        "function": ["Object"]
-      }
-    ]
+"Program" {
+  "statements": [
+    "FunctionDeclaration" {
+      "id": "p",
+      "function": ["Object"]
+    },
+    "Call" {
+      "callee": ["Object"],
+      "args": ["Array"]
+    }
+  ]
 }
