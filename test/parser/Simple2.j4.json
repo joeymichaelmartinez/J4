@@ -1,2 +1,12 @@
-for Number i <- 2, y < 2, z <- z+1
-  f(2)
+{
+    "Program": {
+        "statements": [
+            "ForStatement", {
+                "forparam": ["Object"],
+                "test": ["Object"],
+                "iteration": ["Object"],
+                "body": ["Array"] 
+            } 
+        ] 
+    }
+}

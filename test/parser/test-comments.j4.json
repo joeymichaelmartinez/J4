@@ -1,2 +1,9 @@
-Number x <- 5
-~ Hey this is a comment.
+"Program" {
+    "statements": [ 
+        "VariableDeclaration" { 
+            "type": ["Object"], 
+            "ids": ["Array"], 
+            "initializers": ["Array"] 
+        } 
+    ] 
+}

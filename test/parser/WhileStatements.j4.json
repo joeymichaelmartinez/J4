@@ -1,8 +1,14 @@
-while i<7
-    f(i)
-    x<-2
-    while j < 8
-        x<-3
-        j <- j + 1
-    i <- i + 1
-x<-2
+{
+    "Program": {
+        "statements": [ 
+            "WhileStatement", { 
+                "test": ["Object"], 
+                "body": ["Array"] 
+            },
+            "AssignmentStatement", { 
+                "targets": ["Array"], 
+                "sources": ["Array"] 
+            } 
+        ] 
+    }
+}
