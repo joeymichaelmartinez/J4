@@ -1,6 +1,10 @@
-Function hello(x: Number) -> Nothing
-    x <- 2
-    Number y <- 7
-    if true
-        return x
-  ~This is another comment
+{
+  "Program": {
+      "statements": [ 
+          "FunctionDeclaration", { 
+              "id": "'hello'", 
+              "function": ["Object"] 
+          } 
+      ] 
+  }
+}

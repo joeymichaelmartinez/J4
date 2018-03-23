@@ -1,4 +1,10 @@
-~This is a simple comment
-
-Function hello() -> Nothing
-  print(a)
+{
+    "Program": {
+        "statements": [ 
+            "FunctionDeclaration", { 
+                "id": "'hello'", 
+                "function": ["Object"] 
+            } 
+        ] 
+    }
+}
