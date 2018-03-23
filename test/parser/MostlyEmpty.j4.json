@@ -1,16 +1,14 @@
-
-
-
-
-
-
-
-
-
-x <- "Test"
-
-
-
-
-
-y <- "test newlines"
+{
+  "Program": {
+    "statements":[
+      "AssignmentStatement" {
+        "targets": ["Array"],
+        "sources": ["Array"]
+      },
+      "AssignmentStatement" {
+        "targets": ["Array"],
+        "sources": ["Array"]
+      }
+    ]
+  }
+}

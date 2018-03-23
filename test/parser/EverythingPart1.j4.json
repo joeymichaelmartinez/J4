@@ -1,12 +1,14 @@
-"Program" {
-  "statements": [
-    "FunctionDeclaration" {
-      "id": "p",
-      "function": ["Object"]
-    },
-    "Call" {
-      "callee": ["Object"],
-      "args": ["Array"]
-    }
-  ]
+{
+  "Program": {
+    "statements": [
+      "FunctionDeclaration" {
+        "id": "p",
+        "function": ["Object"]
+      },
+      "Call" {
+        "callee": ["Object"],
+        "args": ["Array"]
+      }
+    ]
+  }
 }
