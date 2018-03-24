@@ -1,14 +1,30 @@
-"Program" {
-  "statements": [
-    "VariableDeclaration" {
-      "type": ["Object"],
-      "ids": ["Array"],
-      "initializers": ["Array"]
-    },
-     "VariableDeclaration" {
-       "type": ["Object"],
-       "ids": ["Array"],
-       "initializers": ["Array"]
+{
+   "statements": [
+     {
+       "ids": [
+         "name"
+       ],
+       "initializers": [
+         {
+           "value": "\"j4\""
+         }
+       ],
+       "type": {
+         "type": "String"
        }
-  ]
-}
+     },
+     {
+       "ids": [
+         "x"
+       ],
+       "initializers": [
+         {
+           "value": 4
+         }
+       ],
+       "type": {
+         "type": "Number"
+       }
+     }
+   ]
+ }

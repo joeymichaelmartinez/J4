@@ -1,15 +1,15 @@
 
-> j4_packages@1.0.0 pretest C:\Users\John\Documents\School Related\CMSI\CMSI 488\J4
+> j4_packages@1.0.0 pretest E:\track\Documents\School Related\CMSI\CMSI 488\J4
 > eslint **/*.js --ignore-pattern node_modules/
 
 
-> j4_packages@1.0.0 test C:\Users\John\Documents\School Related\CMSI\CMSI 488\J4
+> j4_packages@1.0.0 test E:\track\Documents\School Related\CMSI\CMSI 488\J4
 > mocha test/**/*test.js
 
 
 
   The grammar
-    √ detects a syntax error in bad-exponents.error
+    √ detects a syntax error in bad-exponents.error (46ms)
     √ detects a syntax error in bad-expressions.error
     √ detects a syntax error in bad-function-another-one.error
     √ detects a syntax error in bad-function-param.error
@@ -28,9 +28,9 @@
     √ matches the program Assignment.j4
     √ matches the program commentsPart1.j4
     √ matches the program CommentsPart2.j4
-    √ matches the program Everything.j4
-    √ matches the program EverythingPart1.j4
-    √ matches the program EverythingPart2.j4
+    √ matches the program Everything.j4 (38ms)
+    √ matches the program everythingPart1.j4
+    √ matches the program everythingPart2.j4
     1) matches the program FunctionCalls.j4
     √ matches the program IfStatements.j4
     √ matches the program MostlyEmpty.j4
@@ -38,7 +38,7 @@
     √ matches the program Simple.j4
     √ matches the program Simple2.j4
     √ matches the program simpleComment.j4
-    √ matches the program SimpleForLoop.j4
+    √ matches the program simpleForLoop.j4
     √ matches the program SimpleFunction.j4
     √ matches the program test-comments.j4
     √ matches the program WhileStatements.j4
@@ -48,24 +48,24 @@
     3) produces the correct AST for Assignment.j4
     4) produces the correct AST for commentsPart1.j4
     5) produces the correct AST for CommentsPart2.j4
-    6) produces the correct AST for Everything.j4
-    7) produces the correct AST for EverythingPart1.j4
-    8) produces the correct AST for EverythingPart2.j4
-    9) produces the correct AST for FunctionCalls.j4
-    10) produces the correct AST for IfStatements.j4
-    11) produces the correct AST for MostlyEmpty.j4
-    12) produces the correct AST for Object.j4
-    13) produces the correct AST for Simple.j4
+    √ produces the correct AST for Everything.j4
+    √ produces the correct AST for EverythingPart1.j4
+    √ produces the correct AST for EverythingPart2.j4
+    6) produces the correct AST for FunctionCalls.j4
+    √ produces the correct AST for IfStatements.j4
+    √ produces the correct AST for MostlyEmpty.j4
+    √ produces the correct AST for Object.j4
+    √ produces the correct AST for Simple.j4
     √ produces the correct AST for Simple2.j4
-    14) produces the correct AST for simpleComment.j4
-    15) produces the correct AST for SimpleForLoop.j4
+    √ produces the correct AST for simpleComment.j4
+    √ produces the correct AST for SimpleForLoop.j4
     √ produces the correct AST for SimpleFunction.j4
     √ produces the correct AST for test-comments.j4
     √ produces the correct AST for WhileStatements.j4
 
 
-  34 passing (419ms)
-  15 failing
+  43 passing (474ms)
+  6 failing
 
   1) The grammar
        matches the program FunctionCalls.j4:
@@ -83,259 +83,161 @@ Action stack (most recent call last):
   ast > FuncAsType
       at createError (node_modules\ohm-js\src\errors.js:20:9)
       at Object.missingSemanticAction (node_modules\ohm-js\src\errors.js:201:11)
-      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:369:20)
+      at .<anonymous> (node_modules\ohm-js\src\Semantics.js:369:20)
       at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
       at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.Type (syntax\parser.js:86:39)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Type (syntax\parser.js:86:39)
       at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
       at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.Param (syntax\parser.js:92:62)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Param (syntax\parser.js:92:62)
       at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
       at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.NonemptyListOf (syntax\parser.js:94:52)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at NonemptyListOf (syntax\parser.js:94:52)
       at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
       at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at .<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
       at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
       at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at .<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
       at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
       at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.Stmt_functionDec (syntax\parser.js:64:57)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Stmt_functionDec (syntax\parser.js:64:57)
       at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
       at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at .<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
       at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
       at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at node_modules\ohm-js\src\Semantics.js:356:57
-      at Array.map (<anonymous>)
-      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:356:23)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at E:\track\Documents\School Related\CMSI\CMSI 488\J4\node_modules\ohm-js\src\Semantics.js:356:57
+      at Array.map (native)
+      at .<anonymous> (node_modules\ohm-js\src\Semantics.js:356:23)
       at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
       at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.Program (syntax\parser.js:53:53)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Program (syntax\parser.js:53:53)
       at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
       at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
       at module.exports (syntax\parser.js:109:32)
       at fs.readFile (test\grammar\pass\grammar-test.js:12:31)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+      at tryToString (fs.js:457:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:444:12)
 
   2) The parser
        produces the correct AST for Arithmetic.j4:
-     Uncaught SyntaxError: Unexpected token { in JSON at position 10
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+      Uncaught AssertionError: Program {
+  statements: [ AssignmentStatement { targets: [Object], sources: [Object] } ] } deepEqual {}
+      + expected - actual
+
+      -{
+      -  "statements": [
+      -    {
+      -      "sources": [
+      -        {
+      -          "left": {
+      -            "left": {
+      -              "left": {
+      -                "value": 4
+      -              }
+      -              "op": "+"
+      -              "right": {
+      -                "value": 3
+      -              }
+      -            }
+      -            "op": "*"
+      -            "right": {
+      -              "left": {
+      -                "left": {
+      -                  "value": 10
+      -                }
+      -                "op": "-"
+      -                "right": {
+      -                  "value": 1
+      -                }
+      -              }
+      -              "op": "^"
+      -              "right": {
+      -                "value": 2
+      -              }
+      -            }
+      -          }
+      -          "op": "/"
+      -          "right": {
+      -            "value": 4
+      -          }
+      -        }
+      -      ]
+      -      "targets": [
+      -        {
+      -          "id": "x"
+      -        }
+      -      ]
+      -    }
+      -  ]
+      -}
+      +{}
+      
+      at fs.readFile (test\parser\parser-test.js:19:32)
+      at tryToString (fs.js:457:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:444:12)
 
   3) The parser
        produces the correct AST for Assignment.j4:
-     Uncaught SyntaxError: Unexpected token { in JSON at position 10
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+
+      Uncaught AssertionError: Program {
+  statements: 
+   [ VariableDeclaration { type: [Object], ids: [Object], initializers: [Object] },
+     VariableDeclar deepEqual {}
+      + expected - actual
+
+      -{
+      -  "statements": [
+      -    {
+      -      "ids": [
+      -        "name"
+      -      ]
+      -      "initializers": [
+      -        {
+      -          "value": "\"j4\""
+      -        }
+      -      ]
+      -      "type": {
+      -        "type": "String"
+      -      }
+      -    }
+      -    {
+      -      "ids": [
+      -        "x"
+      -      ]
+      -      "initializers": [
+      -        {
+      -          "value": 4
+      -        }
+      -      ]
+      -      "type": {
+      -        "type": "Number"
+      -      }
+      -    }
+      -  ]
+      -}
+      +{}
+      
+      at fs.readFile (test\parser\parser-test.js:19:32)
+      at tryToString (fs.js:457:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:444:12)
 
   4) The parser
        produces the correct AST for commentsPart1.j4:
-     Uncaught SyntaxError: Unexpected token { in JSON at position 10
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
 
-  5) The parser
-       produces the correct AST for CommentsPart2.j4:
-     Uncaught SyntaxError: Unexpected token { in JSON at position 10
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
-
-  6) The parser
-       produces the correct AST for Everything.j4:
-     Uncaught SyntaxError: Unexpected token { in JSON at position 10
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
-
-  7) The parser
-       produces the correct AST for EverythingPart1.j4:
-     Uncaught SyntaxError: Unexpected token { in JSON at position 65
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
-
-  8) The parser
-       produces the correct AST for EverythingPart2.j4:
-     Uncaught SyntaxError: Unexpected token P in JSON at position 0
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
-
-  9) The parser
-       produces the correct AST for FunctionCalls.j4:
-     Uncaught missingSemanticAction: Missing semantic action for 'FuncAsType' in operation 'ast'
-Action stack (most recent call last):
-  ast > Program
-  ast > default action for '_iter'
-  ast > default action for 'Stmt'
-  ast > Stmt_functionDec
-  ast > default action for 'Params'
-  ast > default action for 'ListOf'
-  ast > NonemptyListOf
-  ast > Param
-  ast > Type
-  ast > FuncAsType
-      at createError (node_modules\ohm-js\src\errors.js:20:9)
-      at Object.missingSemanticAction (node_modules\ohm-js\src\errors.js:201:11)
-      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:369:20)
-      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
-      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.Type (syntax\parser.js:86:39)
-      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
-      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.Param (syntax\parser.js:92:62)
-      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
-      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.NonemptyListOf (syntax\parser.js:94:52)
-      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
-      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
-      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
-      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
-      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
-      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.Stmt_functionDec (syntax\parser.js:64:57)
-      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
-      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
-      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
-      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at node_modules\ohm-js\src\Semantics.js:356:57
-      at Array.map (<anonymous>)
-      at Semantics.Wrapper.<anonymous> (node_modules\ohm-js\src\Semantics.js:356:23)
-      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
-      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at Semantics.Wrapper.Program (syntax\parser.js:53:53)
-      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
-      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
-      at Semantics.Wrapper.doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
-      at module.exports (syntax\parser.js:109:32)
-      at fs.readFile (test\parser\parser-test.js:17:33)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
-
-  10) The parser
-       produces the correct AST for IfStatements.j4:
-     Uncaught SyntaxError: Unexpected token { in JSON at position 57
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
-
-  11) The parser
-       produces the correct AST for MostlyEmpty.j4:
-     Uncaught SyntaxError: Unexpected token { in JSON at position 64
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
-
-  12) The parser
-       produces the correct AST for Object.j4:
-     Uncaught SyntaxError: Unexpected token { in JSON at position 63
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
-
-  13) The parser
-       produces the correct AST for Simple.j4:
-     Uncaught SyntaxError: Unexpected token } in JSON at position 253
-      at JSON.parse (<anonymous>)
-      at fs.readFile (test\parser\parser-test.js:19:52)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
-
-  14) The parser
-       produces the correct AST for simpleComment.j4:
-
-      Uncaught AssertionError [ERR_ASSERTION]: Program {
-  statements: [ FunctionDeclaration { id: 'hello', function: [Object] } ] } deepEqual { Program: { statements: [ 'FunctionDeclaration', [Object] ] } }
-      + expected - actual
-
-       {
-      -  "statements": [
-      -    {
-      -      "function": {
-      -        "body": [
-      -          [
-      -            {
-      -              "args": [
-      -                {
-      -                  "expression": {
-      -                    "id": "a"
-      -                  }
-      -                }
-      -              ]
-      -              "callee": {
-      -                "id": "print"
-      -              }
-      -            }
-      -          ]
-      +  "Program": {
-      +    "statements": [
-      +      "FunctionDeclaration"
-      +      {
-      +        "function": [
-      +          "Object"
-               ]
-      -        "id": "hello"
-      -        "params": []
-      -        "returntype": {
-      -          "type": "Nothing"
-      -        }
-      +        "id": "'hello'"
-             }
-      -      "id": "hello"
-      -    }
-      -  ]
-      +    ]
-      +  }
-       }
-      
-      at fs.readFile (test\parser\parser-test.js:19:32)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
-
-  15) The parser
-       produces the correct AST for SimpleForLoop.j4:
-
-      Uncaught AssertionError [ERR_ASSERTION]: Program {
+      Uncaught AssertionError: Program {
   statements: 
    [ ForStatement {
        forparam: [Object],
@@ -351,19 +253,25 @@ Action stack (most recent call last):
       -        {
       -          "sources": [
       -            {
-      -              "value": 1
+      -              "left": {
+      -                "id": "x"
+      -              }
+      -              "op": "+"
+      -              "right": {
+      -                "value": 1
+      -              }
       -            }
       -          ]
       -          "targets": [
       -            {
-      -              "id": "j"
+      -              "id": "x"
       -            }
       -          ]
       -        }
       -      ]
       -      "forparam": {
       -        "expression": {
-      -          "value": 1
+      -          "value": 4
       -        }
       -        "id": "i"
       -        "type": {
@@ -394,20 +302,166 @@ Action stack (most recent call last):
       -        }
       -        "op": "<"
       -        "right": {
-      -          "op": "-"
-      -          "operand": {
-      -            "value": 1
-      -          }
+      -          "value": 10
       -        }
       -      }
+      -    }
+      -    {
+      -      "function": {
+      -        "body": [
+      -          [
+      -            {
+      -              "args": [
+      -                {
+      -                  "expression": {
+      -                    "id": "a"
+      -                  }
+      -                }
+      -              ]
+      -              "callee": {
+      -                "id": "print"
+      -              }
+      -            }
+      -            {
+      -              "alternate": [null]
+      -              "cases": [
+      -                {
+      -                  "body": [
+      -                    {
+      -                      "returnValue": {
+      -                        "value": 4
+      -                      }
+      -                    }
+      -                  ]
+      -                  "test": {
+      -                    "value": true
+      -                  }
+      -                }
+      -              ]
+      -            }
+      -          ]
+      -        ]
+      -        "id": "hello"
+      -        "params": []
+      -        "returntype": {
+      -          "type": "Nothing"
+      -        }
+      -      }
+      -      "id": "hello"
       -    }
       -  ]
       -}
       +{}
       
       at fs.readFile (test\parser\parser-test.js:19:32)
-      at tryToString (fs.js:513:3)
-      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:501:12)
+      at tryToString (fs.js:457:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:444:12)
+
+  5) The parser
+       produces the correct AST for CommentsPart2.j4:
+
+      Uncaught AssertionError: Program {
+  statements: [ FunctionDeclaration { id: 'hello', function: [Object] } ] } deepEqual {}
+      + expected - actual
+
+      -{
+      -  "statements": [
+      -    {
+      -      "function": {
+      -        "body": [
+      -          [
+      -            {
+      -              "args": [
+      -                {
+      -                  "expression": {
+      -                    "id": "a"
+      -                  }
+      -                }
+      -              ]
+      -              "callee": {
+      -                "id": "print"
+      -              }
+      -            }
+      -          ]
+      -        ]
+      -        "id": "hello"
+      -        "params": []
+      -        "returntype": {
+      -          "type": "Nothing"
+      -        }
+      -      }
+      -      "id": "hello"
+      -    }
+      -  ]
+      -}
+      +{}
+      
+      at fs.readFile (test\parser\parser-test.js:19:32)
+      at tryToString (fs.js:457:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:444:12)
+
+  6) The parser
+       produces the correct AST for FunctionCalls.j4:
+     Uncaught missingSemanticAction: Missing semantic action for 'FuncAsType' in operation 'ast'
+Action stack (most recent call last):
+  ast > Program
+  ast > default action for '_iter'
+  ast > default action for 'Stmt'
+  ast > Stmt_functionDec
+  ast > default action for 'Params'
+  ast > default action for 'ListOf'
+  ast > NonemptyListOf
+  ast > Param
+  ast > Type
+  ast > FuncAsType
+      at createError (node_modules\ohm-js\src\errors.js:20:9)
+      at Object.missingSemanticAction (node_modules\ohm-js\src\errors.js:201:11)
+      at .<anonymous> (node_modules\ohm-js\src\Semantics.js:369:20)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Type (syntax\parser.js:86:39)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Param (syntax\parser.js:92:62)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at NonemptyListOf (syntax\parser.js:94:52)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at .<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at .<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Stmt_functionDec (syntax\parser.js:64:57)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at .<anonymous> (node_modules\ohm-js\src\Semantics.js:365:19)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at E:\track\Documents\School Related\CMSI\CMSI 488\J4\node_modules\ohm-js\src\Semantics.js:356:57
+      at Array.map (native)
+      at .<anonymous> (node_modules\ohm-js\src\Semantics.js:356:23)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:658:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:645:16)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at Program (syntax\parser.js:53:53)
+      at Operation.doAction (node_modules\ohm-js\src\Semantics.js:659:16)
+      at Operation.execute (node_modules\ohm-js\src\Semantics.js:627:18)
+      at doIt [as ast] (node_modules\ohm-js\src\Semantics.js:427:25)
+      at module.exports (syntax\parser.js:109:32)
+      at fs.readFile (test\parser\parser-test.js:17:33)
+      at tryToString (fs.js:457:3)
+      at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:444:12)
 
 
 

@@ -1,20 +1,198 @@
 {
-  "Program": {
-    "statements": [
-      "ObjectDeclaration" {
-        "id": "Color",
-        "body": ["Array"]
-      },
-      "VariableDeclaration" {
-        "type": ["Object"],
-        "ids": ["Array"],
-        "initializers": ["Array"]
-      },
-      "VariableDeclaration" {
-        "type": ["Object"],
-        "ids": ["Array"],
-        "initializers": ["Array"]
+  "statements": [
+    {
+      "body": [
+        {
+          "ids": [
+            "red",
+            "green",
+            "blue"
+          ],
+          "initializers": null,
+          "type": {
+            "type": "Number"
+          }
+        },
+        {
+          "params": [
+            {
+              "defaultExpression": {
+                "type": "Number"
+              },
+              "id": "red"
+            },
+            {
+              "defaultExpression": {
+                "type": "Number"
+              },
+              "id": "green"
+            },
+            {
+              "defaultExpression": {
+                "type": "Number"
+              },
+              "id": "blue"
+            }
+          ],
+          "suite": [
+            [
+              {
+                "sources": [
+                  {
+                    "id": "red"
+                  }
+                ],
+                "targets": [
+                  {
+                    "args": [],
+                    "id": "red",
+                    "variable": {
+                      "id": "self"
+                    }
+                  }
+                ]
+              },
+              {
+                "sources": [
+                  {
+                    "id": "green"
+                  }
+                ],
+                "targets": [
+                  {
+                    "args": [],
+                    "id": "green",
+                    "variable": {
+                      "id": "self"
+                    }
+                  }
+                ]
+              },
+              {
+                "sources": [
+                  {
+                    "id": "blue"
+                  }
+                ],
+                "targets": [
+                  {
+                    "args": [],
+                    "id": "blue",
+                    "variable": {
+                      "id": "self"
+                    }
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "params": [
+            {
+              "defaultExpression": {
+                "type": "Number"
+              },
+              "id": "white"
+            }
+          ],
+          "suite": [
+            [
+              {
+                "sources": [
+                  {
+                    "id": "white"
+                  }
+                ],
+                "targets": [
+                  {
+                    "id": "red"
+                  }
+                ]
+              },
+              {
+                "sources": [
+                  {
+                    "id": "white"
+                  }
+                ],
+                "targets": [
+                  {
+                    "id": "green"
+                  }
+                ]
+              },
+              {
+                "sources": [
+                  {
+                    "id": "white"
+                  }
+                ],
+                "targets": [
+                  {
+                    "id": "blue"
+                  }
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "id": "Color"
+    },
+    {
+      "ids": [
+        "magenta"
+      ],
+      "initializers": [
+        {
+          "args": [
+            {
+              "expression": {
+                "value": 1
+              }
+            },
+            {
+              "expression": {
+                "value": 0
+              }
+            },
+            {
+              "expression": {
+                "value": 1
+              }
+            }
+          ],
+          "id": {
+            "id": "Color"
+          }
+        }
+      ],
+      "type": {
+        "type": "Color"
       }
-    ]
-  }
+    },
+    {
+      "ids": [
+        "halfGray"
+      ],
+      "initializers": [
+        {
+          "args": [
+            {
+              "expression": {
+                "value": 0.5
+              }
+            }
+          ],
+          "id": {
+            "id": "Color"
+          }
+        }
+      ],
+      "type": {
+        "type": "Color"
+      }
+    }
+  ]
 }

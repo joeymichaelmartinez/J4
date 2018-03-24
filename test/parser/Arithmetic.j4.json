@@ -1,8 +1,46 @@
-"Program" {
-  "statements": [
-    "AssignmentStatement" {
-      "targets": ["Array"],
-      "sources": ["Array"] 
-    }
-  ]
-}
+{
+   "statements": [
+     {
+       "sources": [
+         {
+           "left": {
+             "left": {
+               "left": {
+                 "value": 4
+               },
+               "op": "+",
+               "right": {
+                 "value": 3
+               }
+             },
+             "op": "*",
+             "right": {
+               "left": {
+                 "left": {
+                   "value": 10
+                 },
+                 "op": "-",
+                 "right": {
+                   "value": 1
+                 }
+               },
+               "op": "^",
+               "right": {
+                 "value": 2
+               }
+             }
+           },
+           "op": "/",
+           "right": {
+             "value": 4
+           }
+         }
+       ],
+       "targets": [
+         {
+           "id": "x"
+         }
+       ]
+     }
+   ]
+ }

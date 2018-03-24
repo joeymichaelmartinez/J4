@@ -1,16 +1,198 @@
-Program {
-  "statements":
-    [ "AssignmentStatement" {
-      "targets": ["Array"],
-      "sources": ["Array"]
-      },
-      "FunctionDeclaration" {
+{
+  "statements": [
+    {
+      "sources": [
+        {
+          "value": 42
+        }
+      ],
+      "targets": [
+        {
+          "id": "a"
+        }
+      ]
+    },
+    {
+      "function": {
+        "body": [
+          [
+            {
+              "args": [
+                {
+                  "expression": {
+                    "id": "a"
+                  }
+                }
+              ],
+              "callee": {
+                "id": "print"
+              }
+            }
+          ]
+        ],
         "id": "hello",
-        "function": ["Object"]
+        "params": [],
+        "returntype": {
+          "type": "Nothing"
+        }
       },
-      "FunctionDeclaration" {
+      "id": "hello"
+    },
+    {
+      "function": {
+        "body": [
+          [
+            {
+              "ids": [
+                "x"
+              ],
+              "initializers": [
+                {
+                  "value": 9
+                }
+              ],
+              "type": {
+                "type": "Number"
+              }
+            },
+            {
+              "ids": [
+                "y"
+              ],
+              "initializers": [
+                {
+                  "value": true
+                }
+              ],
+              "type": {
+                "type": "Boolean"
+              }
+            },
+            {
+              "alternate": null,
+              "cases": [
+                {
+                  "body": [
+                    {
+                      "body": [
+                        {
+                          "sources": [
+                            {
+                              "value": 2
+                            }
+                          ],
+                          "targets": [
+                            {
+                              "id": "x"
+                            }
+                          ]
+                        }
+                      ],
+                      "test": {
+                        "value": true
+                      }
+                    }
+                  ],
+                  "test": {
+                    "left": [
+                      {
+                        "left": {
+                          "left": {
+                            "left": {
+                              "value": 9
+                            },
+                            "op": "/",
+                            "right": {
+                              "value": 2
+                            }
+                          },
+                          "op": "=",
+                          "right": {
+                            "id": "b"
+                          }
+                        },
+                        "op": [
+                          "or"
+                        ],
+                        "right": [
+                          {
+                            "left": {
+                              "value": 7
+                            },
+                            "op": "*",
+                            "right": {
+                              "left": {
+                                "value": true
+                              },
+                              "op": "%",
+                              "right": {
+                                "value": 2
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "op": [
+                      "and"
+                    ],
+                    "right": null
+                  }
+                },
+                {
+                  "body": [
+                    {
+                      "args": [
+                        {
+                          "expression": {
+                            "value": "\"hello\""
+                          }
+                        },
+                        {
+                          "expression": {
+                            "id": "dog"
+                          }
+                        }
+                      ],
+                      "callee": {
+                        "id": "print"
+                      }
+                    }
+                  ],
+                  "test": {
+                    "value": true
+                  }
+                }
+              ]
+            }
+          ]
+        ],
         "id": "actions",
-        "function": ["Object"]
-      }
-    ]
+        "params": [
+          {
+            "defaultExpression": {
+              "type": "Number"
+            },
+            "id": "a"
+          },
+          {
+            "defaultExpression": {
+              "type": "Number"
+            },
+            "id": "b"
+          },
+          {
+            "defaultExpression": {
+              "type": "Number"
+            },
+            "id": "c"
+          }
+        ],
+        "returntype": {
+          "type": "Nothing"
+        }
+      },
+      "id": "actions"
+    }
+  ]
 }

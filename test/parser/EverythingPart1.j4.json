@@ -1,14 +1,145 @@
 {
-  "Program": {
-    "statements": [
-      "FunctionDeclaration" {
+  "statements": [
+    {
+      "function": {
+        "body": [
+          [
+            {
+              "ids": [
+                "x",
+                "y",
+                "z"
+              ],
+              "initializers": [
+                {
+                  "value": 10
+                },
+                {
+                  "value": 5
+                },
+                {
+                  "value": 6
+                }
+              ],
+              "type": {
+                "type": "Number"
+              }
+            }
+          ]
+        ],
         "id": "p",
-        "function": ["Object"]
+        "params": [
+          {
+            "defaultExpression": {
+              "type": "Number"
+            },
+            "id": "e"
+          }
+        ],
+        "returntype": {
+          "type": "Number"
+        }
       },
-      "Call" {
-        "callee": ["Object"],
-        "args": ["Array"]
+      "id": "p"
+    },
+    {
+      "args": [
+        {
+          "expression": {
+            "value": 9
+          }
+        },
+        {
+          "expression": {
+            "left": {
+              "id": "b"
+            },
+            "op": "*",
+            "right": {
+              "id": "b"
+            }
+          }
+        },
+        {
+          "expression": {
+            "value": 1
+          }
+        }
+      ],
+      "callee": {
+        "id": "actions"
       }
-    ]
-  }
+    },
+    {
+      "alternate": null,
+      "cases": [
+        {
+          "body": [
+            {
+              "args": [
+                {
+                  "expression": {
+                    "left": {
+                      "left": {
+                        "value": 5
+                      },
+                      "op": "/",
+                      "right": {
+                        "value": 7
+                      }
+                    },
+                    "op": "*",
+                    "right": {
+                      "value": 27.31
+                    }
+                  }
+                }
+              ],
+              "callee": {
+                "id": "print"
+              }
+            }
+          ],
+          "test": {
+            "value": true
+          }
+        },
+        {
+          "body": [
+            {
+              "args": [],
+              "callee": {
+                "id": "dog"
+              }
+            }
+          ],
+          "test": {
+            "id": "p"
+          }
+        },
+        {
+          "body": [
+            {
+              "args": [
+                {
+                  "expression": {
+                    "args": [],
+                    "callee": {
+                      "id": "dog"
+                    }
+                  }
+                }
+              ],
+              "callee": {
+                "id": "print"
+              }
+            }
+          ],
+          "test": {
+            "value": 2
+          }
+        }
+      ]
+    }
+  ]
 }

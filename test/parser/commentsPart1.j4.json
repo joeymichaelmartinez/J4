@@ -1,14 +1,105 @@
-"Program" {
-  "statements":[
-    "ForStatement" {
-       "forparam": ["Object"],
-       "test": ["Object"],
-       "iteration": ["Object"],
-       "body": ["Array"]
+{
+   "statements": [
+     {
+       "body": [
+         {
+           "sources": [
+             {
+               "left": {
+                 "id": "x"
+               },
+               "op": "+",
+               "right": {
+                 "value": 1
+               }
+             }
+           ],
+           "targets": [
+             {
+               "id": "x"
+             }
+           ]
+         }
+       ],
+       "forparam": {
+         "expression": {
+           "value": 4
+         },
+         "id": "i",
+         "type": {
+           "type": "Number"
+         }
+       },
+       "iteration": {
+         "sources": [
+           {
+             "left": {
+               "id": "i"
+             },
+             "op": "+",
+             "right": {
+               "value": 1
+             }
+           }
+         ],
+         "targets": [
+           {
+             "id": "i"
+           }
+         ]
+       },
+       "test": {
+         "left": {
+           "id": "i"
+         },
+         "op": "<",
+         "right": {
+           "value": 10
+         }
+       }
      },
-     "FunctionDeclaration" {
-       "id": "hello",
-       "function": ["Object"]
+     {
+       "function": {
+         "body": [
+           [
+             {
+               "args": [
+                 {
+                   "expression": {
+                     "id": "a"
+                   }
+                 }
+               ],
+               "callee": {
+                 "id": "print"
+               }
+             },
+             {
+               "alternate": null,
+               "cases": [
+                 {
+                   "body": [
+                     {
+                       "returnValue": {
+                         "value": 4
+                       }
+                     }
+                   ],
+                   "test": {
+                     "value": true
+                   }
+                 }
+               ]
+             }
+           ]
+         ],
+         "id": "hello",
+         "params": [],
+         "returntype": {
+           "type": "Nothing"
+         }
+       },
+       "id": "hello"
      }
    ]
-}
+ }

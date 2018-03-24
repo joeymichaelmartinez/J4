@@ -1,10 +1,30 @@
 {
-    "Program": {
-        "statements": [ 
-            "FunctionDeclaration", { 
-                "id": "'hello'", 
-                "function": ["Object"] 
-            } 
-        ] 
-    }
+    "statements": [
+        {
+            "function": {
+                "body": [
+                    [
+                        {
+                            "args": [
+                                {
+                                    "expression": {
+                                        "id": "a"
+                                    }
+                                }
+                            ],
+                            "callee": {
+                                "id": "print"
+                            }
+                        }
+                    ]
+                ],
+                "id": "hello",
+                "params": [],
+                "returntype": {
+                    "type": "Nothing"
+                }
+            },
+            "id": "hello"
+        }
+    ]
 }

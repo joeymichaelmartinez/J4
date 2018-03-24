@@ -1,9 +1,28 @@
 {
-    "program": {
-            "statements": [ 
-                "AssignmentStatement", { "targets": ["Array"], "sources": ["Array"] },
-                "AssignmentStatement", { "targets": ["Array"], "sources": ["Array"] } 
-            ] 
+  "statements": [
+    {
+      "sources": [
+        {
+          "value": 5
         }
+      ],
+      "targets": [
+        {
+          "id": "a"
+        }
+      ]
+    },
+    {
+      "sources": [
+        {
+          "value": 4
+        }
+      ],
+      "targets": [
+        {
+          "id": "b"
+        }
+      ]
     }
+  ]
 }

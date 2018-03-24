@@ -1,14 +1,28 @@
 {
-  "Program": {
-    "statements":[
-      "AssignmentStatement" {
-        "targets": ["Array"],
-        "sources": ["Array"]
-      },
-      "AssignmentStatement" {
-        "targets": ["Array"],
-        "sources": ["Array"]
-      }
-    ]
-  }
+  "statements": [
+    {
+      "sources": [
+        {
+          "value": "\"Test\""
+        }
+      ],
+      "targets": [
+        {
+          "id": "x"
+        }
+      ]
+    },
+    {
+      "sources": [
+        {
+          "value": "\"test newlines\""
+        }
+      ],
+      "targets": [
+        {
+          "id": "y"
+        }
+      ]
+    }
+  ]
 }
