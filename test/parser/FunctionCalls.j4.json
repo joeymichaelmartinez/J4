@@ -1,1 +1,95 @@
-
+{
+   "statements": [
+     {
+       "function": {
+         "body": [
+           [
+             {
+               "returnValue": {
+                 "left": {
+                   "id": "x"
+                 },
+                 "op": "+",
+                 "right": {
+                   "value": 1
+                 }
+               }
+             }
+           ]
+         ],
+         "id": "addOne",
+         "params": [
+           {
+             "defaultExpression": {
+               "type": "Number"
+             },
+             "id": "x"
+           }
+         ],
+         "returntype": {
+           "type": "Number"
+         }
+       },
+       "id": "addOne"
+     },
+     {
+       "function": {
+         "body": [
+           [
+             {
+               "returnValue": {
+                 "args": [
+                   {
+                     "expression": {
+                       "args": [
+                         {
+                           "expression": {
+                             "id": "x"
+                           }
+                         }
+                       ],
+                       "callee": {
+                         "id": "f"
+                       }
+                     }
+                   }
+                 ],
+                 "callee": {
+                   "id": "f"
+                 }
+               }
+             }
+           ]
+         ],
+         "id": "twice",
+         "params": [
+           {
+             "defaultExpression": {
+               "type": {
+                 "argTypes": [
+                   {
+                     "type": "Number"
+                   }
+                 ],
+                 "returnType": {
+                   "type": "Number"
+                 }
+               }
+             },
+             "id": "f"
+           },
+           {
+             "defaultExpression": {
+               "type": "Number"
+             },
+             "id": "x"
+           }
+         ],
+         "returntype": {
+           "type": "Number"
+         }
+       },
+       "id": "twice"
+     }
+   ]
+ }
