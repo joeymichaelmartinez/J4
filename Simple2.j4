@@ -1,0 +1,2 @@
+for Number i <- 2, y < 2, z <- z+1
+  f(2)

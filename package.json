@@ -21,5 +21,8 @@
     "eslint": "^4.19.0",
     "ohm-js": "^0.14.0",
     "mocha": "^5.0.0"
+  },
+  "dependencies": {
+    "yargs": "^11.0.0"
   }
 }
