@@ -48,7 +48,7 @@ J4 {
               | id
               | "(" FuncAsType ")" "[]"                                -- typeArrayOfFunction
 
-  FuncAsType = "(" Type ("," Type)* ")" "->" Type
+  FuncAsType = "(" ListOf<Type, ","> ")" "->" Type
 
   Exps        =  NonemptyListOf<Exp, ",">
   Ids         =  NonemptyListOf<id, ",">
