@@ -1,2 +1,0 @@
-if if true
-  print("You can't nest if statements in one line")

@@ -1,0 +1,2 @@
+if x = 4
+  print("x was not declared")

@@ -1,2 +1,0 @@
-Function addOne(Number x <- 5) -> Number
-    return x + 1

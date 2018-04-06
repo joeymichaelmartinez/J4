@@ -1,2 +1,0 @@
-while (i < 8) ~ No parenthesis allowed
-  print("this should not compile")

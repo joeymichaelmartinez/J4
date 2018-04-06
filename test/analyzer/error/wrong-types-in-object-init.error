@@ -1,0 +1,6 @@
+struct Color
+  Number red, green, blue
+  init(r: String, g: String, b: String)
+    self.red   <- r
+    self.green <- g
+    self.blue  <- b

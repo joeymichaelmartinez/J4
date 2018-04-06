@@ -1,0 +1,2 @@
+while i < 8
+  print("i is not declared")
