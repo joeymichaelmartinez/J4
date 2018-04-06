@@ -24,3 +24,4 @@ else if actions(1, 2, 3) = Nothing
   hello()
   hello()
 else
+  print(a)
