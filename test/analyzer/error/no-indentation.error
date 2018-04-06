@@ -1,0 +1,8 @@
+Number x <- 0
+Function f(x: Number) -> Nothing
+print(x) ~ missing indent
+f(x + 2) ~ function calls
+f(x)
+
+struct Color
+Number red, green, blue
