@@ -1,0 +1,7 @@
+Number i <- 0
+if i = 2
+  print("i is 2")
+else if (i > 5)
+  print("i is greater than 5")
+else
+  print("i is: ", i)
