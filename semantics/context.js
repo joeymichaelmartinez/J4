@@ -7,6 +7,7 @@
  *
  *   const Context = require('./semantics/context');
  */
+
 const FunctionDeclaration = require("../ast/function-declaration");
 const FunctionObject = require("../ast/function-object");
 const Parameter = require("../ast/parameter");
@@ -43,6 +44,7 @@ class Context {
     // allowed. Note that if we allowed overloading, this method would have to
     // be a bit more sophisticated.
     add(entity) {
+    //*** need to loop through all parent scopes to avoid shadowing
         if (entity.id in this.declarations) {
             throw new Error(`Identitier ${entity.id} already declared in this scope`);
         }
@@ -77,5 +79,6 @@ class Context {
 Context.INITIAL = new Context();
 new FunctionDeclaration("print", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 new FunctionDeclaration("sqrt", [new Parameter("_", null)], null).analyze(Context.INITIAL);
+//new FunctionDeclaration("concat", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 
 module.exports = Context;
