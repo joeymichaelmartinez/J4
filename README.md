@@ -107,10 +107,10 @@ struct Color
         self.green <- green
         self.blue  <- blue
 
-    init(white: Number)
-        red   <- white
-        green <- white
-        blue  <- white
+    init(grayscale: Number)
+        red   <- grayscale
+        green <- grayscale
+        blue  <- grayscale
 
 Color magenta <- new Color(1.0, 0.0, 1.0)
 Color halfGray <- new Color(0.5)
