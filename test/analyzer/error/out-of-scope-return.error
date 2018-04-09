@@ -1,0 +1,3 @@
+Function test() -> String
+  print("test")
+return "test"

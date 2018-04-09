@@ -1,0 +1,6 @@
+Function sayNtimes(x: String, n: Number) -> Number
+  for n, n > 0, n <- n - 1
+    print(x)
+  return n
+
+sayNtimes(5, "test")

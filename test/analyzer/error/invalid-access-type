@@ -1,0 +1,2 @@
+String[] str <- ["str1", "str2", "str3"]
+str["2"] ~Cannot access a list using a string, need a number

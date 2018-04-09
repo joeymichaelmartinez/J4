@@ -1,0 +1,7 @@
+Number x <- 3
+String y <- "true"
+
+if x + 1
+  print("x + 1 is not a boolean expression")
+else if y
+  print("y is not a boolean expression either")

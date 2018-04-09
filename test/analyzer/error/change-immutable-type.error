@@ -1,0 +1,2 @@
+Number x <- 5
+x <- "Cannot change from Number to String"
