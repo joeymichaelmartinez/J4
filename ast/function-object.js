@@ -17,6 +17,8 @@ module.exports = class FunctionObject {
 
         // Make sure all required parameters come before optional ones, and
         // gather the names up into sets for quick lookup.
+
+        // ***Remove all references to required 
         this.requiredParameterNames = new Set();
         this.allParameterNames = new Set();
         this.params.forEach((p) => {
