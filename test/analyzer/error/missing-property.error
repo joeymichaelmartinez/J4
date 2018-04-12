@@ -1,0 +1,14 @@
+struct Dog
+  String breed
+  Number age
+
+  init(b: String)
+    self.age <- 1
+    self.breed <- b
+
+  bark() -> Nothing
+    print("Arf!")
+
+Dog fido <- new Dog("Golden Retriever")
+
+fido.retrieve() ~No method called retrieve
