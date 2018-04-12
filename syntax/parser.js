@@ -66,7 +66,9 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     },
     Stmt_struct(_1, id, suite){ return new ObjectDeclaration(id.ast(), suite.ast()); },
     Stmt_init(_1, _2, params, _3, suite){ return new ObjectConstructor(params.ast(), suite.ast()); },
-    SimpleStmt_vardeclAndAssign(type, v, _, e) { return new VariableDeclaration(type.ast(), v.ast(), e.ast()); },
+    SimpleStmt_vardeclAndAssign(type, v, _, e) {
+        return new VariableDeclaration(type.ast(), v.ast(), e.ast()); 
+    },
     SimpleStmt_vardecl(type, v) { return new VariableDeclaration(type.ast(), v.ast(), undefined ); },
     SimpleStmt_assign(v, _, e) { return new AssignmentStatement(v.ast(), e.ast()); },
     SimpleStmt_break(_) { return new BreakStatement(); },
