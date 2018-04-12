@@ -83,7 +83,7 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Exp5_unary(op, operand) { return new UnaryExpression(op.ast(), operand.ast()); },
     Exp6_parens(_1, expression, _2) { return expression.ast(); },
     Call(callee, _1, args, _2) { return new Call(callee.ast(), args.ast()); },
-    CreateObj(_1, v, _2, args, _3) { return new ObjectInstantiation(v.ast(), args.ast()); },
+    ObjDecl(_1, v, _2, args, _3) { return new ObjectInstantiation(v.ast(), args.ast()); },
     Type(type) { return new Type(type.ast()); },
     FuncAsType(_1, rest, _2, _3, last) {return new FuncAsType([...rest.ast()], last.ast()); },
     Type_typeOfArray(type, _) { return new Type(type.ast()); },

@@ -11,7 +11,7 @@ J4 {
               |  Type Ids                                                -- vardecl
               |  VarExps "<-" Exps                                       -- assign
               |  Call                                                    -- call
-              |  CreateObj                                               -- createObj
+              |  ObjDecl                                                 -- ObjDecl
               |  "break"                                                 -- break
               |  "return" Exp?                                           -- return
   Suite       =  newline indent Stmt+ dedent
@@ -34,27 +34,27 @@ J4 {
               |  numlit
               |  strlit
               |  Call
-              |  CreateObj
+              |  ObjDecl
               |  VarExp
-              |  "(" Exp ")"                                            -- parens
+              |  "(" Exp ")"                                             -- parens
   Call        =  VarExp "(" Args ")"
-  CreateObj   = "new" VarExp "(" Args ")"
+  ObjDecl     = "new" VarExp "(" Args ")"
 
-  Type        = Type "[]"                                               -- typeOfArray
+  Type        = Type "[]"                                                -- typeOfArray
               | "Number"
               | "String"
               | "Boolean"
               | FuncAsType
               | id
-              | "(" FuncAsType ")" "[]"                                -- typeArrayOfFunction
+              | "(" FuncAsType ")" "[]"                                  -- typeArrayOfFunction
 
   FuncAsType = "(" ListOf<Type, ","> ")" "->" Type
 
   Exps        =  NonemptyListOf<Exp, ",">
   Ids         =  NonemptyListOf<id, ",">
-  VarExp      =  VarExp "[" Exp "]"                                    -- subscripted
-              |  VarExp "." id ("(" Args ")")?                         -- dotOperator
-              |  id                                                    -- simple
+  VarExp      =  VarExp "[" Exp "]"                                      -- subscripted
+              |  VarExp "." id ("(" Args ")")?                           -- dotOperator
+              |  id                                                      -- simple
   VarExps     =  NonemptyListOf<VarExp, ",">
   Param       =  id (":" Type)
   Params      =  ListOf<Param, ",">
@@ -62,14 +62,14 @@ J4 {
   Args        =  ListOf<Arg, ",">
 
   keyword     =  ( "not" | "true" | "false" | "Number" | "String" | "Boolean" | "while" | "for" | "break"
-              | "or" | "and" | "if" | "else" | "return" | "struct" | "init" | "new") ~idrest
+              | "or" | "and" | "if" | "else" | "return" | "struct" | "init" | "new" | "print" | "concat") ~idrest
   id          =  ~keyword ("_" | letter) idrest*
   idrest      =  "_" | alnum
   numlit      =  digit+ ("." digit+)?
   boollit     =  "true" | "false"
   strlit      = "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
-  escape      = "\\" ("\\" | "\"" | "n")                               -- simple
-              | "\\u{" hexDigit+ "}"                                   -- codepoint
+  escape      = "\\" ("\\" | "\"" | "n")                                 -- simple
+              | "\\u{" hexDigit+ "}"                                     -- codepoint
   addop       =  "+" | "-"
   relop       =  "<=" | "<" | "=" | "!=" | ">=" | ">"
   mulop       =  "*" | "/" | "%"
