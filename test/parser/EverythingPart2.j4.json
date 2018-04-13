@@ -33,7 +33,7 @@
         "id": "hello",
         "params": [],
         "returntype": {
-          "type": "Nothing"
+          "name": "Nothing"
         }
       },
       "id": "hello"
@@ -52,7 +52,7 @@
                 }
               ],
               "type": {
-                "type": "Number"
+                "name": "Number"
               }
             },
             {
@@ -65,7 +65,7 @@
                 }
               ],
               "type": {
-                "type": "Boolean"
+                "name": "Boolean"
               }
             },
             {
@@ -122,7 +122,7 @@
                             "op": "*",
                             "right": {
                               "left": {
-                                "value": true
+                                "value": false
                               },
                               "op": "%",
                               "right": {
@@ -160,7 +160,7 @@
                     }
                   ],
                   "test": {
-                    "value": true
+                    "value": false
                   }
                 }
               ]
@@ -172,24 +172,24 @@
           {
             "id": "a",
             "type": {
-              "type": "Number"
+              "name": "Number"
             }
           },
           {
             "id": "b",
             "type": {
-              "type": "Number"
+              "name": "Number"
             }
           },
           {
             "id": "c",
             "type": {
-              "type": "Number"
+              "name": "Number"
             }
           }
         ],
         "returntype": {
-          "type": "Nothing"
+          "name": "Nothing"
         }
       },
       "id": "actions"

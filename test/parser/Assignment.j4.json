@@ -10,7 +10,7 @@
          }
        ],
        "type": {
-         "type": "String"
+         "name": "String"
        }
      },
      {
@@ -23,7 +23,7 @@
          }
        ],
        "type": {
-         "type": "Number"
+         "name": "Number"
        }
      }
    ]

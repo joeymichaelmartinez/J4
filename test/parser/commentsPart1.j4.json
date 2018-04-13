@@ -27,7 +27,7 @@
          },
          "id": "i",
          "type": {
-           "type": "Number"
+           "name": "Number"
          }
        },
        "iteration": {
@@ -96,7 +96,7 @@
          "id": "hello",
          "params": [],
          "returntype": {
-           "type": "Nothing"
+           "name": "Nothing"
          }
        },
        "id": "hello"

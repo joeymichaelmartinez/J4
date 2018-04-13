@@ -22,7 +22,7 @@
                 }
               ],
               "type": {
-                "type": "Number"
+                "name": "Number"
               }
             }
           ]
@@ -32,12 +32,12 @@
           {
             "id": "e",
             "type": {
-              "type": "Number"
+              "name": "Number"
             }
           }
         ],
         "returntype": {
-          "type": "Number"
+          "name": "Number"
         }
       },
       "id": "p"
@@ -101,7 +101,7 @@
             }
           ],
           "test": {
-            "value": true
+            "value": false
           }
         },
         {

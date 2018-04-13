@@ -10,7 +10,7 @@
           ],
           "initializers": null,
           "type": {
-            "type": "Number"
+            "name": "Number"
           }
         },
         {
@@ -18,19 +18,19 @@
             {
               "id": "red",
               "type": {
-                "type": "Number"
+                "name": "Number"
               }
             },
             {
               "id": "green",
               "type": {
-                "type": "Number"
+                "name": "Number"
               }
             },
             {
               "id": "blue",
               "type": {
-                "type": "Number"
+                "name": "Number"
               }
             }
           ],
@@ -92,7 +92,7 @@
             {
               "id": "white",
               "type": {
-                "type": "Number"
+                "name": "Number"
               }
             }
           ],
@@ -169,7 +169,7 @@
         }
       ],
       "type": {
-        "type": "Color"
+        "name": "Color"
       }
     },
     {
@@ -191,7 +191,7 @@
         }
       ],
       "type": {
-        "type": "Color"
+        "name": "Color"
       }
     }
   ]
