@@ -1,5 +1,5 @@
 
-// An object declaration cretes an object.
+// An object declaration creates an object.
 module.exports = class ObjectConstructor {
     constructor(params, suite) {
         this.params = params;

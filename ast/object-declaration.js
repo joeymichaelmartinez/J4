@@ -1,6 +1,6 @@
 // const ObjectConstructor = require('./object-constructor');
 
-// An object declaration cretes an object.
+// An object declaration creates an object.
 module.exports = class ObjectDeclaration {
     constructor(id, body) {
         this.id = id;
