@@ -34,7 +34,8 @@ const SubscriptedExpression = require("../ast/subscripted-expression");
 const dotOperatorExpression = require("../ast/dot-operator-expression");
 const Call = require("../ast/call");
 const ObjectInstantiation = require("../ast/object-instantiation");
-const Type = require("../ast/type");
+const NamedType = require("../ast/type");
+const ArrayType = require("../ast/array-type");
 const FuncType = require("../ast/func-type");
 const Parameter = require("../ast/parameter");
 const Argument = require("../ast/argument");
@@ -54,7 +55,9 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Program(_1, body, _2) { return new Program(body.ast()); },
     Stmt_simple(statement, _) { return statement.ast(); },
     Stmt_while(_, test, suite) { return new WhileStatement(test.ast(), suite.ast()); },
-    Stmt_for(_1, forparam, _2, test, _3, statement, suite) { return new ForStatement(forparam.ast(), test.ast(), unpack(statement.ast()), suite.ast()); },
+    Stmt_for(_1, forparam, _2, test, _3, statement, suite) {
+        return new ForStatement(forparam.ast(), test.ast(), unpack(statement.ast()), suite.ast());
+    },
     Stmt_if(_1, firstTest, firstSuite, _2, moreTests, moreSuites, _3, lastSuite) {
         const tests = [firstTest.ast(), ...moreTests.ast()];
         const bodies = [firstSuite.ast(), ...moreSuites.ast()];
@@ -86,10 +89,14 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Exp6_parens(_1, expression, _2) { return expression.ast(); },
     Call(callee, _1, args, _2) { return new Call(callee.ast(), args.ast()); },
     ObjDecl(_1, v, _2, args, _3) { return new ObjectInstantiation(v.ast(), args.ast()); },
-    Type(type) { return new Type(type.ast()); },
-    FuncType(_1, rest, _2, _3, last) {return new FuncType([...rest.ast()], last.ast()); },
-    Type_typeOfArray(type, _) { return new Type(type.ast()); },
-    Type_typeArrayOfFunction(_1, type, _2, _3) { return new Type(type.ast()); },
+
+    Type_array(type, _) { return new ArrayType(type.ast()); },
+    Type_function(_1, rest, _2, _3, last) {return new FuncType([...rest.ast()], last.ast()); },
+    Type_idtype(name) { return new NamedType(name.sourceString); },
+    Type_numbertype(name) { return new NamedType(name.sourceString); },
+    Type_stringtype(name) { return new NamedType(name.sourceString); },
+    Type_booltype(name) { return new NamedType(name.sourceString); },
+
     VarExp_subscripted(v, _1, e, _2) { return new SubscriptedExpression(v.ast(), e.ast()); },
     VarExp_simple(id) { return new IdentifierExpression(id.ast()); },
     VarExp_dotOperator(v, _1, id, _2, args, _3) { return new dotOperatorExpression(v.ast(), id.ast(), args.ast()); },
@@ -97,7 +104,7 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Arg(exp) { return new Argument(exp.ast()); },
     NonemptyListOf(first, _, rest) { return [first.ast(), ...rest.ast()]; },
     EmptyListOf() { return []; },
-    boollit(_) { return new BooleanLiteral(!!this.sourceString); },
+    boollit(_) { return new BooleanLiteral(this.sourceString === "true"); },
     numlit(_1, _2, _3) { return new NumericLiteral(+this.sourceString); },
     strlit(_1, chars, _6) { return new StringLiteral(this.sourceString); },
     id(_1, _2) { return this.sourceString; },

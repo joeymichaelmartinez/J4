@@ -1,4 +1,4 @@
-//const Context = require("../semantics/context");
+const Context = require("../semantics/context");
 
 module.exports = class Program {
     constructor(statements) {
@@ -6,8 +6,8 @@ module.exports = class Program {
     }
 
     analyze() {
-        //const context = new Context({ parent: Context.INITIAL });
-        //this.statements.forEach(s => s.analyze(context));
+        const context = new Context({ parent: Context.INITIAL });
+        this.statements.forEach(s => s.analyze(context));
     }
 
     optimize() {

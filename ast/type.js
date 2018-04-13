@@ -1,19 +1,12 @@
-module.exports = class type {
-    constructor(type) {
-        this.type = type;
+module.exports = class NamedType {
+    constructor(name) {
+        this.name = name;
     }
 
-    analyze(context) {
-        if (this.returnValue) {
-            this.returnValue.analyze(context);
-        }
-        context.assertInFunction("Return statement outside function");
+    analyze() {
     }
 
     optimize() {
-        if (this.returnValue) {
-            this.returnValue = this.returnValue.optimize();
-        }
         return this;
     }
 };

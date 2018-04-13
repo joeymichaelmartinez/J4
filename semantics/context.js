@@ -85,7 +85,7 @@ class Context {
     }
 
     assertIsObject(entity) { // eslint-disable-line class-methods-use-this
-        if (entity.constructor !== object) {
+        if (entity.constructor !== Object) {
             throw new Error(`${entity.id} is not a function`);
         }
     }
@@ -96,6 +96,6 @@ Context.INITIAL = new Context();
 new FunctionDeclaration("print", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 new FunctionDeclaration("sqrt", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 //***new FunctionDeclaration("concat", [new Parameter("_", null)], null).analyze(Context.INITIAL);
-//*** new FunctionDeclaration("toString", [new Parameter("_", null)], null).analyze(Context.INITIAL); 
+//*** new FunctionDeclaration("toString", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 
 module.exports = Context;
