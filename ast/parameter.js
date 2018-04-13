@@ -1,16 +1,9 @@
 module.exports = class Parameter {
-    constructor(id, defaultExpression) {
-        Object.assign(this, { id, defaultExpression });
-    }
-
-    get isRequired() {
-        return this.defaultExpression === null;
+    constructor(id, type) {
+        Object.assign(this, { id, type });
     }
 
     analyze(context) {
-        if (this.defaultExpression) {
-            this.defaultExpression.analyze();
-        }
         context.add(this);
     }
 

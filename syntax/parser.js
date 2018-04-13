@@ -35,7 +35,7 @@ const dotOperatorExpression = require("../ast/dot-operator-expression");
 const Call = require("../ast/call");
 const ObjectInstantiation = require("../ast/object-instantiation");
 const Type = require("../ast/type");
-const FuncAsType = require("../ast/func-as-type");
+const FuncType = require("../ast/func-type");
 const Parameter = require("../ast/parameter");
 const Argument = require("../ast/argument");
 const BooleanLiteral = require("../ast/boolean-literal");
@@ -66,7 +66,9 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     },
     Stmt_struct(_1, id, suite){ return new ObjectDeclaration(id.ast(), suite.ast()); },
     Stmt_init(_1, _2, params, _3, suite){ return new ObjectConstructor(params.ast(), suite.ast()); },
-    SimpleStmt_vardeclAndAssign(type, v, _, e) { return new VariableDeclaration(type.ast(), v.ast(), e.ast()); },
+    SimpleStmt_vardeclAndAssign(type, v, _, e) {
+        return new VariableDeclaration(type.ast(), v.ast(), e.ast());
+    },
     SimpleStmt_vardecl(type, v) { return new VariableDeclaration(type.ast(), v.ast(), undefined ); },
     SimpleStmt_assign(v, _, e) { return new AssignmentStatement(v.ast(), e.ast()); },
     SimpleStmt_break(_) { return new BreakStatement(); },
@@ -85,7 +87,7 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Call(callee, _1, args, _2) { return new Call(callee.ast(), args.ast()); },
     ObjDecl(_1, v, _2, args, _3) { return new ObjectInstantiation(v.ast(), args.ast()); },
     Type(type) { return new Type(type.ast()); },
-    FuncAsType(_1, rest, _2, _3, last) {return new FuncAsType([...rest.ast()], last.ast()); },
+    FuncType(_1, rest, _2, _3, last) {return new FuncType([...rest.ast()], last.ast()); },
     Type_typeOfArray(type, _) { return new Type(type.ast()); },
     Type_typeArrayOfFunction(_1, type, _2, _3) { return new Type(type.ast()); },
     VarExp_subscripted(v, _1, e, _2) { return new SubscriptedExpression(v.ast(), e.ast()); },

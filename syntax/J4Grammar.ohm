@@ -44,11 +44,11 @@ J4 {
               | "Number"
               | "String"
               | "Boolean"
-              | FuncAsType
+              | FuncType
               | id
-              | "(" FuncAsType ")" "[]"                                  -- typeArrayOfFunction
+              | "(" FuncType ")" "[]"                                    -- typeArrayOfFunction
 
-  FuncAsType = "(" ListOf<Type, ","> ")" "->" Type
+  FuncType    = "(" ListOf<Type, ","> ")" "->" Type
 
   Exps        =  NonemptyListOf<Exp, ",">
   Ids         =  NonemptyListOf<id, ",">

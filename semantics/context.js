@@ -43,12 +43,21 @@ class Context {
     // to check enclosing contexts because in this language, shadowing is always
     // allowed. Note that if we allowed overloading, this method would have to
     // be a bit more sophisticated.
-    add(entity) {
-    //*** need to loop through all parent scopes to avoid shadowing
-        if (entity.id in this.declarations) {
-            throw new Error(`Identitier ${entity.id} already declared in this scope`);
+
+    notDeclaredInScope(id){
+        if (id in this.declarations){
+            throw new Error(`Identitier ${id} already declared in this scope`);
+        } else if (this.parent !== null){
+            return this.parent.declaredInScope(id);
+        } else {
+            return true;
         }
-        this.declarations[entity.id] = entity;
+    }
+
+    add(entity) {
+        if(this.notDeclaredInScope(entity.id)){
+            this.declarations[entity.id] = entity;
+        }
     }
 
     // Returns the entity bound to the given identifier, starting from this
