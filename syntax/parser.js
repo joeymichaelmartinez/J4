@@ -90,12 +90,12 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Call(callee, _1, args, _2) { return new Call(callee.ast(), args.ast()); },
     ObjDecl(_1, v, _2, args, _3) { return new ObjectInstantiation(v.ast(), args.ast()); },
 
-    Type_array(type, _) { return new ArrayType(type.ast()); },
-    Type_function(_1, rest, _2, _3, last) {return new FuncType([...rest.ast()], last.ast()); },
-    Type_idtype(name) { return new NamedType(name.sourceString); },
-    Type_numbertype(name) { return new NamedType(name.sourceString); },
-    Type_stringtype(name) { return new NamedType(name.sourceString); },
-    Type_booltype(name) { return new NamedType(name.sourceString); },
+    Type_arrayType(type, _) { return new ArrayType(type.ast()); },
+    Type_functionType(_1, rest, _2, _3, last) {return new FuncType([...rest.ast()], last.ast()); },
+    Type_idType(name) { return new NamedType(name.sourceString); },
+    Type_numberType(name) { return new NamedType(name.sourceString); },
+    Type_stringType(name) { return new NamedType(name.sourceString); },
+    Type_boolType(name) { return new NamedType(name.sourceString); },
 
     VarExp_subscripted(v, _1, e, _2) { return new SubscriptedExpression(v.ast(), e.ast()); },
     VarExp_simple(id) { return new IdentifierExpression(id.ast()); },

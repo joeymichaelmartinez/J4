@@ -40,12 +40,12 @@ J4 {
   Call        =  VarExp "(" Args ")"
   ObjDecl     = "new" VarExp "(" Args ")"
 
-  Type        = Type "[]"                                  -- array
-              | "(" ListOf<Type, ","> ")" "->" Type        -- function
-              | id          -- idtype
-              | "Number"    -- numbertype
-              | "String"    -- stringtype
-              | "Boolean"   -- booltype
+  Type        = Type "[]"                                                -- arrayType
+              | "(" ListOf<Type, ","> ")" "->" Type                      -- functionType
+              | id                                                       -- idType
+              | "Number"                                                 -- numberType
+              | "String"                                                 -- stringType
+              | "Boolean"                                                -- boolType
 
   Exps        =  NonemptyListOf<Exp, ",">
   Ids         =  NonemptyListOf<id, ",">
