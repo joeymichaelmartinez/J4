@@ -16,22 +16,22 @@
         {
           "params": [
             {
-              "defaultExpression": {
+              "id": "red",
+              "type": {
                 "type": "Number"
-              },
-              "id": "red"
+              }
             },
             {
-              "defaultExpression": {
+              "id": "green",
+              "type": {
                 "type": "Number"
-              },
-              "id": "green"
+              }
             },
             {
-              "defaultExpression": {
+              "id": "blue",
+              "type": {
                 "type": "Number"
-              },
-              "id": "blue"
+              }
             }
           ],
           "suite": [
@@ -90,10 +90,10 @@
         {
           "params": [
             {
-              "defaultExpression": {
+              "id": "white",
+              "type": {
                 "type": "Number"
-              },
-              "id": "white"
+              }
             }
           ],
           "suite": [

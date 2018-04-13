@@ -4,9 +4,9 @@ J4 {
               |  "while" Exp Suite                                       -- while
               |  "for" ForParam "," Exp "," SimpleStmt? Suite            -- for
               |  "if" Exp Suite ("else if" Exp Suite)* ("else" Suite)?   -- if
-              |  "Function" id "(" (Params | "Nothing") ")" "->" (Type | "Nothing") Suite? -- functionDec
               |  "struct" id Suite                                       -- struct
               |  "init" "(" Params ")" Suite?                            -- init
+              |  "Function" id "(" (Params | "Nothing") ")" "->" (Type | "Nothing") Suite? -- functionDec
   SimpleStmt  =  Type Ids "<-" Exps                                      -- vardeclAndAssign
               |  Type Ids                                                -- vardecl
               |  VarExps "<-" Exps                                       -- assign
@@ -62,7 +62,7 @@ J4 {
   Args        =  ListOf<Arg, ",">
 
   keyword     =  ( "not" | "true" | "false" | "Number" | "String" | "Boolean" | "while" | "for" | "break"
-              | "or" | "and" | "if" | "else" | "return" | "struct" | "init" | "new" | "print" | "concat") ~idrest
+              | "or" | "and" | "if" | "else" | "return" | "struct" | "init" | "new" ) ~idrest
   id          =  ~keyword ("_" | letter) idrest*
   idrest      =  "_" | alnum
   numlit      =  digit+ ("." digit+)?

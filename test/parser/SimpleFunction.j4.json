@@ -51,10 +51,10 @@
         "id": "hello",
         "params": [
           {
-            "defaultExpression": {
+            "id": "x",
+            "type": {
               "type": "Number"
-            },
-            "id": "x"
+            }
           }
         ],
         "returntype": {
