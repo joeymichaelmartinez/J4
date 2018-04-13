@@ -48,7 +48,7 @@ class Context {
         if (id in this.declarations){
             throw new Error(`Identitier ${id} already declared in this scope`);
         } else if (this.parent !== null){
-            return this.parent.declaredInScope(id);
+            return this.parent.notDeclaredInScope(id);
         } else {
             return true;
         }
@@ -83,11 +83,19 @@ class Context {
             throw new Error(`${entity.id} is not a function`);
         }
     }
+
+    assertIsObject(entity) { // eslint-disable-line class-methods-use-this
+        if (entity.constructor !== object) {
+            throw new Error(`${entity.id} is not a function`);
+        }
+    }
+
 }
 
 Context.INITIAL = new Context();
 new FunctionDeclaration("print", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 new FunctionDeclaration("sqrt", [new Parameter("_", null)], null).analyze(Context.INITIAL);
-//new FunctionDeclaration("concat", [new Parameter("_", null)], null).analyze(Context.INITIAL);
+//***new FunctionDeclaration("concat", [new Parameter("_", null)], null).analyze(Context.INITIAL);
+//*** new FunctionDeclaration("toString", [new Parameter("_", null)], null).analyze(Context.INITIAL); 
 
 module.exports = Context;
