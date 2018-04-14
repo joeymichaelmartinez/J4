@@ -7,6 +7,7 @@ module.exports = class ReturnStatement {
         if (this.returnValue) {
             this.returnValue.analyze(context);
         }
+        // *** context.currentFunction.returntype === this.returnValue.type;
         context.assertInFunction("Return statement outside function");
     }
 
