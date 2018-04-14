@@ -53,5 +53,5 @@ fs.readFile(argv._[0], "utf-8", (err, text) => {
         console.log(util.inspect(program, { depth: null }));//eslint-disable-line no-console
         return;
     }
-    //program.gen();
+    program.gen();
 });
