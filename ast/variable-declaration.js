@@ -13,7 +13,7 @@ module.exports = class VariableDeclaration {
 
     analyze(context) {
         if (this.ids.length !== this.initializers.length) {
-            throw new Error("Number of variables does not equal number of initializers");
+            throw new Error("The number of variables does not equal the number of initializers.");
         }
 
         // We don't want the declared variables to come into scope until after the
@@ -22,8 +22,10 @@ module.exports = class VariableDeclaration {
         this.initializers.forEach(e => e.analyze(context));
 
         // Now we can create actual variable objects and add to the current context.
-        this.variables = this.ids.map(id => new Variable(id));
-        this.variables.forEach(variable => context.add(variable));
+        this.variables = [];
+        for (let i = 0; i < this.ids.length; i++) {
+            this.variables.push(new Variable(this.type, this.ids[i], this.initializers[i]));
+        }
     }
 
     optimize() {

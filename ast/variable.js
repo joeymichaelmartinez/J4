@@ -1,10 +1,15 @@
 module.exports = class Variable {
-    constructor(id) {
+    constructor(type, id, value) {
+        this.type = type;
         this.id = id;
+        this.value = value;
     }
 
-    analyze(/* context */) { // eslint-disable-line class-methods-use-this
-        // Someday we'll have types and we can do something here...
+    analyze(context) { // eslint-disable-line class-methods-use-this
+        if (this.type !== this.value.type) {
+            throw new Error("Type of variable does not match type of assigned value.");
+        }
+        context.add(this);
     }
 
     optimize() {
