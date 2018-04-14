@@ -1,9 +1,9 @@
-const BoolType = require("./bool-type");
+const NumberType = require("./number-type");
 
-module.exports = class BooleanLiteral {
+module.exports = class NumberLiteral {
     constructor(value) {
         this.value = value;
-        this.type = new BoolType();
+        this.type = new NumberType();
     }
 
     analyze() { // eslint-disable-line class-methods-use-this
