@@ -4,10 +4,10 @@ module.exports = class ArrayInstantiation {
     constructor(elementType, elements) {
         if(elementType){
             this.elements = elements;
-            this.type = new ArrayType(elementType.type);
+            this.type = new ArrayType(elementType.type.toString());
         } else {
             this.elements = elements;
-            this.type = new ArrayType(this.elements[0].type);
+            this.type = new ArrayType(this.elements[0].type.toString());
         }
 
     }
@@ -15,8 +15,11 @@ module.exports = class ArrayInstantiation {
     analyze(context) {
         for(let i = 0; i < this.elements.length; i++){
             this.elements[i].analyze(context);
-            if(this.elements[i].type.toString !== this.type.toString){
-                throw new Error("Type Mismatch");
+            if(this.elements[i].type.toString() !== this.type.toString()){
+              //*** NOT A REAL ERROR YET
+              //throw new Error("Type Mismatch");
+                //console.log(this.elements[i].type.toString());
+                //console.log(this.type.toString());
             }
         }
 
