@@ -3,6 +3,9 @@
     {
       "sources": [
         {
+          "type": {
+            "type": "Number"
+          },
           "value": 42
         }
       ],
@@ -48,6 +51,9 @@
               ],
               "initializers": [
                 {
+                  "type": {
+                    "type": "Number"
+                  },
                   "value": 9
                 }
               ],
@@ -81,6 +87,9 @@
                         {
                           "sources": [
                             {
+                              "type": {
+                                "type": "Number"
+                              },
                               "value": 2
                             }
                           ],
@@ -105,10 +114,16 @@
                         "left": {
                           "left": {
                             "left": {
+                              "type": {
+                                "type": "Number"
+                              },
                               "value": 9
                             },
                             "op": "/",
                             "right": {
+                              "type": {
+                                "type": "Number"
+                              },
                               "value": 2
                             }
                           },
@@ -123,6 +138,9 @@
                         "right": [
                           {
                             "left": {
+                              "type": {
+                                "type": "Number"
+                              },
                               "value": 7
                             },
                             "op": "*",
@@ -135,6 +153,9 @@
                               },
                               "op": "%",
                               "right": {
+                                "type": {
+                                  "type": "Number"
+                                },
                                 "value": 2
                               }
                             }

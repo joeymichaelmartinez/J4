@@ -11,6 +11,9 @@
                  },
                  "op": "+",
                  "right": {
+                   "type": {
+                     "type": "Number"
+                   },
                    "value": 1
                  }
                }

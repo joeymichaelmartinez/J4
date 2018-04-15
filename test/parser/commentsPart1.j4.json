@@ -10,6 +10,9 @@
                },
                "op": "+",
                "right": {
+                 "type": {
+                   "type": "Number"
+                 },
                  "value": 1
                }
              }
@@ -23,6 +26,9 @@
        ],
        "forparam": {
          "expression": {
+           "type": {
+             "type": "Number"
+           },
            "value": 4
          },
          "id": "i",
@@ -38,6 +44,9 @@
              },
              "op": "+",
              "right": {
+               "type": {
+                 "type": "Number"
+               },
                "value": 1
              }
            }
@@ -54,6 +63,9 @@
          },
          "op": "<",
          "right": {
+           "type": {
+             "type": "Number"
+           },
            "value": 10
          }
        }
@@ -81,6 +93,9 @@
                    "body": [
                      {
                        "returnValue": {
+                         "type": {
+                           "type": "Number"
+                         },
                          "value": 4
                        }
                      }

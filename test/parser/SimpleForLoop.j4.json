@@ -5,6 +5,9 @@
         {
           "sources": [
             {
+              "type": {
+                "type": "Number"
+              },
               "value": 1
             }
           ],
@@ -17,6 +20,9 @@
       ],
       "forparam": {
         "expression": {
+          "type": {
+            "type": "Number"
+          },
           "value": 1
         },
         "id": "i",
@@ -32,6 +38,9 @@
             },
             "op": "+",
             "right": {
+              "type": {
+                "type": "Number"
+              },
               "value": 1
             }
           }
@@ -50,6 +59,9 @@
         "right": {
           "op": "-",
           "operand": {
+            "type": {
+              "type": "Number"
+            },
             "value": 1
           }
         }

@@ -3,6 +3,9 @@
     {
       "sources": [
         {
+          "type": {
+            "type": "Number"
+          },
           "value": 42
         }
       ],
@@ -48,6 +51,9 @@
               ],
               "initializers": [
                 {
+                  "type": {
+                    "type": "Number"
+                  },
                   "value": 9
                 }
               ],
@@ -81,6 +87,9 @@
                         {
                           "sources": [
                             {
+                              "type": {
+                                "type": "Number"
+                              },
                               "value": 2
                             }
                           ],
@@ -105,10 +114,16 @@
                         "left": {
                           "left": {
                             "left": {
+                              "type": {
+                                "type": "Number"
+                              },
                               "value": 9
                             },
                             "op": "/",
                             "right": {
+                              "type": {
+                                "type": "Number"
+                              },
                               "value": 2
                             }
                           },
@@ -123,6 +138,9 @@
                         "right": [
                           {
                             "left": {
+                              "type": {
+                                "type": "Number"
+                              },
                               "value": 7
                             },
                             "op": "*",
@@ -135,6 +153,9 @@
                               },
                               "op": "%",
                               "right": {
+                                "type": {
+                                  "type": "Number"
+                                },
                                 "value": 2
                               }
                             }
@@ -221,12 +242,21 @@
               ],
               "initializers": [
                 {
+                  "type": {
+                    "type": "Number"
+                  },
                   "value": 10
                 },
                 {
+                  "type": {
+                    "type": "Number"
+                  },
                   "value": 5
                 },
                 {
+                  "type": {
+                    "type": "Number"
+                  },
                   "value": 6
                 }
               ],
@@ -255,6 +285,9 @@
       "args": [
         {
           "expression": {
+            "type": {
+              "type": "Number"
+            },
             "value": 9
           }
         },
@@ -271,6 +304,9 @@
         },
         {
           "expression": {
+            "type": {
+              "type": "Number"
+            },
             "value": 1
           }
         }
@@ -290,15 +326,24 @@
                   "expression": {
                     "left": {
                       "left": {
+                        "type": {
+                          "type": "Number"
+                        },
                         "value": 5
                       },
                       "op": "/",
                       "right": {
+                        "type": {
+                          "type": "Number"
+                        },
                         "value": 7
                       }
                     },
                     "op": "*",
                     "right": {
+                      "type": {
+                        "type": "Number"
+                      },
                       "value": 27.31
                     }
                   }
@@ -348,6 +393,9 @@
             }
           ],
           "test": {
+            "type": {
+              "type": "Number"
+            },
             "value": 2
           }
         }

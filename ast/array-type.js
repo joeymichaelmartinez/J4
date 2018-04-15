@@ -4,7 +4,12 @@ module.exports = class ArrayType {
         this.type = this.elementType + " Array";
     }
 
-    analyze() {
+    toString() {
+        return this.type;
+    }
+
+    analyze() { // eslint-disable-line class-methods-use-this
+        //Left empty on purpose
     }
 
     optimize() {

@@ -6,10 +6,16 @@
            "left": {
              "left": {
                "left": {
+                 "type": {
+                   "type": "Number"
+                 },
                  "value": 4
                },
                "op": "+",
                "right": {
+                 "type": {
+                   "type": "Number"
+                 },
                  "value": 3
                }
              },
@@ -17,21 +23,33 @@
              "right": {
                "left": {
                  "left": {
+                   "type": {
+                     "type": "Number"
+                   },
                    "value": 10
                  },
                  "op": "-",
                  "right": {
+                   "type": {
+                     "type": "Number"
+                   },
                    "value": 1
                  }
                },
                "op": "^",
                "right": {
+                 "type": {
+                   "type": "Number"
+                 },
                  "value": 2
                }
              }
            },
            "op": "/",
            "right": {
+             "type": {
+               "type": "Number"
+             },
              "value": 4
            }
          }

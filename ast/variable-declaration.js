@@ -25,6 +25,8 @@ module.exports = class VariableDeclaration {
         this.variables = [];
         for (let i = 0; i < this.ids.length; i++) {
             this.variables.push(new Variable(this.type, this.ids[i], this.initializers[i]));
+            this.variables[i].analyze();
+            context.add(this.variables[i]);
         }
     }
 

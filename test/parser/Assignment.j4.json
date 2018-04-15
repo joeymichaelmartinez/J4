@@ -22,6 +22,9 @@
        ],
        "initializers": [
          {
+           "type": {
+             "type": "Number"
+           },
            "value": 4
          }
        ],

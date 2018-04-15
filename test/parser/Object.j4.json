@@ -149,16 +149,25 @@
           "args": [
             {
               "expression": {
+                "type": {
+                  "type": "Number"
+                },
                 "value": 1
               }
             },
             {
               "expression": {
+                "type": {
+                  "type": "Number"
+                },
                 "value": 0
               }
             },
             {
               "expression": {
+                "type": {
+                  "type": "Number"
+                },
                 "value": 1
               }
             }
@@ -181,6 +190,9 @@
           "args": [
             {
               "expression": {
+                "type": {
+                  "type": "Number"
+                },
                 "value": 0.5
               }
             }

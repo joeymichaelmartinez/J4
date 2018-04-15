@@ -17,6 +17,9 @@
         {
           "sources": [
             {
+              "type": {
+                "type": "Number"
+              },
               "value": 2
             }
           ],
@@ -31,6 +34,9 @@
             {
               "sources": [
                 {
+                  "type": {
+                    "type": "Number"
+                  },
                   "value": 3
                 }
               ],
@@ -48,6 +54,9 @@
                   },
                   "op": "+",
                   "right": {
+                    "type": {
+                      "type": "Number"
+                    },
                     "value": 1
                   }
                 }
@@ -65,6 +74,9 @@
             },
             "op": "<",
             "right": {
+              "type": {
+                "type": "Number"
+              },
               "value": 8
             }
           }
@@ -77,6 +89,9 @@
               },
               "op": "+",
               "right": {
+                "type": {
+                  "type": "Number"
+                },
                 "value": 1
               }
             }
@@ -94,6 +109,9 @@
         },
         "op": "<",
         "right": {
+          "type": {
+            "type": "Number"
+          },
           "value": 7
         }
       }
@@ -101,6 +119,9 @@
     {
       "sources": [
         {
+          "type": {
+            "type": "Number"
+          },
           "value": 2
         }
       ],

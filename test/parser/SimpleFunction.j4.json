@@ -7,6 +7,9 @@
             {
               "sources": [
                 {
+                  "type": {
+                    "type": "Number"
+                  },
                   "value": 2
                 }
               ],
@@ -22,6 +25,9 @@
               ],
               "initializers": [
                 {
+                  "type": {
+                    "type": "Number"
+                  },
                   "value": 7
                 }
               ],
