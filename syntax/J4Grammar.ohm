@@ -35,10 +35,14 @@ J4 {
               |  strlit
               |  Call
               |  ObjDecl
+              |  ArrDecl
+              |  EmptyArrDecl
               |  VarExp
               |  "(" Exp ")"                                             -- parens
   Call        =  VarExp "(" Args ")"
   ObjDecl     = "new" VarExp "(" Args ")"
+  ArrDecl     = "[" Exps "]"
+  EmptyArrDecl= "[" Type "]"
 
   Type        = Type "[]"                                                -- arrayType
               | "(" ListOf<Type, ","> ")" "->" Type                      -- functionType
