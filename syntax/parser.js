@@ -34,6 +34,7 @@ const SubscriptedExpression = require("../ast/subscripted-expression");
 const dotOperatorExpression = require("../ast/dot-operator-expression");
 const Call = require("../ast/call");
 const ObjectInstantiation = require("../ast/object-instantiation");
+const ArrayInstantiation = require("../ast/array-instantiation");
 const NamedType = require("../ast/named-type");
 const ArrayType = require("../ast/array-type");
 const FuncType = require("../ast/func-type");
@@ -92,6 +93,8 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Exp6_parens(_1, expression, _2) { return expression.ast(); },
     Call(callee, _1, args, _2) { return new Call(callee.ast(), args.ast()); },
     ObjDecl(_1, v, _2, args, _3) { return new ObjectInstantiation(v.ast(), args.ast()); },
+    ArrDecl(_1, e, _2) { return new ArrayInstantiation(null, e.ast()); },
+    EmptyArrDecl(_1, type, _2) { return new ArrayInstantiation(type.ast(), null); },
 
     Type_arrayType(type, _) { return new ArrayType(type.ast()); },
     Type_functionType(_1, rest, _2, _3, last) {return new FuncType([...rest.ast()], last.ast()); },

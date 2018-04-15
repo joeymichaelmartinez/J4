@@ -1,7 +1,7 @@
 module.exports = class ArrayType {
     constructor(elementType) {
         this.elementType = elementType;
-        this.type = this.elementType + " Array";
+        this.type = this.elementType.toString + " Array";
     }
 
     toString() {
