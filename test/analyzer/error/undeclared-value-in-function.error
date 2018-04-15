@@ -1,2 +1,0 @@
-Function addOne(x: Number) -> Number
-    return y + 1

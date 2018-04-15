@@ -13,7 +13,7 @@ module.exports = class VariableDeclaration {
 
     analyze(context) {
         if (this.ids.length !== this.initializers.length) {
-            throw new Error("The number of variables does not equal the number of initializers.");
+            throw new Error("wrong number of declarations");
         }
 
         // We don't want the declared variables to come into scope until after the
