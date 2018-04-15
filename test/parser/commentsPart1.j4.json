@@ -27,7 +27,7 @@
          },
          "id": "i",
          "type": {
-           "name": "Number"
+           "type": "Number"
          }
        },
        "iteration": {

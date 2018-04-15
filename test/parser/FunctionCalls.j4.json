@@ -22,12 +22,12 @@
            {
              "id": "x",
              "type": {
-               "name": "Number"
+               "type": "Number"
              }
            }
          ],
          "returntype": {
-           "name": "Number"
+           "type": "Number"
          }
        },
        "id": "addOne"
@@ -68,23 +68,23 @@
              "type": {
                "argTypes": [
                  {
-                   "name": "Number"
+                   "type": "Number"
                  }
                ],
                "returnType": {
-                 "name": "Number"
+                 "type": "Number"
                }
              }
            },
            {
              "id": "x",
              "type": {
-               "name": "Number"
+               "type": "Number"
              }
            }
          ],
          "returntype": {
-           "name": "Number"
+           "type": "Number"
          }
        },
        "id": "twice"

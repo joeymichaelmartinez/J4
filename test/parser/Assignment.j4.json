@@ -6,11 +6,14 @@
        ],
        "initializers": [
          {
+           "type": {
+             "type": "String"
+           },
            "value": "\"j4\""
          }
        ],
        "type": {
-         "name": "String"
+         "type": "String"
        }
      },
      {
@@ -23,7 +26,7 @@
          }
        ],
        "type": {
-         "name": "Number"
+         "type": "Number"
        }
      }
    ]

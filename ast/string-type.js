@@ -4,7 +4,7 @@ module.exports = class StringType {
     }
 
     analyze() { // eslint-disable-line class-methods-use-this
-        //Left empty on purpose
+        // Intentionally empty
     }
 
     optimize() {

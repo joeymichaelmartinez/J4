@@ -52,7 +52,7 @@
                 }
               ],
               "type": {
-                "name": "Number"
+                "type": "Number"
               }
             },
             {
@@ -68,7 +68,7 @@
                 }
               ],
               "type": {
-                "name": "Boolean"
+                "type": "Boolean"
               }
             },
             {
@@ -154,6 +154,9 @@
                       "args": [
                         {
                           "expression": {
+                            "type": {
+                              "type": "String"
+                            },
                             "value": "\"hello\""
                           }
                         },
@@ -184,19 +187,19 @@
           {
             "id": "a",
             "type": {
-              "name": "Number"
+              "type": "Number"
             }
           },
           {
             "id": "b",
             "type": {
-              "name": "Number"
+              "type": "Number"
             }
           },
           {
             "id": "c",
             "type": {
-              "name": "Number"
+              "type": "Number"
             }
           }
         ],
@@ -228,7 +231,7 @@
                 }
               ],
               "type": {
-                "name": "Number"
+                "type": "Number"
               }
             }
           ]
@@ -238,12 +241,12 @@
           {
             "id": "e",
             "type": {
-              "name": "Number"
+              "type": "Number"
             }
           }
         ],
         "returntype": {
-          "name": "Number"
+          "type": "Number"
         }
       },
       "id": "p"

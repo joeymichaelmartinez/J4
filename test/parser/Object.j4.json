@@ -10,7 +10,7 @@
           ],
           "initializers": null,
           "type": {
-            "name": "Number"
+            "type": "Number"
           }
         },
         {
@@ -18,19 +18,19 @@
             {
               "id": "red",
               "type": {
-                "name": "Number"
+                "type": "Number"
               }
             },
             {
               "id": "green",
               "type": {
-                "name": "Number"
+                "type": "Number"
               }
             },
             {
               "id": "blue",
               "type": {
-                "name": "Number"
+                "type": "Number"
               }
             }
           ],
@@ -92,7 +92,7 @@
             {
               "id": "white",
               "type": {
-                "name": "Number"
+                "type": "Number"
               }
             }
           ],
