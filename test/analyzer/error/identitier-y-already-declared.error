@@ -1,0 +1,4 @@
+Number y <- 0
+
+Function test() -> Nothing
+  Number y <- 1

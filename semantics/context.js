@@ -44,18 +44,18 @@ class Context {
     // allowed. Note that if we allowed overloading, this method would have to
     // be a bit more sophisticated.
 
-    notDeclaredInScope(id){
+    declaredInScope(id){
         if (id in this.declarations){
-            throw new Error(`Identitier ${id} already declared in this scope`);
+            throw new Error(`Identitier ${id} already declared`);
         } else if (this.parent !== null){
-            return this.parent.notDeclaredInScope(id);
+            return this.parent.declaredInScope(id);
         } else {
             return true;
         }
     }
 
     add(entity) {
-        if(this.notDeclaredInScope(entity.id)){
+        if(this.declaredInScope(entity.id)){
             this.declarations[entity.id] = entity;
         }
     }
@@ -66,7 +66,7 @@ class Context {
         if (id in this.declarations) {
             return this.declarations[id];
         } else if (this.parent === null) {
-            throw new Error(`Identifier ${id} has not been declared`);
+            throw new Error(`Identifier ${id} not declared`);
         } else {
             return this.parent.lookup(id);
         }
