@@ -101,6 +101,9 @@
             }
           ],
           "test": {
+            "type": {
+              "type": "Boolean"
+            },
             "value": false
           }
         },

@@ -61,6 +61,9 @@
               ],
               "initializers": [
                 {
+                  "type": {
+                    "type": "Boolean"
+                  },
                   "value": true
                 }
               ],
@@ -89,6 +92,9 @@
                         }
                       ],
                       "test": {
+                        "type": {
+                          "type": "Boolean"
+                        },
                         "value": true
                       }
                     }
@@ -122,6 +128,9 @@
                             "op": "*",
                             "right": {
                               "left": {
+                                "type": {
+                                  "type": "Boolean"
+                                },
                                 "value": false
                               },
                               "op": "%",
@@ -160,6 +169,9 @@
                     }
                   ],
                   "test": {
+                    "type": {
+                      "type": "Boolean"
+                    },
                     "value": false
                   }
                 }
@@ -295,6 +307,9 @@
             }
           ],
           "test": {
+            "type": {
+              "type": "Boolean"
+            },
             "value": false
           }
         },

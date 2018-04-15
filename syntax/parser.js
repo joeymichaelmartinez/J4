@@ -42,6 +42,9 @@ const Argument = require("../ast/argument");
 const BooleanLiteral = require("../ast/boolean-literal");
 const NumericLiteral = require("../ast/numeric-literal");
 const StringLiteral = require("../ast/string-literal");
+const BoolType = require("../ast/bool-type");
+const NumberType = require("../ast/number-type");
+const StringType = require("../ast/string-type");
 
 const grammar = ohm.grammar(fs.readFileSync("./syntax/J4Grammar.ohm"));
 
@@ -93,9 +96,9 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Type_arrayType(type, _) { return new ArrayType(type.ast()); },
     Type_functionType(_1, rest, _2, _3, last) {return new FuncType([...rest.ast()], last.ast()); },
     Type_idType(name) { return new NamedType(name.sourceString); },
-    Type_numberType(name) { return new NamedType(name.sourceString); },
-    Type_stringType(name) { return new NamedType(name.sourceString); },
-    Type_boolType(name) { return new NamedType(name.sourceString); },
+    Type_numberType(value) { return new NumberType(value.sourceString); },
+    Type_stringType(value) { return new StringType(value.sourceString); },
+    Type_boolType(value) { return new BoolType(value.sourceString); },
 
     VarExp_subscripted(v, _1, e, _2) { return new SubscriptedExpression(v.ast(), e.ast()); },
     VarExp_simple(id) { return new IdentifierExpression(id.ast()); },
