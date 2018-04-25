@@ -3,6 +3,4 @@ while i < 7
   Number x <- 2
   while x < 8
     x <- x + 3
-    print(x)
   i <- i + 1
-  print(i)

@@ -8,9 +8,9 @@
  *   const Context = require('./semantics/context');
  */
 
-const FunctionDeclaration = require("../ast/function-declaration");
+//const FunctionDeclaration = require("../ast/function-declaration");
 const FunctionObject = require("../ast/function-object");
-const Parameter = require("../ast/parameter");
+//const Parameter = require("../ast/parameter");
 
 class Context {
     constructor({ parent = null, currentFunction = null, inLoop = false } = {}) {
@@ -93,8 +93,8 @@ class Context {
 }
 
 Context.INITIAL = new Context();
-new FunctionDeclaration("print", [new Parameter("_", null)], null).analyze(Context.INITIAL);
-new FunctionDeclaration("sqrt", [new Parameter("_", null)], null).analyze(Context.INITIAL);
+//new FunctionDeclaration("print", [new Parameter("_", null)], null).analyze(Context.INITIAL);
+//new FunctionDeclaration("sqrt", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 //***new FunctionDeclaration("concat", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 //*** new FunctionDeclaration("toString", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 

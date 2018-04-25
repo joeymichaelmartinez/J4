@@ -1,0 +1,6 @@
+Function f() -> Number
+    Number x <- 8
+    return 5
+
+Number y <- 5
+f()

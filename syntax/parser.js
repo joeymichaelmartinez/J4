@@ -56,8 +56,12 @@ function unpack(a) {
 
 /*eslint-disable no-unused-vars*/
 const astGenerator = grammar.createSemantics().addOperation("ast", {
-    Program(_1, body, _2) { return new Program(body.ast()); },
-    Stmt_simple(statement, _) { return statement.ast(); },
+    Program(_1, body, _2) {
+        return new Program(body.ast());
+    },
+    Stmt_simple(statement, _) {
+        return statement.ast();
+    },
     Stmt_while(_, test, suite) { return new WhileStatement(test.ast(), suite.ast()); },
     Stmt_for(_1, forparam, _2, test, _3, statement, suite) {
         return new ForStatement(forparam.ast(), test.ast(), unpack(statement.ast()), suite.ast());

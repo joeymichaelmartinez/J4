@@ -1,6 +1,7 @@
 module.exports = class FunctionObject {
     constructor(id, params, returntype, body) {
         Object.assign(this, { id, params, returntype, body });
+        this.returnStmtType = undefined;
     }
 
     // Functions like print and sqrt which are pre-defined are known as
@@ -30,7 +31,19 @@ module.exports = class FunctionObject {
         // variable with the same name as the function inside the function, you'll
         // shadow it, which would probably be not a good idea.
         if (this.body) {
-            this.body.forEach(s => s.analyze(context));
+            this.body[0].forEach(s => s.analyze(context));//I am not sure why this works
+        }
+        if (this.returntype.name === "Nothing") {
+            if (this.returnStmtType !== undefined) {
+                throw new Error("return value given to nonreturning function");
+            }
+        } else {
+            if (this.returnStmtType === undefined) {
+                throw new Error("no return value given");
+            }
+            if (this.returnStmtType.toString() !== this.returntype.toString()) {
+                throw new Error("return value does not match return type");
+            }
         }
     }
 

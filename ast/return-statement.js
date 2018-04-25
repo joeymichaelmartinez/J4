@@ -4,17 +4,24 @@ module.exports = class ReturnStatement {
     }
 
     analyze(context) {
-        if (this.returnValue) {
-            this.returnValue.analyze(context);
+        context.assertInFunction("return statement outside function");
+        if (this.returnValue === null) {
+            return;
         }
-        // *** context.currentFunction.returntype === this.returnValue.type;
-        context.assertInFunction("Return statement outside function");
+        this.returnValue.analyze(context);
+        if (this.returnValue.id) {
+            context.currentFunction.function.returnStmtType = this.returnValue.referent.type;
+        } else {
+            if (this.returnValue.type.toString() !== "Nothing") {
+                context.currentFunction.function.returnStmtType = this.returnValue.type;
+            }
+        }
     }
 
-    optimize() {
-        if (this.returnValue) {
-            this.returnValue = this.returnValue.optimize();
-        }
-        return this;
-    }
+    // optimize() {
+    //     if (this.returnValue) {
+    //         this.returnValue = this.returnValue.optimize();
+    //     }
+    //     return this;
+    // }
 };

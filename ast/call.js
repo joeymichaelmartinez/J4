@@ -6,8 +6,28 @@ module.exports = class Call {
     analyze(context) {
         this.callee.analyze(context);
         context.assertIsFunction(this.callee.referent);
-        this.checkArgumentMatching(this.callee.referent);
         this.args.forEach(arg => arg.analyze(context));
+        this.matchArgumentsToParams();
+    }
+
+    matchArgumentsToParams() {
+        let currFunc = this.callee.referent;
+        if (this.args.length !== currFunc.params.length) {
+            throw new Error("number of parameters in call does not match number of arguments in function");
+        }
+        for (let i = 0; i < this.args.length; i++) {
+            // console.log(currFunc.params[i]);
+            // console.log(this.args[i]);
+            if (this.args[i].expression.id) {//If we have an id, check its referent
+                if (currFunc.params[i].type.toString() !== this.args[i].expression.referent.type.toString()) {
+                    throw new Error("type of parameter does not match type of argument");
+                }
+            } else {
+                if (currFunc.params[i].type.toString() !== this.args[i].expression.type.toString()) {
+                    throw new Error("type of parameter does not match type of argument");
+                }
+            }
+        }
     }
 
     checkArgumentMatching(callee) {
@@ -39,9 +59,9 @@ module.exports = class Call {
         }
     }
 
-    optimize() {
-        this.callee = this.callee.optimize();
-        this.args.forEach(arg => arg.optimize());
-        return this;
-    }
+    // optimize() {
+    //     this.callee = this.callee.optimize();
+    //     this.args.forEach(arg => arg.optimize());
+    //     return this;
+    // }
 };
