@@ -6,7 +6,7 @@ module.exports = class ObjectConstructor {
         this.suite = suite;
     }
 
-    analyze(context) {
+    analyze() {
     // *** create context for Object
     // *** add suite to context
     }

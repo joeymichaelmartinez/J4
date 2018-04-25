@@ -19,6 +19,9 @@
  * ./j4.js -o <filename>
  *     optimizes the intermediate code before generating target JavaScript.
  *
+ * NOTE FOR WINDOWS USERS: node j4.js -i filename.js
+ * This is an example of how you should run this on windows command prompt
+ *
  * Output of the AST and decorated AST uses the object inspection functionality
  * built into Node.js.
  */

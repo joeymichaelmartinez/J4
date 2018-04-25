@@ -5,8 +5,8 @@ module.exports = class ObjectDeclaration {
         this.body = body;
     }
 
-    analyze(context) {
-      // *** create context for Object
-      // *** add suite to context
+    analyze() {
+        // *** create context for Object
+        // *** add suite to context
     }
 };

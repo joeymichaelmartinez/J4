@@ -5,8 +5,8 @@ module.exports = class ObjectInstantiation {
         this.args = args;
     }
 
-    analyze(context) {
-      // *** create context for Object
-      // *** add suite to context
+    analyze() {
+        // *** create context for Object
+        // *** add suite to context
     }
 };
