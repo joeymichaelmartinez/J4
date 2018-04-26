@@ -7,6 +7,10 @@ module.exports = class BoolType {
         this.type = "Boolean";
     }
 
+    toString() {
+        return this.type;
+    }
+
     analyze() { // eslint-disable-line class-methods-use-this
         //Intentionally left empty
     }
