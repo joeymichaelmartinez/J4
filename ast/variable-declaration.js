@@ -12,6 +12,9 @@ module.exports = class VariableDeclaration {
     }
 
     analyze(context) {
+        if (this.initializers === undefined) {
+            throw new Error("variable not initialized in declaration");
+        }
         if (this.ids.length !== this.initializers.length) {
             throw new Error("wrong number of declarations");
         }
