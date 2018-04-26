@@ -28,6 +28,7 @@ const ObjectDeclaration = require("../ast/object-declaration");
 const ObjectConstructor = require("../ast/object-constructor");
 const ForParam = require("../ast/for-loop-param");
 const BinaryExpression = require("../ast/binary-expression");
+const ChainedExpression = require("../ast/chained-expression");
 const UnaryExpression = require("../ast/unary-expression");
 const IdentifierExpression = require("../ast/identifier-expression");
 const SubscriptedExpression = require("../ast/subscripted-expression");
@@ -87,8 +88,8 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Suite(_1, _2, statements, _3) { return statements.ast(); },
     ForParam_loopingVarDec(type, id, _1, e) { return new ForParam(type.ast(), id.ast(), e.ast()); },
     ForParam_outsideVar(id) { return new ForParam(undefined, id.ast(), undefined); },
-    Exp_or(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
-    Exp_and(left, op, right) { return new BinaryExpression(op.ast(), right.ast()); },
+    Exp_or(left, op, right) { return new ChainedExpression(unpack(op.ast()), left.ast(), right.ast()); },
+    Exp_and(left, op, right) { return new ChainedExpression(unpack(op.ast()), left.ast(), right.ast()); },
     Exp1_binary(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
     Exp2_binary(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
     Exp3_binary(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
@@ -103,9 +104,9 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
     Type_arrayType(type, _) { return new ArrayType(type.ast()); },
     Type_functionType(_1, rest, _2, _3, last) {return new FuncType([...rest.ast()], last.ast()); },
     Type_idType(name) { return new NamedType(name.sourceString); },
-    Type_numberType(value) { return new NumberType(value.sourceString); },
-    Type_stringType(value) { return new StringType(value.sourceString); },
-    Type_boolType(value) { return new BoolType(value.sourceString); },
+    Type_numberType(value) { return new NumberType(); },
+    Type_stringType(value) { return new StringType(); },
+    Type_boolType(value) { return new BoolType(); },
 
     VarExp_subscripted(v, _1, e, _2) { return new SubscriptedExpression(v.ast(), e.ast()); },
     VarExp_simple(id) { return new IdentifierExpression(id.ast()); },
