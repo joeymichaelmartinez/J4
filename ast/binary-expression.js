@@ -16,8 +16,6 @@ module.exports = class BinaryExpression {
         this.type = leftType;
         if (this.op === "=") {
             this.type = new BoolType();
-        } else if ((this.op === "and" || this.op === "or") && (leftType.toString() !== "Boolean")) {
-            throw new Error("boolean required for logical operator");
         } else if (this.op in ["<=" , "<" , "=" , "!=" , ">=" , ">"]) {
             if (leftType.toString() !== "Number") {
                 throw new Error("number required for relational operator");
