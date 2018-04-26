@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 Number x <- not 5
+=======
+Boolean z <- true or false or true or false
+>>>>>>> aa678af060c9d7abd1758800a87724124ab56c93
