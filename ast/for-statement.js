@@ -1,4 +1,4 @@
-const BooleanLiteral = require("./boolean-literal");
+//const BooleanLiteral = require("./boolean-literal");
 
 module.exports = class ForStatement {
     constructor(forparam, test, iteration, body) {
@@ -6,20 +6,20 @@ module.exports = class ForStatement {
     }
 
     analyze(context) {
-        this.forparam.analyze();
-        this.test.analyze(context);
-        this.iteration.analyze();
         const bodyContext = context.createChildContextForLoop();
+        this.forparam.analyze(context);
+        this.test.analyze(context);
+        this.iteration.analyze(context);
         this.body.forEach(s => s.analyze(bodyContext));
     }
 
-    optimize() {
-        this.test = this.test.optimize();
-        if (this.test instanceof BooleanLiteral && this.condition.value === false) {
-            return null;
-        }
-        this.body.map(s => s.optimize()).filter(s => s !== null);
-        // Suggested: Look for returns/breaks in the middle of the body
-        return this;
-    }
+    // optimize() {
+    //     this.test = this.test.optimize();
+    //     if (this.test instanceof BooleanLiteral && this.condition.value === false) {
+    //         return null;
+    //     }
+    //     this.body.map(s => s.optimize()).filter(s => s !== null);
+    //     // Suggested: Look for returns/breaks in the middle of the body
+    //     return this;
+    // }
 };

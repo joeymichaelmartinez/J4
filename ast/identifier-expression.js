@@ -11,6 +11,7 @@ module.exports = class IdentifierExpression {
     // parse time).
     analyze(context) {
         this.referent = context.lookup(this.id);
+        this.type = this.referent.type;
     }
 
     optimize() {
