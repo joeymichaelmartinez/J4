@@ -1,3 +1,0 @@
-Number x <- 5
-Number y <- 7
-Number z <- x + y
