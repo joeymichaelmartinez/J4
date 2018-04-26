@@ -16,7 +16,7 @@ module.exports = class BinaryExpression {
         this.type = leftType;
         if (this.op === "=") {
             this.type = new BoolType();
-        } else if (this.op in ["<=" , "<" , "=" , "!=" , ">=" , ">"]) {
+        } else if (["<=" , "<" , "!=" , ">=" , ">"].indexOf(this.op) >= 0) {
             if (leftType.toString() !== "Number") {
                 throw new Error("number required for relational operator");
             } else {
