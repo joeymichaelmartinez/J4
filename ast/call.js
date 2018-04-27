@@ -12,7 +12,7 @@ module.exports = class Call {
         if (SPECIAL_CALLS.indexOf(this.callee.id) >= 0) {//Check if the id is a special call
             this.args.forEach(arg => arg.analyze(context));
             if (this.callee.id === "print") {
-                if (this.args.length !== 1) {//require print statments to have one argument
+                if (this.args.length < 1) {//require print statments to have at least one argument
                     throw new Error("wrong number of arguments to print statement");
                 }
                 this.callee.type = new BooleanType();//Assume that print statements return a bool
