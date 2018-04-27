@@ -47,11 +47,11 @@ module.exports = class FunctionObject {
         }
     }
 
-    optimize() {
-        this.parameters.forEach(p => p.optimize());
-        this.body.forEach(s => s.optimize());
-        this.body = this.body.filter(s => s !== null);
-        // Suggested: Look for returns in the middle of the body
-        return this;
-    }
+    // optimize() {
+    //     this.parameters.forEach(p => p.optimize());
+    //     this.body.forEach(s => s.optimize());
+    //     this.body = this.body.filter(s => s !== null);
+    //     // Suggested: Look for returns in the middle of the body
+    //     return this;
+    // }
 };

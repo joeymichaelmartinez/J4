@@ -1,13 +1,39 @@
+const BooleanType = require("../ast/bool-type");
+const NumberType = require("../ast/number-type");
+const StringType = require("../ast/string-type");
+const SPECIAL_CALLS = ["print" , "sqrt" , "concat"];
+
 module.exports = class Call {
     constructor(callee, args) {
         Object.assign(this, { callee, args });
     }
 
     analyze(context) {
-        this.callee.analyze(context);
-        context.assertIsFunction(this.callee.referent);
-        this.args.forEach(arg => arg.analyze(context));
-        this.matchArgumentsToParams();
+        if (SPECIAL_CALLS.indexOf(this.callee.id) >= 0) {//Check if the id is a special call
+            this.args.forEach(arg => arg.analyze(context));
+            if (this.callee.id === "print") {
+                if (this.args.length !== 1) {//require print statments to have one argument
+                    throw new Error("wrong number of arguments to print statement");
+                }
+                this.callee.type = new BooleanType();//Assume that print statements return a bool
+            } else if (this.callee.id === "sqrt") {
+                if (this.args.length !== 1) {//require sqrt statments to have one argument
+                    throw new Error("wrong number of arguments to sqrt statement");
+                }
+                this.callee.type = new NumberType();
+            } else {
+                if (this.args.length < 2) {//require concat statments to have at least two arguments
+                    throw new Error("wrong number of arguments to concat statement");
+                }
+                this.callee.type = new StringType();
+            }
+        } else {//Otherwise look for a declared function
+            this.callee.analyze(context);
+            context.assertIsFunction(this.callee.referent);
+            this.args.forEach(arg => arg.analyze(context));
+            this.matchArgumentsToParams();
+        }
+        this.type = this.callee.type;
     }
 
     matchArgumentsToParams() {

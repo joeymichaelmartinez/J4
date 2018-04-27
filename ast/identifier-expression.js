@@ -14,7 +14,7 @@ module.exports = class IdentifierExpression {
         this.type = this.referent.type;
     }
 
-    optimize() {
-        return this;
-    }
+    // optimize() {
+    //     return this;
+    // }
 };
