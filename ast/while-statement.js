@@ -5,7 +5,15 @@ module.exports = class WhileStatement {
 
     analyze(context) {
         this.test.analyze(context);
+
         const bodyContext = context.createChildContextForLoop();
+
         this.body.forEach(s => s.analyze(bodyContext));
+
+        let testType = this.test.type;
+
+        if (testType.toString() !== "Boolean"){
+            throw new Error(`the test is of type ${this.test.type} and cannot be evaluated`);
+        }
     }
 };
