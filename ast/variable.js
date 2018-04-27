@@ -6,7 +6,8 @@ module.exports = class Variable {
     }
 
     analyze() { // eslint-disable-line class-methods-use-this
-        if (this.type.toString() !== this.value.type.toString()) {
+        let currentType = (this.type.elementType) ? this.type.elementType.toString() : this.type.toString();
+        if (currentType !== this.value.type.toString()) {
             throw new Error("wrong type in declaration");
         }
     }
