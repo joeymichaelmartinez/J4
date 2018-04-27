@@ -17,16 +17,12 @@ module.exports = class ArrayInstantiation {
         for(let i = 0; i < this.elements.length; i++){
             this.elements[i].analyze(context);
             arrayElementType = (this.elements[i].id)? this.elements[i].referent.type : this.elements[i].type;
-            if (this.type===null) {
+            if (this.type === null) {
                 this.type = arrayElementType;
             }
             if(arrayElementType.toString() !==  this.type.toString()){
-              // console.log(arrayElementType.toString());
-              // console.log(this.type.toString());
 
-                //*** NOT A REAL ERROR YET
                 throw new Error("Type Mismatch");
-                //
             }
         }
 
