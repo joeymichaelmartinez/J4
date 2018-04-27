@@ -1,1 +1,2 @@
-Number[] rgb <- [self.red, self.green, self.blue]
+String x <- "yeeee"
+String[] array <- [x,"the","the"]
