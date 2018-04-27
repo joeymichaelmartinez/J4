@@ -15,7 +15,7 @@ module.exports = class BoolType {
         //Intentionally left empty
     }
 
-    optimize() {
-        return this;
-    }
+    // optimize() {
+    //     return this;
+    // }
 };

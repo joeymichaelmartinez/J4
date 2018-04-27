@@ -12,7 +12,7 @@ module.exports = class Variable {
         }
     }
 
-    optimize() {
-        return this;
-    }
+    // optimize() {
+    //     return this;
+    // }
 };

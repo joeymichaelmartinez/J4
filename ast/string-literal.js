@@ -10,7 +10,7 @@ module.exports = class StringLiteral {
         // Intentionally empty
     }
 
-    optimize() {
-        return this;
-    }
+    // optimize() {
+    //     return this;
+    // }
 };

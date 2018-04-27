@@ -11,7 +11,7 @@ module.exports = class StringType {
         // Intentionally empty
     }
 
-    optimize() {
-        return this;
-    }
+    // optimize() {
+    //     return this;
+    // }
 };

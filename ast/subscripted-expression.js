@@ -8,9 +8,9 @@ module.exports = class SubscriptedExpression {
         this.subscript.analyze(context);
     }
 
-    optimize() {
-        this.variable = this.variable.optimize();
-        this.subscript = this.subscript.optimize();
-        return this;
-    }
+    // optimize() {
+    //     this.variable = this.variable.optimize();
+    //     this.subscript = this.subscript.optimize();
+    //     return this;
+    // }
 };

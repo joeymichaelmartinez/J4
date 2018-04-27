@@ -9,10 +9,10 @@ module.exports = class DotOperatorExpression {
         this.args.analyze(context);
     }
 
-    optimize() {
-        this.variable = this.variable.optimize();
-        this.id = this.id.optimize();
-        this.args = this.args.optimize();
-        return this;
-    }
+    // optimize() {
+    //     this.variable = this.variable.optimize();
+    //     this.id = this.id.optimize();
+    //     this.args = this.args.optimize();
+    //     return this;
+    // }
 };

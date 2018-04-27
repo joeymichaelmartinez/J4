@@ -10,7 +10,7 @@ module.exports = class BooleanLiteral {
         //Let empty on purpose
     }
 
-    optimize(){
-
-    }
+    // optimize(){
+    //
+    // }
 };

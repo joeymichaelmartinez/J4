@@ -10,8 +10,8 @@ module.exports = class Program {
         this.statements.forEach(s => s.analyze(context));
     }
 
-    optimize() {
-        this.statements.map(s => s.optimize()).filter(s => s !== null);
-        return this;
-    }
+    // optimize() {
+    //     this.statements.map(s => s.optimize()).filter(s => s !== null);
+    //     return this;
+    // }
 };

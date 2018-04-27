@@ -11,7 +11,7 @@ module.exports = class NumberType {
         //Left empty on purpose
     }
 
-    optimize() {
-        return this;
-    }
+    // optimize() {
+    //     return this;
+    // }
 };
