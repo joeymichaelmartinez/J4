@@ -1,28 +1,28 @@
-module.exports = class FunctionObject {
-    constructor(id, params, returntype, body) {
-        Object.assign(this, { id, params, returntype, body });
-        this.returnStmtType = undefined;
-    }
+const NamedType = require("../ast/named-type");
 
-    // Functions like print and sqrt which are pre-defined are known as
-    // "external" functions because they are not declared in the current
-    // module and we therefore don't generate code for them.
-    get isExternal() {
-        return !this.function.body;
+module.exports = class FunctionObject {
+    constructor(id, params, type, body) {
+        Object.assign(this, { id, params, type, body });
+        this.returnStmtType = new NamedType("Nothing");
+        this.hasParams = true;
     }
 
     analyze(context) {
-    // Each parameter will be declared in the function's scope, mixed in
-    // with the function's local variables. This is by design.
-        this.params.forEach(p => p.analyze(context));
+        // Each parameter will be declared in the function's scope, mixed in
+        // with the function's local variables. This is by design.
+        if (this.params !== "Nothing") {
+            this.params.forEach(p => p.analyze(context));
 
-        // Make sure all required parameters come before optional ones, and
-        // gather the names up into sets for quick lookup.
+            // Make sure all required parameters come before optional ones, and
+            // gather the names up into sets for quick lookup.
 
-        this.allParameterNames = new Set();
-        this.params.forEach((p) => {
-            this.allParameterNames.add(p.id);
-        });
+            this.allParameterNames = new Set();
+            this.params.forEach((p) => {
+                this.allParameterNames.add(p.id);
+            });
+        } else {
+            this.hasParams = false;
+        }
 
         // Now we analyze the body with the local context. Note that recursion is
         // allowed, because we've already inserted the function itself into the
@@ -33,15 +33,16 @@ module.exports = class FunctionObject {
         if (this.body) {
             this.body[0].forEach(s => s.analyze(context));//I am not sure why this works
         }
-        if (this.returntype.name === "Nothing") {
-            if (this.returnStmtType !== undefined) {
+        //Return statement in body analyzation changes type of function object
+        if (this.type.toString() === "Nothing") {
+            if (this.returnStmtType.toString() !== "Nothing") {
                 throw new Error("return value given to nonreturning function");
             }
         } else {
-            if (this.returnStmtType === undefined) {
+            if (this.returnStmtType.toString() === "Nothing") {
                 throw new Error("no return value given");
             }
-            if (this.returnStmtType.toString() !== this.returntype.toString()) {
+            if (this.returnStmtType.toString() !== this.type.toString()) {
                 throw new Error("return value does not match return type");
             }
         }

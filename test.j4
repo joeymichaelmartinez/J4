@@ -1,1 +1,4 @@
+Function test(Nothing) -> Nothing
+    print("test")
 
+test()

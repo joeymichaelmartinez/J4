@@ -11,7 +11,7 @@ struct Color
     self.green <- shade
     self.blue  <- shade
 
-  getColor(Nothing) -> Number[]
+  Function getColor(Nothing) -> Number[]
     Number[] rgb <- [self.red, self.green, self.blue]
     return rgb
 

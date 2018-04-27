@@ -6,7 +6,7 @@ J4 {
               |  "if" Exp Suite ("else if" Exp Suite)* ("else" Suite)?   -- if
               |  "struct" id Suite                                       -- struct
               |  "init" "(" Params ")" Suite?                            -- init
-              |  "Function" id "(" (Params | "Nothing") ")" "->" (Type | "Nothing") Suite? -- functionDec
+              |  "Function" id "(" ("Nothing" | Params) ")" "->" (Type | "Nothing") Suite? -- functionDec
   SimpleStmt  =  Type Ids "<-" Exps                                      -- vardeclAndAssign
               |  Type Ids                                                -- vardecl
               |  VarExps "<-" Exps                                       -- assign

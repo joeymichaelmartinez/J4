@@ -3,10 +3,14 @@ module.exports = class NamedType {
         this.name = name;
     }
 
+    toString() {
+        return this.name;
+    }
+
     analyze() {
     }
 
-    optimize() {
-        return this;
-    }
+    // optimize() {
+    //     return this;
+    // }
 };

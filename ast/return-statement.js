@@ -10,10 +10,10 @@ module.exports = class ReturnStatement {
         }
         this.returnValue.analyze(context);
         if (this.returnValue.id) {
-            context.currentFunction.function.returnStmtType = this.returnValue.referent.type;
+            context.currentFunction.function.type = this.returnValue.referent.type;
         } else {
             if (this.returnValue.type.toString() !== "Nothing") {
-                context.currentFunction.function.returnStmtType = this.returnValue.type;
+                context.currentFunction.function.type = this.returnValue.type;
             }
         }
     }
