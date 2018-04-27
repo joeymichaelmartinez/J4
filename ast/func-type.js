@@ -5,7 +5,16 @@ module.exports = class FunctionType {
     }
 
     toString() {
-        return "Function";//TODO: Come up with a clever implementation for stringifying function types
+        let argsAsString = "";
+        let returnTypeAsString = (this.returnType.id)? this.returnType.referent.type.toString() : this.returnType.type.toString();
+        for (let i = 0; i < this.argTypes.size; i++) {
+            argsAsString = argsAsString + ((this.argTypes.id)? this.argTypes.referent.type.toString() : this.argTypes.type.toString());
+            if(i+1 !== this.argTypes.size){
+                argsAsString = argsAsString + ", ";
+            }
+        }
+        return "(" + argsAsString + ")" + "->" + returnTypeAsString;
+        //TODO: test
     }
 
     analyze() { // eslint-disable-line class-methods-use-this
