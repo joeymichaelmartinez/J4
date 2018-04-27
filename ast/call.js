@@ -44,7 +44,7 @@ module.exports = class Call {
             }
         } else {//Otherwise, function has parameters, make sure they match with arguments
             if (this.args.length !== currFunc.params.length) {
-                throw new Error("number of parameters in call does not match number of arguments in function");
+                throw new Error("number of arguments in call does not match number of parameters in function");
             }
             for (let i = 0; i < this.args.length; i++) {
                 // console.log(currFunc.params[i]);

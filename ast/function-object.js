@@ -10,7 +10,10 @@ module.exports = class FunctionObject {
     analyze(context) {
         // Each parameter will be declared in the function's scope, mixed in
         // with the function's local variables. This is by design.
-        if (this.params !== "Nothing") {
+
+        if (this.params === "Nothing" || this.params.length === 0) {//Check for no params
+            this.hasParams = false;
+        } else {
             this.params.forEach(p => p.analyze(context));
 
             // Make sure all required parameters come before optional ones, and
@@ -20,8 +23,6 @@ module.exports = class FunctionObject {
             this.params.forEach((p) => {
                 this.allParameterNames.add(p.id);
             });
-        } else {
-            this.hasParams = false;
         }
 
         // Now we analyze the body with the local context. Note that recursion is

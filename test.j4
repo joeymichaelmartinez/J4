@@ -1,4 +1,4 @@
-Function test(Nothing) -> Nothing
+Function test(n: Number) -> Nothing
     print("test")
 
-test()
+test(4)
