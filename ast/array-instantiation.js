@@ -2,17 +2,14 @@ const ArrayType = require("./array-type");
 // An array instantiation creates an array.
 module.exports = class ArrayInstantiation {
     constructor(elementType, elements) {
-        if(elementType){
-            this.elements = elements;
-            this.type = new ArrayType(elementType.type.toString());
-        } else {
-            this.elements = elements;
-            this.type = new ArrayType(this.elements[0].type.toString());
-        }
-
+        this.type = elementType;
+        this.elements = elements;
     }
 
     analyze(context) {
+        if(this.type === null){
+            this.type = new ArrayType(this.elements[0].type);
+        }
         for(let i = 0; i < this.elements.length; i++){
             this.elements[i].analyze(context);
             if(this.elements[i].type.toString() !== this.type.toString()){

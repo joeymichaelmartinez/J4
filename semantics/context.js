@@ -8,23 +8,26 @@
  *   const Context = require('./semantics/context');
  */
 
-//const FunctionDeclaration = require("../ast/function-declaration");
 const FunctionObject = require("../ast/function-object");
-//const Parameter = require("../ast/parameter");
+const J4Object = require("../ast/object-declaration");
 
 class Context {
-    constructor({ parent = null, currentFunction = null, inLoop = false } = {}) {
-        Object.assign(this, { parent, currentFunction, inLoop, declarations: Object.create(null) });
+    constructor({ parent = null, currentFunction = null, inObject = false, inLoop = false } = {}) {
+        Object.assign(this, { parent, currentFunction, inObject, inLoop, declarations: Object.create(null) });
     }
 
     createChildContextForFunctionBody(currentFunction) {
-    // When entering a new function, we're not in a loop anymore
-        return new Context({ parent: this, currentFunction, inLoop: false });
+        // When entering a new function, we're not in a loop anymore
+        return new Context({ parent: this, currentFunction, inObject: false, inLoop: false });
     }
 
     createChildContextForLoop() {
-    // When entering a loop body, just set the inLoop field, retain others
-        return new Context({ parent: this, currentFunction: this.currentFunction, inLoop: true });
+        // When entering a loop body, just set the inLoop field, retain others
+        return new Context({ parent: this, currentFunction: this.currentFunction, inObject: false, inLoop: true });
+    }
+
+    createChildContextForObjectBody() {
+        return new Context({ parent: this, currentFunction: this.currentFunction, inObject: true, inLoop: false });
     }
 
     createChildContextForBlock() {
@@ -47,7 +50,7 @@ class Context {
     notDeclaredInScope(id){
         if (id in this.declarations){
             throw new Error(`Identitier ${id} already declared`);
-        } else if (this.parent !== null){
+        } else if (this.parent !== null && !this.parent.inObject) {
             return this.parent.notDeclaredInScope(id);
         } else {
             return true;
@@ -65,7 +68,7 @@ class Context {
     lookup(id) {
         if (id in this.declarations) {
             return this.declarations[id];
-        } else if (this.parent === null) {
+        } else if (this.parent === null || this.inObject) {
             throw new Error(`identifier ${id} not declared`);
         } else {
             return this.parent.lookup(id);
@@ -85,17 +88,13 @@ class Context {
     }
 
     assertIsObject(entity) { // eslint-disable-line class-methods-use-this
-        if (entity.constructor !== Object) {
-            throw new Error(`${entity.id} is not a function`);
+        if (entity.constructor !== J4Object) {
+            throw new Error(`${entity.id} is not an object`);
         }
     }
 
 }
 
 Context.INITIAL = new Context();
-//new FunctionDeclaration("print", [new Parameter("_", null)], null).analyze(Context.INITIAL);
-//new FunctionDeclaration("sqrt", [new Parameter("_", null)], null).analyze(Context.INITIAL);
-//***new FunctionDeclaration("concat", [new Parameter("_", null)], null).analyze(Context.INITIAL);
-//*** new FunctionDeclaration("toString", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 
 module.exports = Context;

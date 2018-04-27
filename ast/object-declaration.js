@@ -6,7 +6,7 @@ module.exports = class ObjectDeclaration {
     }
 
     analyze() {
-        // *** create context for Object
-        // *** add suite to context
+        this.id.analyze();
+        this.body.forEach(s => s.analyze());
     }
 };

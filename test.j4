@@ -1,4 +1,1 @@
-Function test(n: Number) -> Nothing
-    print("test")
-
-test(4)
+Number[] rgb <- [self.red, self.green, self.blue]

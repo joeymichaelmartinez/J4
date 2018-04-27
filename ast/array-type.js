@@ -12,7 +12,7 @@ module.exports = class ArrayType {
         //Left empty on purpose
     }
 
-    optimize() {
-        return this;
-    }
+    // optimize() {
+    //     return this;
+    // }
 };

@@ -34,13 +34,13 @@ J4 {
               |  numlit
               |  strlit
               |  Call
-              |  ObjDecl
+              |  ObjInit
               |  ArrDecl
               |  EmptyArrDecl
               |  VarExp
               |  "(" Exp ")"                                             -- parens
   Call        =  VarExp "(" Args ")"
-  ObjDecl     = "new" VarExp "(" Args ")"
+  ObjInit     = "new" VarExp "(" Args ")"
   ArrDecl     = "[" Exps "]"
   EmptyArrDecl= "[" Type "]"
 
