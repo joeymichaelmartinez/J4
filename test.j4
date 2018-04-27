@@ -1,2 +1,2 @@
 String x <- "yeeee"
-String[] array <- [x,"the","the"]
+String[] array <- [String]

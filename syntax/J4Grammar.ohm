@@ -11,7 +11,7 @@ J4 {
               |  Type Ids                                                -- vardecl
               |  VarExps "<-" Exps                                       -- assign
               |  Call                                                    -- call
-              |  ObjDecl                                                 -- ObjDecl
+              |  ObjInit                                                 -- ObjInit
               |  "break"                                                 -- break
               |  "return" Exp?                                           -- return
   Suite       =  newline indent Stmt+ dedent
