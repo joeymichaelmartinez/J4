@@ -5,6 +5,6 @@ module.exports = class Argument {
 
     analyze(context) {
         this.expression.analyze(context);
-
+        this.type = this.expression.type;
     }
 };

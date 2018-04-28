@@ -1,2 +1,2 @@
 Function twice(f: (Number) -> Number, x: Number) -> Number
-  return f(f(x))
+  return f( f(x) )
