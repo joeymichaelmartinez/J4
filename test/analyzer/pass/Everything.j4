@@ -3,16 +3,16 @@ Number test <- 42
 Function hello() -> Nothing
   print("Hello")
 
-Function actions(a: Number, b: Number, c: Number) -> Nothing
+Function actions(a: Number, b: Number, c: Number) -> Number
   Number x <- 9
-  Number b <- 9
   Boolean y <- true
-  if x < 3 and (b = 9 or 7 * (b % 2) = 20)
+  if x < 3 and (y = 9 or 7 * (y % 2) = 20)
     x <- 2
   else if x = 2
     x <- 3
   else
     x <- 0
+  return x - y
 
 Function p(e: Number) -> Number
   Number x, y, z <- 10, 5, 6
@@ -20,7 +20,7 @@ Function p(e: Number) -> Number
 
 if p(5.00003) = 5.00003
   hello()
-else if actions(1, 2, 3) = Nothing
+else if actions(1, 2, 3) = 7
   hello()
   hello()
 else
