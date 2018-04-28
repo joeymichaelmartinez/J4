@@ -1,6 +1,7 @@
 const NamedType = require("../ast/named-type");
 const NumberType = require("../ast/number-type");
 const StringType = require("../ast/string-type");
+const FunctionType = require("../ast/func-type");
 const SPECIAL_CALLS = ["print" , "sqrt" , "concat"];
 
 module.exports = class Call {
@@ -9,8 +10,8 @@ module.exports = class Call {
     }
 
     analyze(context) {
+        this.args.forEach(arg => arg.analyze(context));
         if (SPECIAL_CALLS.indexOf(this.callee.id) >= 0) {//Check if the id is a special call
-            this.args.forEach(arg => arg.analyze(context));
             if (this.callee.id === "print") {
                 if (this.args.length < 1) {//require print statments to have at least one argument
                     throw new Error("wrong number of arguments to print statement");
@@ -27,13 +28,35 @@ module.exports = class Call {
                 }
                 this.callee.type = new StringType();
             }
-        } else {//Otherwise look for a declared function
+            this.type = this.callee.type;
+        } else {
             this.callee.analyze(context);
-            context.assertIsFunction(this.callee.referent);
-            this.args.forEach(arg => arg.analyze(context));
-            this.matchArgumentsToParams();
+            if (Object.is(this.callee.type.constructor, FunctionType)){//check if we have a function type parameter
+                // Function type - Function Parameter call
+                this.matchFunctionType();
+                this.type = this.callee.referent.type.returnType;
+            } else {
+
+                // regular old function call
+                context.assertIsFunction(this.callee.referent);
+                this.matchArgumentsToParams();
+                this.type = this.callee.type;
+            }
         }
-        this.type = this.callee.type;
+
+    }
+
+    matchFunctionType(){
+        let funcParamArray = this.callee.referent.type.argTypes;
+        let argsArray = this.args;
+        if (funcParamArray.length !== argsArray.length){
+            throw new Error("number of parameters to function does not match number of arguments given");
+        }
+        for (let i = 0; i < funcParamArray.length; i++){
+            if (funcParamArray[i].toString() !== argsArray[i].type.toString()){
+                throw new Error("type of parameter to function does not match type of argument given");
+            }
+        }
     }
 
     matchArgumentsToParams() {
@@ -47,8 +70,6 @@ module.exports = class Call {
                 throw new Error("number of arguments in call does not match number of parameters in function");
             }
             for (let i = 0; i < this.args.length; i++) {
-                // console.log(currFunc.params[i]);
-                // console.log(this.args[i]);
                 if (this.args[i].expression.id) {//If we have an id, check its referent
                     if (currFunc.params[i].type.toString() !== this.args[i].expression.referent.type.toString()) {
                         throw new Error("type of parameter does not match type of argument");

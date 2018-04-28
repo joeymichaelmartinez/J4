@@ -12,6 +12,7 @@
 // const Parameter = require("../ast/parameter");
 const FunctionObject = require("../ast/function-object");
 const J4Object = require("../ast/object-declaration");
+const FunctionType = require("../ast/func-type.js");
 
 class Context {
     constructor({ parent = null, currentFunction = null, inObject = false, inLoop = false } = {}) {
@@ -84,7 +85,8 @@ class Context {
     }
 
     assertIsFunction(entity) { // eslint-disable-line class-methods-use-this
-        if (entity.constructor !== FunctionObject) {
+        let isFunctionType = Object.is(entity.type.constructor, FunctionType);
+        if (entity.constructor !== FunctionObject && !isFunctionType) {
             throw new Error(`${entity.id} is not a function`);
         }
     }
