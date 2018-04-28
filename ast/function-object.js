@@ -1,8 +1,8 @@
 const NamedType = require("../ast/named-type");
 
 module.exports = class FunctionObject {
-    constructor(id, params, type, body) {
-        Object.assign(this, { id, params, type, body });
+    constructor(id, params, returntype, body) {
+        Object.assign(this, { id, params, returntype, body });
         this.returnStmtType = new NamedType("Nothing");
         this.hasParams = true;
     }
@@ -34,8 +34,8 @@ module.exports = class FunctionObject {
         if (this.body) {
             this.body[0].forEach(s => s.analyze(context));//I am not sure why this works
         }
-        //Return statement in body analyzation changes type of function object
-        if (this.type.toString() === "Nothing") {
+        //Return statement in body analyzation changes returnstmttype of function object
+        if (this.returntype.toString() === "Nothing") {
             if (this.returnStmtType.toString() !== "Nothing") {
                 throw new Error("return value given to nonreturning function");
             }
@@ -43,7 +43,7 @@ module.exports = class FunctionObject {
             if (this.returnStmtType.toString() === "Nothing") {
                 throw new Error("no return value given");
             }
-            if (this.returnStmtType.toString() !== this.type.toString()) {
+            if (this.returnStmtType.toString() !== this.returntype.toString()) {
                 throw new Error("return value does not match return type");
             }
         }

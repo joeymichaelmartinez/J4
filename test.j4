@@ -1,3 +1,2 @@
-Number i <- 90
-if i + 90
-    i <- 50
+Function add(x: Number, y: Number) -> Number
+    return x + y
