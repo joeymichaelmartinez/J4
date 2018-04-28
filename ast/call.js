@@ -15,7 +15,7 @@ module.exports = class Call {
                 if (this.args.length < 1) {//require print statments to have at least one argument
                     throw new Error("wrong number of arguments to print statement");
                 }
-                this.callee.type = new NamedType();
+                this.callee.type = new NamedType("Nothing");
             } else if (this.callee.id === "sqrt") {
                 if (this.args.length !== 1) {//require sqrt statments to have one argument
                     throw new Error("wrong number of arguments to sqrt statement");

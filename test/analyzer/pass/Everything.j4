@@ -5,7 +5,7 @@ Function hello() -> Nothing
 
 Function actions(a: Number, b: Number, c: Number) -> Number
   Number x <- 9
-  Boolean y <- true
+  Number y <- 0
   if x < 3 and (y = 9 or 7 * (y % 2) = 20)
     x <- 2
   else if x = 2
