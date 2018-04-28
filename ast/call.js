@@ -2,6 +2,7 @@ const NamedType = require("../ast/named-type");
 const NumberType = require("../ast/number-type");
 const StringType = require("../ast/string-type");
 const FunctionType = require("../ast/func-type");
+const FunctionObject = require("../ast/function-object");
 const SPECIAL_CALLS = ["print" , "sqrt" , "concat"];
 
 module.exports = class Call {
@@ -36,7 +37,6 @@ module.exports = class Call {
                 this.matchFunctionType();
                 this.type = this.callee.referent.type.returnType;
             } else {
-
                 // regular old function call
                 context.assertIsFunction(this.callee.referent);
                 this.matchArgumentsToParams();
@@ -71,10 +71,29 @@ module.exports = class Call {
             }
             for (let i = 0; i < this.args.length; i++) {
                 if (this.args[i].expression.id) {//If we have an id, check its referent
-                    if (currFunc.params[i].type.toString() !== this.args[i].expression.referent.type.toString()) {
+                    if (Object.is(this.args[i].expression.referent.constructor, FunctionObject)) {
+                        //If the current arg is a function object, compare it with the parameter's function object (assuming it exists)
+                        let currArgFuncArgs = this.args[i].expression.referent.params;
+                        let currParamFuncArgs = currFunc.params[i].type.argTypes;
+                        if (
+                            //Check if the current parameter is indeed a function type
+                            !Object.is(currFunc.params[i].type.constructor, FunctionType) ||
+                            currParamFuncArgs.length !== currArgFuncArgs.length
+                            //If the current parameter function's # parameters !== the current arg function's # parameters
+                        ) {
+                            throw new Error("type of parameter does not match type of argument");
+                        }
+                        //Now check that the arguments between the two functions match
+                        for (let i = 0; i < currArgFuncArgs.length; i++) {
+                            if (currArgFuncArgs[i].type.toString() !== currParamFuncArgs[i].type.toString()) {
+                                throw new Error("type of parameter does not match type of argument");
+                            }
+                        }
+                    } else if (currFunc.params[i].type.toString() !== this.args[i].expression.referent.type.toString()) {
+                        //Otherwise, we did not pass a function so just check types
                         throw new Error("type of parameter does not match type of argument");
                     }
-                } else {
+                } else {//ditto here
                     if (currFunc.params[i].type.toString() !== this.args[i].expression.type.toString()) {
                         throw new Error("type of parameter does not match type of argument");
                     }
