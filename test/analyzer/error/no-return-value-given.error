@@ -1,2 +1,3 @@
-Function x() -> String
-    Number x <- 8
+Function test() -> String
+  print("test")
+return "test"

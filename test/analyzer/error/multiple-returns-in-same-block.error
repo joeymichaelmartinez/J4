@@ -1,3 +1,0 @@
-Function test() -> String
-  return "this should be fine"
-  return "this is not fine"

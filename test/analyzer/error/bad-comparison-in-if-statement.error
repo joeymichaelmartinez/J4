@@ -1,2 +1,0 @@
-if 5 and (6 or 7)
-  print("numbers are not booleans")

@@ -7,9 +7,9 @@ module.exports = class ForStatement {
 
     analyze(context) {
         const bodyContext = context.createChildContextForLoop();
-        this.forparam.analyze(context);
-        this.test.analyze(context);
-        this.iteration.analyze(context);
+        this.forparam.analyze(bodyContext);
+        this.test.analyze(bodyContext);
+        this.iteration.analyze(bodyContext);
         this.body.forEach(s => s.analyze(bodyContext));
 
         let testType = (this.test.id)? this.test.referent.type : this.test.type;

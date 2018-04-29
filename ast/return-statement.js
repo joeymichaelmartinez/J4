@@ -5,15 +5,16 @@ module.exports = class ReturnStatement {
 
     analyze(context) {
         context.assertInFunction("return statement outside function");
+        let currFunc = context.currentFunction.function;
         if (this.returnValue === null) {
             return;
         }
         this.returnValue.analyze(context);
         if (this.returnValue.id) {
-            context.currentFunction.function.returnStmtType = this.returnValue.referent.type;
+            currFunc.returnStmtType = this.returnValue.referent.type;
         } else {
             if (this.returnValue.type.toString() !== "Nothing") {
-                context.currentFunction.function.returnStmtType = this.returnValue.type;
+                currFunc.returnStmtType = this.returnValue.type;
             }
         }
     }
