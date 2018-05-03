@@ -37,7 +37,7 @@ const { argv } = require("yargs")
 const fs = require("fs");
 const util = require("util");
 const parse = require("./syntax/parser");
-//require("./backend/javascript-generator");
+require("./backend/javascript-generator");
 
 fs.readFile(argv._[0], "utf-8", (err, text) => {
     if (err) {
@@ -57,5 +57,5 @@ fs.readFile(argv._[0], "utf-8", (err, text) => {
         console.log(util.inspect(program, { depth: null }));//eslint-disable-line no-console
         return;
     }
-    //console.log(program.gen());//eslint-disable-line no-console
+    console.log(program.gen());//eslint-disable-line no-console
 });

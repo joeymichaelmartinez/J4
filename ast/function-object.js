@@ -7,6 +7,10 @@ module.exports = class FunctionObject {
         this.hasParams = true;
     }
 
+    get isExternal() {
+        return !this.function.body;
+    }
+
     analyze(context) {
         // Each parameter will be declared in the function's scope, mixed in
         // with the function's local variables. This is by design.
@@ -35,7 +39,11 @@ module.exports = class FunctionObject {
             this.body[0].forEach(s => s.analyze(context));//I am not sure why this works
         }
         //Return statement in body analyzation changes return type of function object
-        if (this.type.toString() === "Nothing") {
+        // console.log(this);
+        // *** IDK what to put here to make built in functions work
+        if(this.type === null) {
+            // idk what to do here
+        } else if (this.type.toString() === "Nothing") {
             if (this.returnStmtType.toString() !== "Nothing") {
                 throw new Error("return value given to nonreturning function");
             }

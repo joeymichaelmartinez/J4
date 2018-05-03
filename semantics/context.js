@@ -8,8 +8,8 @@
  *   const Context = require('./semantics/context');
  */
 
-// const FunctionDeclaration = require("../ast/function-declaration");
-// const Parameter = require("../ast/parameter");
+const FunctionDeclaration = require("../ast/function-declaration");
+const Parameter = require("../ast/parameter");
 const FunctionObject = require("../ast/function-object");
 const J4Object = require("../ast/object-declaration");
 const FunctionType = require("../ast/func-type.js");
@@ -100,7 +100,7 @@ class Context {
 }
 
 Context.INITIAL = new Context();
-// new FunctionDeclaration("print", [new Parameter("_", null)], null).analyze(Context.INITIAL);
-// new FunctionDeclaration("sqrt", [new Parameter("_", null)], null).analyze(Context.INITIAL);
+new FunctionDeclaration("print", [new Parameter("_", null)], null).analyze(Context.INITIAL);
+new FunctionDeclaration("sqrt", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 
 module.exports = Context;
