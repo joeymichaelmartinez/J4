@@ -100,7 +100,9 @@ class Context {
 }
 
 Context.INITIAL = new Context();
-new FunctionDeclaration("print", [new Parameter("_", null)], null).analyze(Context.INITIAL);
-new FunctionDeclaration("sqrt", [new Parameter("_", null)], null).analyze(Context.INITIAL);
+// J4 DOES NOT USE FUNCTION DECLARATIONS FOR PRINT AND SQRT, EVERYTHING IS HANDLED BY CALL.JS
+// DOING THIS CREATE BUGS IN OUR CODE!!!!!
+// new FunctionDeclaration("print", [new Parameter("_", null)], null).analyze(Context.INITIAL);
+// new FunctionDeclaration("sqrt", [new Parameter("_", null)], null).analyze(Context.INITIAL);
 
 module.exports = Context;

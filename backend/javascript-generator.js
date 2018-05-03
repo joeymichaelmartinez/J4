@@ -12,9 +12,10 @@
  *   program.gen();
  */
 
-const prettyJs = require("pretty-js");
+//const prettyJs = require("pretty-js");
+const SPECIAL_CALLS = ["print" , "sqrt" , "concat"];
 
-const Context = require("../semantics/context");
+//const Context = require("../semantics/context");
 const VariableDeclaration = require("../ast/variable-declaration");
 const Variable = require("../ast/variable");
 const AssignmentStatement = require("../ast/assignment-statement");
@@ -57,7 +58,7 @@ function makeOp(op) {
 //
 // }
 
-// jsName(e) takes any PlainScript object with an id property, such as a
+// jsName(e) takes any J4 object with an id property, such as a
 // Variable, Parameter, or FunctionDeclaration, and produces a JavaScript
 // name by appending a unique indentifying suffix, such as '_1' or '_503'.
 // It uses a cache so it can return the same exact string each time it is
@@ -66,7 +67,7 @@ const jsName = (() => {
     let lastId = 0;
     const map = new Map();
     return (v) => {
-        // console.log(v);
+        //console.log(v);
         if (!(map.has(v))) {
             map.set(v, ++lastId); // eslint-disable-line no-plusplus
         }
@@ -81,17 +82,17 @@ const jsName = (() => {
 function bracketIfNecessary(a) {
     return (a.length === 1) ? `${a}` : `[${a.join(", ")}]`;
 }
-//***Need to add built in functions, I have commented this out because it crashes without any built in functions
-function generateLibraryFunctions() {
-    function generateLibraryStub(name, params, body) {
-        const entity = Context.INITIAL.declarations[name];
-        return `function ${jsName(entity)}(${params}) {${body}}`;
-    }
-    return [
-        generateLibraryStub("print", "_", "console.log(_);"),
-        generateLibraryStub("sqrt", "_", "return Math.sqrt(_);"),
-    ].join("");
-}
+//*** The semantic analyzer is NOT BUILT TO HANDLE built-in functions, everything is handled by call.js
+// function generateLibraryFunctions() {
+//     function generateLibraryStub(name, params, body) {
+//         const entity = Context.INITIAL.declarations[name];
+//         return `function ${jsName(entity)}(${params}) {${body}}`;
+//     }
+//     return [
+//         generateLibraryStub("print", "_", "console.log(_);"),
+//         generateLibraryStub("sqrt", "_", "return Math.sqrt(_);"),
+//     ].join("");//Dont worry about this
+// }
 
 Object.assign(Argument.prototype, {
     gen() { return this.expression.gen(); },
@@ -117,21 +118,29 @@ Object.assign(BreakStatement.prototype, {
     gen() { return "break;"; },
 });
 
-// Object.assign(CallStatement.prototype, {
-//     gen() { return `${this.call.gen()};`; },
-// });
-
 Object.assign(Call.prototype, {
     gen() {
-        // console.log(this);
+        let index = SPECIAL_CALLS.indexOf(this.callee.id);
+        if (index >= 0) {//Check if the id is a special call
+            if (index === 0) {//We have a print statement
+                //throw new Error();
+                return "console.log(\"Test\")";
+            } else if(index === 1) {//We have a sqrt statement
+                return "console.log(\"Test\")";
+            } else if(index === 2) {//We have a concat statement
+                return "console.log(\"Test\")";
+            } else {
+                throw new Error("Special Call not recognized");
+            }
+        }
+        //console.log(this);
         const fun = this.callee.referent;
-        // const fun = this;
-        // console.log(fun);
+        //console.log(fun);
         const params = {};
         const args = Array(this.args.length).fill(undefined);
-        // fun.params.forEach((p, i) => { params[p.id] = i; });
+        fun.params.forEach((p, i) => { params[p.id] = i; });
         this.args.forEach((a, i) => { args[a.isPositionalArgument ? i : params[a.id]] = a; });
-        return `${jsName(fun)}(${args.map(a => (a ? a.gen() : "undefined")).join(", ")})`;
+        return ;//`${jsName(fun)}(${args.map(a => (a ? a.gen() : "undefined")).join(", ")})`;
     },
 });
 
@@ -185,10 +194,11 @@ Object.assign(Parameter.prototype, {
 
 Object.assign(Program.prototype, {
     gen() {
-        const libraryFunctions = generateLibraryFunctions();
+        //const libraryFunctions = generateLibraryFunctions();
+        console.log(this);
         const programStatements = this.statements.map(s => s.gen());
-        const target = `${libraryFunctions}${programStatements.join("")}`;
-        return prettyJs(target, { indent:  " " });
+        //const target = `${libraryFunctions}${programStatements.join("")}`;
+        return programStatements; //prettyJs(target, { indent:  " " });
     },
 });
 
