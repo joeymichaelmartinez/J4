@@ -194,11 +194,8 @@ Object.assign(Parameter.prototype, {
 
 Object.assign(Program.prototype, {
     gen() {
-        //const libraryFunctions = generateLibraryFunctions();
-        console.log(this);
-        const programStatements = this.statements.map(s => s.gen());
-        //const target = `${libraryFunctions}${programStatements.join("")}`;
-        return programStatements; //prettyJs(target, { indent:  " " });
+        this.statements.forEach(statement => statement.gen());
+        //console.log(this);
     },
 });
 
