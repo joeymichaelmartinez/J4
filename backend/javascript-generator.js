@@ -6,23 +6,20 @@
  * Nothing is actually exported from this module.
  *
  * Each gen() method returns a fragment of JavaScript. The gen() method on
- * the program class pretty-prints the complete JavaScript code.
+ * the program class generates the complete JavaScript code.
  *
  *   require('./backend/javascript-generator');
  *   program.gen();
  */
 
-//const prettyJs = require("pretty-js");
 const SPECIAL_CALLS = ["print" , "sqrt" , "concat"];
 
-//const Context = require("../semantics/context");
 const VariableDeclaration = require("../ast/variable-declaration");
 const Variable = require("../ast/variable");
 const AssignmentStatement = require("../ast/assignment-statement");
 const BreakStatement = require("../ast/break-statement");
 const ReturnStatement = require("../ast/return-statement");
 const IfStatement = require("../ast/if-statement");
-// const Case = require("../ast/case");
 const WhileStatement = require("../ast/while-statement");
 const ForStatement = require("../ast/for-statement");
 const FunctionDeclaration = require("../ast/function-declaration");
@@ -31,33 +28,24 @@ const FunctionObject = require("../ast/function-object");
 // const ObjectConstructor = require("../ast/object-constructor");
 const ForParam = require("../ast/for-loop-param");
 const BinaryExpression = require("../ast/binary-expression");
-// const ChainedExpression = require("../ast/chained-expression");
+const ChainedExpression = require("../ast/chained-expression");
 const UnaryExpression = require("../ast/unary-expression");
 const IdentifierExpression = require("../ast/identifier-expression");
 const SubscriptedExpression = require("../ast/subscripted-expression");
 // const dotOperatorExpression = require("../ast/dot-operator-expression");
 const Call = require("../ast/call");
 // const ObjectInstantiation = require("../ast/object-instantiation");
-// const ArrayInstantiation = require("../ast/array-instantiation");
-// const NamedType = require("../ast/named-type");
-// const ArrayType = require("../ast/array-type");
-// const FuncType = require("../ast/func-type");
+const ArrayInstantiation = require("../ast/array-instantiation");
 const Parameter = require("../ast/parameter");
 const Argument = require("../ast/argument");
 const BooleanLiteral = require("../ast/boolean-literal");
 const NumericLiteral = require("../ast/numeric-literal");
 const StringLiteral = require("../ast/string-literal");
-// const BoolType = require("../ast/bool-type");
-// const NumberType = require("../ast/number-type");
-// const StringType = require("../ast/string-type");
 const Program = require("../ast/program");
-function makeOp(op) {
-    return { not: "!", and: "&&", or: "||", "=": "===", "!=": "!==" }[op] || op;
-}
 
-// function makeExponent() {
-//
-// }
+function makeOp(op) {
+    return { not: "!", and: "&&", or: "||", "=": "===", "!=": "!==", "^": "**" }[op] || op;
+}
 
 // jsName(e) takes any J4 object with an id property, such as a
 // Variable, Parameter, or FunctionDeclaration, and produces a JavaScript
@@ -68,7 +56,6 @@ const jsName = (() => {
     let lastId = 0;
     const map = new Map();
     return (v) => {
-        //console.log(v);
         if (!(map.has(v))) {
             map.set(v, ++lastId); // eslint-disable-line no-plusplus
         }
@@ -83,27 +70,26 @@ const jsName = (() => {
 function bracketIfNecessary(a) {
     return (a.length === 1) ? `${a}` : `[${a.join(", ")}]`;
 }
-//*** The semantic analyzer is NOT BUILT TO HANDLE built-in functions, everything is handled by call.js
-// function generateLibraryFunctions() {
-//     function generateLibraryStub(name, params, body) {
-//         const entity = Context.INITIAL.declarations[name];
-//         return `function ${jsName(entity)}(${params}) {${body}}`;
-//     }
-//     return [
-//         generateLibraryStub("print", "_", "console.log(_);"),
-//         generateLibraryStub("sqrt", "_", "return Math.sqrt(_);"),
-//     ].join("");//Dont worry about this
-// }
 
 Object.assign(Argument.prototype, {
-    gen() { return this.expression.gen(); },
+    gen(isInCall) { return this.expression.gen(isInCall); },
 });
 
 Object.assign(AssignmentStatement.prototype, {
-    gen() {
+    gen(isInFor) {
         const targets = this.targets.map(t => t.gen());
         const sources = this.sources.map(s => s.gen());
-        return `${bracketIfNecessary(targets)} = ${bracketIfNecessary(sources)};`;
+        let result = `${bracketIfNecessary(targets)} = ${bracketIfNecessary(sources)}`;
+        if (!isInFor) {
+            result += ";";
+        }
+        return result;
+    },
+});
+
+Object.assign(ArrayInstantiation.prototype, {
+    gen() {
+        return `[${this.elements.map(e => e.gen()).join(", ")}]`;
     },
 });
 
@@ -120,27 +106,36 @@ Object.assign(BreakStatement.prototype, {
 });
 
 Object.assign(Call.prototype, {
-    gen() {
+    gen(isInCall) {
         if (SPECIAL_CALLS.includes(this.callee.id)) {
             if (this.callee.id === "print") {
-                return `console.log(${this.args.map(a => a.gen()).join(", ")});`;
+                return `console.log(${this.args.map(a => a.gen(true)).join(", ")});`;
             } else if (this.callee.id === "sqrt") {
-                return "console.log(\"Test\");";
+                let result = `Math.sqrt(${this.args[0].gen()})`;
+                if (!isInCall) {
+                    result += ";";
+                }
+                return result;
             } else if(this.callee.id === "concat") {
-                return "console.log(\"Test\");";
+                let result = this.args.map(a => a.gen()).join(", ");
+                if (!isInCall) {
+                    result += ";";
+                }
+                return result;
             } else {
                 throw new Error("Special Call not recognized");
             }
         }
-        //console.log(this);
         const fun = this.callee.referent;
-        //console.log(fun);
-        const params = {};
-        const args = Array(this.args.length).fill(undefined);
-        fun.params.forEach((p, i) => { params[p.id] = i; });
-        this.args.forEach((a, i) => { args[a.isPositionalArgument ? i : params[a.id]] = a; });
-        return ;//`${jsName(fun)}(${args.map(a => (a ? a.gen() : "undefined")).join(", ")})`;
+        return `${jsName(fun)}(${this.args.map(a => a.gen()).join(", ")})`;
     },
+});
+
+Object.assign(ChainedExpression.prototype, {
+    gen() {
+        let op = makeOp(this.op);
+        return`(${this.left.gen()} ${op} ${this.right.map(e => e.gen()).join(" " + op + " ")})`;
+    }
 });
 
 Object.assign(FunctionDeclaration.prototype, {
@@ -169,13 +164,6 @@ Object.assign(IfStatement.prototype, {
         return `${cases.join("")}${alternate}}`;
     },
 });
-
-// Object.assign(ListExpression.prototype, {
-//     gen() {
-//         const jsMembers = this.members.map(member => member.gen());
-//         return `[${jsMembers.join(", ")}]`;
-//     },
-// });
 
 Object.assign(NumericLiteral.prototype, {
     gen() { return `${this.value}`; },
@@ -239,23 +227,12 @@ Object.assign(WhileStatement.prototype, {
 
 Object.assign(ForParam.prototype, {
     gen() {
-        // console.log(this);
-        // const targets = this.expression.targets.map(t => t.gen());
-        // const sources = this.sources.map(s => s.gen());
-        let outputString;
-        if (this.type!==null) {
-            outputString = `let ${this.id} = ${this.expression.value}`;
-        }
-
-
-        return outputString;
-        // return ``;
+        return `let ${this.value.gen()} = ${this.expression.gen()}`;
     }
 });
 
 Object.assign(ForStatement.prototype, {
     gen() {
-        // console.log(this);
-        return `for (${this.forparam.gen()}, ${this.test.gen()}, ${this.iteration.gen()}) { ${this.body.map(s => s.gen()).join("")} }`;
+        return `for (${this.forparam.gen()}; ${this.test.gen()}; ${this.iteration.gen(true)}) { ${this.body.map(s => s.gen()).join("")} }`;
     },
 });

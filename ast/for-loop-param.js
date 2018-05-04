@@ -23,7 +23,8 @@ module.exports = class ForParam {
         } else {//Otherwise we are declaring a new value
             this.type.analyze(context);
             this.expression.analyze(context);
-            context.add(new Variable(this.type, this.id, this.expression));
+            this.value = new Variable(this.type, this.id, this.expression);
+            context.add(this.value);
         }
     }
 };
