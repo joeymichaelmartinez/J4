@@ -150,7 +150,7 @@ Object.assign(FunctionDeclaration.prototype, {
 Object.assign(FunctionObject.prototype, {
     gen() {
         return `function ${jsName(this)}(${this.params.map(p => p.gen()).join(", ")}) {
-        ${this.body.map(s => s.map(t => t.gen()).join("\n"))}
+        ${this.body[0].map(s => s.gen()).join("\n")}
     }`;
     },
 });

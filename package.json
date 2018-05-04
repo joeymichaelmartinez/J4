@@ -23,6 +23,13 @@
     "mocha": "^5.0.0"
   },
   "dependencies": {
+    "audio-loader": "^1.0.3",
+    "audio-play": "^2.2.0",
+    "audio-sink": "^1.1.6",
+    "audio-speaker": "^1.5.0",
+    "howler": "^2.0.9",
+    "i": "^0.3.6",
+    "play-sound": "^1.1.2",
     "pretty-js": "^0.2.0",
     "yargs": "^11.0.0"
   }
