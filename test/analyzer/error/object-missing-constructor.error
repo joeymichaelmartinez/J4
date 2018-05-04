@@ -1,8 +1,9 @@
 struct Color
-  Number red, green, blue
+  Number red, green, blue <- 0, 0, 0
 
   Function getColor() -> Number[]
-    return [red, green, blue]
+    Number[] result <- [self.red, self.green, self.blue]
+    return result
 
 Color magenta <- new Color(1.0,0.0,1.0)
 print(magenta.getColor())

@@ -11,5 +11,5 @@ struct Dog
 
 Dog fido <- new Dog("Golden Retriever")
 
-fido.bark()
-fido.retrieve() ~No method called retrieve
+print(fido.bark())
+print(fido.retrieve()) ~No method called retrieve

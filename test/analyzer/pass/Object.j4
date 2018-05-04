@@ -1,10 +1,10 @@
 struct Color
-  Number red, green, blue
+  Number red, green, blue <- 0, 0, 0
 
-  init(red: Number, green: Number, blue: Number)
-    self.red   <- red
-    self.green <- green
-    self.blue  <- blue
+  init(r: Number, g: Number, b: Number)
+    self.red   <- r
+    self.green <- g
+    self.blue  <- b
 
   init(shade: Number)
     self.red   <- shade

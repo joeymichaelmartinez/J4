@@ -1,3 +1,5 @@
+const NamedType = require("../ast/named-type");
+
 // An object declaration creates an object.
 module.exports = class ObjectDeclaration {
     constructor(id, body) {
@@ -44,5 +46,6 @@ module.exports = class ObjectDeclaration {
                 }
             });
         });
+        this.type = new NamedType(this.id);
     }
 };

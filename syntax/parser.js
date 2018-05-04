@@ -110,7 +110,7 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
 
     VarExp_subscripted(v, _1, e, _2) { return new SubscriptedExpression(v.ast(), e.ast()); },
     VarExp_simple(id) { return new IdentifierExpression(id.ast()); },
-    VarExp_dotOperator(v, _1, id, _2, args, _3) { return new dotOperatorExpression(v.ast(), id.ast(), args.ast()); },
+    VarExp_dotOperator(v, _1, id, _2, args, _3) { return new dotOperatorExpression(v.ast(), id.ast(), unpack(args.ast())); },
     Param(id, _, type) { return new Parameter(id.ast(), type.ast()); },
     Arg(exp) { return new Argument(exp.ast()); },
     NonemptyListOf(first, _, rest) { return [first.ast(), ...rest.ast()]; },

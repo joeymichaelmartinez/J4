@@ -1,2 +1,6 @@
-Number x <- 5
-x <- "Cannot change from Number to String"
+struct Color
+  Number red, green, blue <- 0, 0, 0
+  init(r: String, g: String, b: String)
+    self.red   <- r
+    self.green <- g
+    self.blue  <- b
