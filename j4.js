@@ -25,6 +25,7 @@
  * Output of the AST and decorated AST uses the object inspection functionality
  * built into Node.js.
  */
+const player = require("play-sound")({player: "./mplayer/mplayer.exe"});
 
 const { argv } = require("yargs")
     .usage("$0 [-a] [-o] [-i] filename")
@@ -60,4 +61,5 @@ fs.readFile(argv._[0], "utf-8", (err, text) => {
         return;
     }
     console.log(program.gen());//eslint-disable-line no-console
+    player.play("./SoundClips/van-sliding-door-daniel_simon.mp3");
 });

@@ -1,7 +1,1 @@
-Function returnNum(i:Number) -> Nothing
-  i <- 4
-  print(i)
-
-returnNum(4)
-print(1)
-Number x <- 4
+print(5)
