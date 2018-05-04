@@ -118,7 +118,10 @@ Object.assign(Call.prototype, {
                 }
                 return result;
             } else if(this.callee.id === "concat") {
-                let result = this.args.map(a => a.gen()).join(", ");
+                let firstArg = this.args[0];
+                let argsFollowingDotOperator = this.args;
+                argsFollowingDotOperator.splice(0, 1);
+                let result = `${firstArg.gen()}.concat(${argsFollowingDotOperator.map(a => a.gen()).join(", ")})`;
                 if (!isInCall) {
                     result += ";";
                 }
@@ -128,7 +131,11 @@ Object.assign(Call.prototype, {
             }
         }
         const fun = this.callee.referent;
-        return `${jsName(fun)}(${this.args.map(a => a.gen()).join(", ")})`;
+        let result = `${jsName(fun)}(${this.args.map(a => a.gen(true)).join(", ")})`;
+        if(!isInCall) {
+            result += ";";
+        }
+        return result;
     },
 });
 
@@ -146,7 +153,7 @@ Object.assign(FunctionDeclaration.prototype, {
 Object.assign(FunctionObject.prototype, {
     gen() {
         return `function ${jsName(this)}(${this.params.map(p => p.gen()).join(", ")}) {
-        ${this.body[0].map(s => s.gen()).join("\n")}
+        ${this.body.map(s => s.gen()).join("\n")}
     }`;
     },
 });
