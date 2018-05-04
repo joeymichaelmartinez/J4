@@ -1,6 +1,7 @@
-Function isZero(x: Number) -> Boolean
-  if x = 0
-    return true
-  return false ~I know this looks terrible, but it is suppose to test for correctly used conditional returns
+Function fibonacci(num: Number) -> Number
+  if num <= 1
+    return 1
 
-print(isZero(0))
+  return fibonacci(num - 1) + fibonacci(num - 2)
+
+fibonacci(8)
