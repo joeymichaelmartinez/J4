@@ -38,7 +38,7 @@ const SubscriptedExpression = require("../ast/subscripted-expression");
 // const dotOperatorExpression = require("../ast/dot-operator-expression");
 const Call = require("../ast/call");
 // const ObjectInstantiation = require("../ast/object-instantiation");
-// const ArrayInstantiation = require("../ast/array-instantiation");
+const ArrayInstantiation = require("../ast/array-instantiation");
 // const NamedType = require("../ast/named-type");
 // const ArrayType = require("../ast/array-type");
 // const FuncType = require("../ast/func-type");
@@ -96,6 +96,12 @@ Object.assign(AssignmentStatement.prototype, {
     },
 });
 
+Object.assign(ArrayInstantiation.prototype, {
+    gen() {
+        
+    },
+});
+
 Object.assign(BinaryExpression.prototype, {
     gen() { return `(${this.left.gen()} ${makeOp(this.op)} ${this.right.gen()})`; },
 });
@@ -121,14 +127,10 @@ Object.assign(Call.prototype, {
                 throw new Error("Special Call not recognized");
             }
         }
-        //console.log(this);
         const fun = this.callee.referent;
-        //console.log(fun);
-        const params = {};
-        const args = Array(this.args.length).fill(undefined);
-        fun.params.forEach((p, i) => { params[p.id] = i; });
-        this.args.forEach((a, i) => { args[a.isPositionalArgument ? i : params[a.id]] = a; });
-        return ;//`${jsName(fun)}(${args.map(a => (a ? a.gen() : "undefined")).join(", ")})`;
+        // console.log(fun);
+        // console.log(this);
+        return `${jsName(fun)}(${this.args.map(a => a.gen()).join(", ")})`;
     },
 });
 

@@ -7,7 +7,7 @@ module.exports = class DotOperatorExpression {
         this.variable.analyze(context);
         this.id.analyze(context);
         this.args.analyze(context);
-        //*** TODO:
+        //*** TODO:implement objects
     }
 
     // optimize() {

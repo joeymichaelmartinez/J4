@@ -1,7 +1,12 @@
-Function returnNum(i:Number) -> Nothing
-  i <- 4
-  print(i)
+Function printShit(s: String, n: Number, b: Boolean, which: Number) -> Nothing
+  if which = 0
+    print(s)
+  else if which = 1
+    print(n)
+  else if which = 2
+    print(b)
+  else
+    print("WTF are you doing?")
 
-returnNum(4)
-print(1)
-Number x <- 4
+~String[] fart <- ["fart"]
+printShit("fart", 3, true, 823)
