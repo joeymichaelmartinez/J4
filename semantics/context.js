@@ -17,9 +17,9 @@ class Context {
         Object.assign(this, { parent, currentFunction, inObject, inLoop, declarations: Object.create(null) });
     }
 
-    createChildContextForFunctionBody(currentFunction) {
+    createChildContextForFunctionBody(currentFunction, isInObject) {
         // When entering a new function, we're not in a loop anymore
-        return new Context({ parent: this, currentFunction, inObject: false, inLoop: false });
+        return new Context({ parent: this, currentFunction, inObject: isInObject, inLoop: false });
     }
 
     createChildContextForLoop() {
@@ -37,6 +37,7 @@ class Context {
         return new Context({
             parent: this,
             currentFunction: this.currentFunction,
+            inObject: false,//Only constructors care if they are in an object
             inLoop: this.inLoop,
         });
     }
@@ -67,9 +68,10 @@ class Context {
     // Returns the entity bound to the given identifier, starting from this
     // context and searching "outward" through enclosing contexts if necessary.
     lookup(id) {
+        let isAtTopLevelObjectScope = this.inObject && (!this.currentFunction);
         if (id in this.declarations) {
             return this.declarations[id];
-        } else if (this.parent === null || this.inObject) {
+        } else if (this.parent === null || isAtTopLevelObjectScope) {
             throw new Error(`identifier ${id} not declared`);
         } else {
             return this.parent.lookup(id);
@@ -80,6 +82,20 @@ class Context {
         if (!this.currentFunction) {
             throw new Error(message);
         }
+    }
+
+    isInFunction() {
+        return !!this.currentFunction;//convert to boolean
+    }
+
+    assertInObject(message) {
+        if (!this.inObject) {
+            throw new Error(message);
+        }
+    }
+
+    isInObject() {
+        return this.inObject;
     }
 
     assertIsFunction(entity) { // eslint-disable-line class-methods-use-this

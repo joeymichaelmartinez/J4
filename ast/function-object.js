@@ -36,7 +36,7 @@ module.exports = class FunctionObject {
         // variable with the same name as the function inside the function, you'll
         // shadow it, which would probably be not a good idea.
         if (this.body) {
-            this.body[0].forEach(s => s.analyze(context));//I am not sure why this works
+            this.body.forEach(s => s.analyze(context));//I am not sure why this works
         }
         //Return statement in body analyzation changes return type of function object
         // console.log(this);

@@ -74,10 +74,10 @@ const astGenerator = grammar.createSemantics().addOperation("ast", {
         return new IfStatement(cases, unpack(lastSuite.ast()));
     },
     Stmt_functionDec(_1, id, _2, params, _3, _4, type, suite) {
-        return new FunctionDeclaration(id.ast(), params.ast(), type.ast(), suite.ast());
+        return new FunctionDeclaration(id.ast(), params.ast(), type.ast(), unpack(suite.ast()));
     },
     Stmt_struct(_1, id, suite){ return new ObjectDeclaration(id.ast(), suite.ast()); },
-    Stmt_init(_1, _2, params, _3, suite){ return new ObjectConstructor(params.ast(), suite.ast()); },
+    Stmt_objconstr(_1, _2, params, _3, suite){ return new ObjectConstructor(params.ast(), unpack(suite.ast())); },
     SimpleStmt_vardeclAndAssign(type, v, _, e) {
         return new VariableDeclaration(type.ast(), v.ast(), e.ast());
     },

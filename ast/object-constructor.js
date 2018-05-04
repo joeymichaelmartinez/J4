@@ -6,8 +6,10 @@ module.exports = class ObjectConstructor {
         this.suite = suite;
     }
 
-    analyze() {
-    // *** create context for Object
-    // *** add suite to context
+    analyze(context, object) {
+        context.assertInObject("constructor declared outside object");
+        this.params.forEach(p => p.analyze(context));
+        this.suite.forEach(s => s.analyze(context));
+        object.constructors.push(this);
     }
 };

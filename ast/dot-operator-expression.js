@@ -4,10 +4,17 @@ module.exports = class DotOperatorExpression {
     }
 
     analyze(context) {
-        this.variable.analyze(context);
-        this.id.analyze(context);
-        this.args.analyze(context);
-        //*** TODO:implement objects
+        this.referent = context.lookup(this.id);
+        this.type = this.referent.type;
+        if (this.variable.id === "self") {
+            context.assertInObject("self dot operation outside of object");
+            if (this.args.length !== 0) {
+                throw new Error("self dot operation contains arguments");
+            }
+        } else {
+            this.variable.analyze(context);
+            this.args.analyze(context);
+        }
     }
 
     // optimize() {

@@ -1,7 +1,19 @@
-Function fibonacci(num: Number) -> Number
-  if num <= 1
-    return 1
+struct Color
+  Number red, green, blue <- 0.0, 0.0, 0.0
 
-  return fibonacci(num - 1) + fibonacci(num - 2)
+  init(r: Number, g: Number, b: Number)
+    self.red   <- r
+    self.green <- g
+    self.blue  <- b
 
-fibonacci(8)
+  init(shade: Number)
+    self.red   <- shade
+    self.green <- shade
+    self.blue  <- shade
+
+  Function getColor(Nothing) -> Number[]
+    Number[] rgb <- [self.red, self.green, self.blue]
+    return rgb
+
+Color magenta <- new Color(1.0,0.0,1.0)
+Color halfGray <- new Color(0.5)

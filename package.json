@@ -5,7 +5,7 @@
   "main": "README.md",
   "scripts": {
     "pretest": "eslint **/*.js --ignore-pattern node_modules/",
-    "test": "mocha test/generator/generator-test.js"
+    "test": "mocha **/*-test.js"
   },
   "repository": {
     "type": "git",
