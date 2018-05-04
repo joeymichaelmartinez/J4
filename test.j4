@@ -1,2 +1,7 @@
-for Number i <- 1, i < 10, i <- i + 1
-    print(i)
+Function returnNum(i:Number) -> Nothing
+  i <- 4
+  print(i)
+
+returnNum(4)
+print(1)
+Number x <- 4

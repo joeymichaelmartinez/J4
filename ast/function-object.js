@@ -41,9 +41,7 @@ module.exports = class FunctionObject {
         //Return statement in body analyzation changes return type of function object
         // console.log(this);
         // *** IDK what to put here to make built in functions work
-        if(this.type === null) {
-            // idk what to do here
-        } else if (this.type.toString() === "Nothing") {
+        if (this.type.toString() === "Nothing") {
             if (this.returnStmtType.toString() !== "Nothing") {
                 throw new Error("return value given to nonreturning function");
             }
