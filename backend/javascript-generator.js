@@ -26,6 +26,7 @@ const IfStatement = require("../ast/if-statement");
 const WhileStatement = require("../ast/while-statement");
 const ForStatement = require("../ast/for-statement");
 const FunctionDeclaration = require("../ast/function-declaration");
+const FunctionObject = require("../ast/function-object");
 // const ObjectDeclaration = require("../ast/object-declaration");
 // const ObjectConstructor = require("../ast/object-constructor");
 const ForParam = require("../ast/for-loop-param");
@@ -135,13 +136,13 @@ Object.assign(FunctionDeclaration.prototype, {
     gen() { return this.function.gen(); },
 });
 
-// Object.assign(FunctionObject.prototype, {
-//     gen() {
-//         return `function ${jsName(this)}(${this.params.map(p => p.gen()).join(", ")}) {
-//         ${this.body.map(s => s.gen()).join("")}
-//     }`;
-//     },
-// });
+Object.assign(FunctionObject.prototype, {
+    gen() {
+        return `function ${jsName(this)}(${this.params.map(p => p.gen()).join(", ")}) {
+        ${this.body.map(s => s.map(t => t.gen()).join("\n"))}
+    }`;
+    },
+});
 
 Object.assign(IdentifierExpression.prototype, {
     gen() { return this.referent.gen(); },
