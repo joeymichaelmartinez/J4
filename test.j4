@@ -1,12 +1,1 @@
-Function printShit(s: String, n: Number, b: Boolean, which: Number) -> Nothing
-  if which = 0
-    print(s)
-  else if which = 1
-    print(n)
-  else if which = 2
-    print(b)
-  else
-    print("WTF are you doing?")
-
-~String[] fart <- ["fart"]
-printShit("fart", 3, true, 823)
+print(sqrt(25))
