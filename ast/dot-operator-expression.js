@@ -18,8 +18,12 @@ module.exports = class DotOperatorExpression {
             this.args.forEach(a => {
                 a.analyze(context);
             });
+            let lookup = context.lookup(this.variable.id).value.id;
+            if (lookup === undefined) {
+                throw new Error(`identifier ${this.variable.id} is not an object`);
+            }
             this.findMethodInObject(
-                (context.lookup(this.variable.id).value.id.referent),
+                lookup.referent,
                 this.id,
                 this.args
             );
