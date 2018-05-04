@@ -7,7 +7,7 @@ module.exports = class ForStatement {
 
     analyze(context) {
         const bodyContext = context.createChildContextForLoop();
-        this.forparam.analyze(bodyContext);
+        this.forparam.analyze(bodyContext);//forparam creates needed variable
         this.test.analyze(bodyContext);
         this.iteration.analyze(bodyContext);
         this.body.forEach(s => s.analyze(bodyContext));

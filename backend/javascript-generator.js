@@ -82,17 +82,6 @@ const jsName = (() => {
 function bracketIfNecessary(a) {
     return (a.length === 1) ? `${a}` : `[${a.join(", ")}]`;
 }
-//*** The semantic analyzer is NOT BUILT TO HANDLE built-in functions, everything is handled by call.js
-// function generateLibraryFunctions() {
-//     function generateLibraryStub(name, params, body) {
-//         const entity = Context.INITIAL.declarations[name];
-//         return `function ${jsName(entity)}(${params}) {${body}}`;
-//     }
-//     return [
-//         generateLibraryStub("print", "_", "console.log(_);"),
-//         generateLibraryStub("sqrt", "_", "return Math.sqrt(_);"),
-//     ].join("");//Dont worry about this
-// }
 
 Object.assign(Argument.prototype, {
     gen() { return this.expression.gen(); },
@@ -102,7 +91,7 @@ Object.assign(AssignmentStatement.prototype, {
     gen() {
         const targets = this.targets.map(t => t.gen());
         const sources = this.sources.map(s => s.gen());
-        return `${bracketIfNecessary(targets)} = ${bracketIfNecessary(sources)};`;
+        return `${bracketIfNecessary(targets)} = ${bracketIfNecessary(sources)}`;
     },
 });
 
@@ -169,13 +158,6 @@ Object.assign(IfStatement.prototype, {
     },
 });
 
-// Object.assign(ListExpression.prototype, {
-//     gen() {
-//         const jsMembers = this.members.map(member => member.gen());
-//         return `[${jsMembers.join(", ")}]`;
-//     },
-// });
-
 Object.assign(NumericLiteral.prototype, {
     gen() { return `${this.value}`; },
 });
@@ -238,23 +220,13 @@ Object.assign(WhileStatement.prototype, {
 
 Object.assign(ForParam.prototype, {
     gen() {
-        // console.log(this);
-        // const targets = this.expression.targets.map(t => t.gen());
-        // const sources = this.sources.map(s => s.gen());
-        let outputString;
-        if (this.type!==null) {
-            outputString = `let ${this.id} = ${this.expression.value}`;
-        }
-
-
-        return outputString;
-        // return ``;
+        return `let ${this.value.gen()} = ${this.expression.gen()}`;
     }
 });
 
 Object.assign(ForStatement.prototype, {
     gen() {
         // console.log(this);
-        return `for (${this.forparam.gen()}, ${this.test.gen()}, ${this.iteration.gen()}) { ${this.body.map(s => s.gen()).join("")} }`;
+        return `for (${this.forparam.gen()}; ${this.test.gen()}; ${this.iteration.gen()}) { ${this.body.map(s => s.gen()).join("")} }`;
     },
 });
