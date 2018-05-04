@@ -28,7 +28,7 @@ const FunctionObject = require("../ast/function-object");
 // const ObjectConstructor = require("../ast/object-constructor");
 const ForParam = require("../ast/for-loop-param");
 const BinaryExpression = require("../ast/binary-expression");
-// const ChainedExpression = require("../ast/chained-expression");
+const ChainedExpression = require("../ast/chained-expression");
 const UnaryExpression = require("../ast/unary-expression");
 const IdentifierExpression = require("../ast/identifier-expression");
 const SubscriptedExpression = require("../ast/subscripted-expression");
@@ -129,6 +129,13 @@ Object.assign(Call.prototype, {
         const fun = this.callee.referent;
         return `${jsName(fun)}(${this.args.map(a => a.gen()).join(", ")})`;
     },
+});
+
+Object.assign(ChainedExpression.prototype, {
+    gen() {
+        let op = makeOp(this.op);
+        return`(${this.left.gen()} ${op} ${this.right.map(e => e.gen()).join(" " + op + " ")})`;
+    }
 });
 
 Object.assign(FunctionDeclaration.prototype, {

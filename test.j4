@@ -1,1 +1,1 @@
-print(concat("hello", "hi"))
+print(true and false and true and (true or false))
