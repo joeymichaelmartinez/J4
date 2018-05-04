@@ -120,15 +120,13 @@ Object.assign(BreakStatement.prototype, {
 
 Object.assign(Call.prototype, {
     gen() {
-        let index = SPECIAL_CALLS.indexOf(this.callee.id);
-        if (index >= 0) {//Check if the id is a special call
-            if (index === 0) {//We have a print statement
-                //throw new Error();
-                return "console.log(\"Test\")";
-            } else if(index === 1) {//We have a sqrt statement
-                return "console.log(\"Test\")";
-            } else if(index === 2) {//We have a concat statement
-                return "console.log(\"Test\")";
+        if (SPECIAL_CALLS.includes(this.callee.id)) {
+            if (this.callee.id === "print") {
+                return `console.log(${this.args.map(a => a.gen()).join(", ")});`;
+            } else if (this.callee.id === "sqrt") {
+                return "console.log(\"Test\");";
+            } else if(this.callee.id === "concat") {
+                return "console.log(\"Test\");";
             } else {
                 throw new Error("Special Call not recognized");
             }
@@ -194,8 +192,7 @@ Object.assign(Parameter.prototype, {
 
 Object.assign(Program.prototype, {
     gen() {
-        this.statements.forEach(statement => statement.gen());
-        //console.log(this);
+        return this.statements.map(statement => statement.gen()).join("\n");
     },
 });
 
