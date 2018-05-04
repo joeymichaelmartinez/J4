@@ -5,7 +5,7 @@
   "main": "README.md",
   "scripts": {
     "pretest": "eslint **/*.js --ignore-pattern node_modules/",
-    "test": "mocha test/*/*/*test.js"
+    "test": "mocha test/generator/generator-test.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "audio-speaker": "^1.5.0",
     "howler": "^2.0.9",
     "i": "^0.3.6",
+    "node-mp3-player": "^1.0.3",
     "play-sound": "^1.1.2",
     "pretty-js": "^0.2.0",
     "yargs": "^11.0.0"

@@ -4,3 +4,5 @@ Function test(x: Number) -> Number
     x <- 2
     return x^y
   return 1
+
+test(0)
