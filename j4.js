@@ -26,7 +26,6 @@
  * Output of the AST and decorated AST uses the object inspection functionality
  * built into Node.js.
  */
-const player = require("play-sound")({player: "./mplayer/mplayer.exe"});
 const soundsDir = "./SoundClips";
 
 const { argv } = require("yargs")
@@ -71,6 +70,5 @@ function playSound() {
     fs.readdir(soundsDir, (err, files) => {
         let whichFile = Math.floor(Math.random() * files.length);
         let soundFile = soundsDir + "/" + files[whichFile];
-        player.play(soundFile);
     });
 }
