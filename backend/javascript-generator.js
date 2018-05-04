@@ -13,6 +13,7 @@
  */
 
 const SPECIAL_CALLS = ["print" , "sqrt" , "concat"];
+const prettyJs = require("pretty-js");
 
 const VariableDeclaration = require("../ast/variable-declaration");
 const Variable = require("../ast/variable");
@@ -181,7 +182,7 @@ Object.assign(Parameter.prototype, {
 
 Object.assign(Program.prototype, {
     gen() {
-        return this.statements.map(statement => statement.gen()).join("\n");
+        return prettyJs(this.statements.map(statement => statement.gen()).join("\n"), { indent: "   "});
     },
 });
 

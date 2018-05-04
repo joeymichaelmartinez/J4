@@ -21,6 +21,7 @@
  *
  * NOTE FOR WINDOWS USERS: node j4.js -i filename.js
  * This is an example of how you should run this on windows command prompt
+ * NOTE you can pipe output directly into node to run directly
  *
  * Output of the AST and decorated AST uses the object inspection functionality
  * built into Node.js.
