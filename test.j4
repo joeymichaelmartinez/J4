@@ -1,2 +1,2 @@
-print(5)
-print(5)
+for Number i <- 1, i < 10, i <- i + 1
+    print(i)
