@@ -5,7 +5,7 @@
   "main": "README.md",
   "scripts": {
     "pretest": "eslint **/*.js --ignore-pattern node_modules/",
-    "test": "mocha test/*/*/*test.js"
+    "test": "mocha test/generator/generator-test.js"
   },
   "repository": {
     "type": "git",
@@ -23,10 +23,6 @@
     "mocha": "^5.0.0"
   },
   "dependencies": {
-    "mplayer": "^2.1.0",
-    "nan": "^2.10.0",
-    "node-lame": "^1.1.0",
-    "play-sound": "^1.1.2",
     "pretty-js": "^0.2.0",
     "yargs": "^11.0.0"
   }

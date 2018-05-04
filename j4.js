@@ -26,7 +26,7 @@
  * Output of the AST and decorated AST uses the object inspection functionality
  * built into Node.js.
  */
-const soundsDir = "./SoundClips";
+//const soundsDir = "./SoundClips";
 
 const { argv } = require("yargs")
     .usage("$0 [-a] [-o] [-i] filename")
@@ -62,13 +62,13 @@ fs.readFile(argv._[0], "utf-8", (err, text) => {
         return;
     }
     console.log(program.gen());//eslint-disable-line no-console
-    playSound();
+    //playSound();
 });
 
 //Randomly chooses a sound file from sound clips directory and plays it
-function playSound() {
-    fs.readdir(soundsDir, (err, files) => {
-        let whichFile = Math.floor(Math.random() * files.length);
-        let soundFile = soundsDir + "/" + files[whichFile];
-    });
-}
+// function playSound() {
+//     fs.readdir(soundsDir, (err, files) => {
+//         let whichFile = Math.floor(Math.random() * files.length);
+//         let soundFile = soundsDir + "/" + files[whichFile];
+//     });
+// }
