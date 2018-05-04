@@ -18,8 +18,38 @@ module.exports = class DotOperatorExpression {
             this.args.forEach(a => {
                 a.analyze(context);
             });
+            this.findMethodInObject(
+                (context.lookup(this.variable.id).value.id.referent),
+                this.id,
+                this.args
+            );
         }
-        //console.log(this);
+    }
+
+    findMethodInObject(object, id, args) {
+        let hasNoMatch = true;
+        //Search through each statement in object
+        for (let i = 0; i < object.body.length; i++) {
+            let s = object.body[i];
+            //if we find a function with the right id
+            if (s.id === id) {
+                let params = s.function.params;
+                //check that args and parameters map to each other
+                if (params.length !== args.length) {
+                    throw new Error("method call arguments does not match method parameters");
+                }
+                //now check that our types match
+                for (let j = 0; j < params.length; j++) {
+                    if(params[j].type.toString() !== args[j].type.toString()) {
+                        throw new Error("type of method call argument does not match method call parameter");
+                    }
+                }
+                hasNoMatch = false;
+            }
+        }
+        if (hasNoMatch) {
+            throw new Error(`method ${id} not found`);
+        }
     }
 
     // optimize() {

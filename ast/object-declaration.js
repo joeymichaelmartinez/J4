@@ -15,6 +15,10 @@ module.exports = class ObjectDeclaration {
         //Each constructor adds itself to constructors
         //Ditto for fields
         this.body.forEach(s => s.analyze(bodyContext, this));
+
+        if(this.constructors.length === 0) {
+            throw new Error("object missing constructor");
+        }
         //Now we need to check if self dot operations match with fields
         this.constructors.forEach(c => {
             c.suite.forEach(s => {
