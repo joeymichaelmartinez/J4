@@ -153,8 +153,8 @@ Object.assign(FunctionDeclaration.prototype, {
 Object.assign(FunctionObject.prototype, {
     gen() {
         return `function ${jsName(this)}(${this.params.map(p => p.gen()).join(", ")}) {
-        ${this.body.map(s => s.gen()).join("\n")}
-    }`;
+            ${this.body.map(s => s.gen()).join("\n")}
+        }`;
     },
 });
 
@@ -178,7 +178,28 @@ Object.assign(NumericLiteral.prototype, {
 });
 
 Object.assign(ObjectDeclaration.prototype, {
-    gen() { return""; }
+    gen() {
+        let fields = "";
+        for (let i = 0; i < this.fields.length; i++) {
+            fields += `let ${this.fields[i].gen()} = `;
+            fields += `${this.fields[i].value.gen()};\n`;
+        }
+        return`class ${jsName(this)} { ${fields} };`;
+    },
+});
+
+Object.assign(ObjectConstructor.prototype, {
+    gen() {
+        return `constructor(${
+            this.params.map(p => p.gen()).join(", ")
+        }) {${this.suite.map(s => s.gen()).join("\n")}}`;
+    },
+});
+
+Object.assign(ObjectInstantiation.prototype, {
+    gen() {
+        return `new ${jsName(this.id.referent)}(${this.args.map(a => a.gen()).join(", ")})`;
+    },
 });
 
 Object.assign(Parameter.prototype, {
