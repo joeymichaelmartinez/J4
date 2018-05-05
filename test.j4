@@ -1,8 +1,19 @@
-Function test(x: Number) -> Number
-  Number y <- 7
-  if x = 0
-    x <- 2
-    return x^y
-  return 1
+struct Color
+  Number red, green, blue <- 0, 0, 0
 
-test(0)
+  init(r: Number, g: Number, b: Number)
+    self.red   <- r
+    self.green <- g
+    self.blue  <- b
+
+  init(shade: Number)
+    self.red   <- shade
+    self.green <- shade
+    self.blue  <- shade
+
+  Function getColor(Nothing) -> Number[]
+    Number[] rgb <- [self.red, self.green, self.blue]
+    return rgb
+
+Color magenta <- new Color(1.0, 0.0, 1.0)
+Color halfGray <- new Color(0.5)

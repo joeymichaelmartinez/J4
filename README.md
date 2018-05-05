@@ -1,20 +1,19 @@
 <img src = "J4 Icon.png" alt = "J4 Logo" width = 400 />
 
 ## Introduction
-J4 does away with verbose, unreadable code and replaces it with a readable, understandable coding language that avoids extraneous information and typing. This is made possible with whitespace matching and utilizing rules and syntax that emphasize the flow of information. Along with these leaps forward in code structure, J4 simplifies coding conventions by handling the minutia of memory management and reinventing the outdated and arbitrary rules present in other languages.
+J4 does away with verbose, unreadable code and replaces it with a readable, understandable coding language that standardizes meaningful, beautiful code. This is made possible with whitespace matching and utilizing semantics that emphasize the flow of information. Along with these leaps forward in code structure, J4 simplifies coding conventions by handling the minutia of memory management and reinventing the outdated and arbitrary rules present in other languages.
 
 J4 pulls inspiration from Swift, ELM, Python, and Lua
 
 ## Features
 * .j4 File Extension
 * Whitespace Sensitive
-* Simple Matching
-* Object-oriented
+* Easy Array Creation
+* Powerful Object
 * First Class Functions
 * Higher Order Functions
 * Static Typing
 * Strong Typing
-* Optional Parameters
 
 ### Operators
 
@@ -30,8 +29,8 @@ J4 pulls inspiration from Swift, ELM, Python, and Lua
 * Boolean: `true`, `false`
 * String: `“a”`, `“hello world”`, `“\“We have escape characters!\””`
 * Function: `addOne(x)`
-* Array: [`“a”`, `false`, `8.0`, `hello world”`]
-* Object: `{name:“Sally”, age:25, getName(), getAge()}`
+* Array: [`“Martinez”`, `"Goocher"`, `"Hardy"`, `"Watkins”`]
+* Object: `{name:“Sally”, age:25, delete(), duplicate()}`
 * Comments: `~ Single line comment`
             `(~ Multi line comment ~)`
 
@@ -42,14 +41,8 @@ __Variable Declarations__
 
 ```
 String name <- "j4"                               let name = “j4”
-Number age <- 1                                   var age = 1
+Number age <- 1                                   let age = 1
 Boolean hasArrows <- true                         let hasArrows = true
-```
-
-__Constant Declarations__
-
-```
-Const Number PI <- 3.14159265359                   const PI = 3.14159265359
 ```
 
 __Arithmetic__
