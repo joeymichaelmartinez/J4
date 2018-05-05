@@ -23,6 +23,7 @@
     "mocha": "^5.0.0"
   },
   "dependencies": {
+    "js-beautify": "^1.7.5",
     "pretty-js": "^0.2.0",
     "yargs": "^11.0.0"
   }

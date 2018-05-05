@@ -13,7 +13,7 @@
  */
 
 const SPECIAL_CALLS = ["print" , "sqrt" , "concat"];
-const prettyJs = require("pretty-js");
+const beautifyJs = require("js-beautify");
 
 const VariableDeclaration = require("../ast/variable-declaration");
 const Variable = require("../ast/variable");
@@ -100,7 +100,7 @@ Object.assign(ArrayInstantiation.prototype, {
 });
 
 Object.assign(BinaryExpression.prototype, {
-    gen() { return `(${this.left.gen()} ${makeOp(this.op)} ${this.right.gen()})`; },
+    gen() { return `(${this.left.gen(true)} ${makeOp(this.op)} ${this.right.gen(true)})`; },
 });
 
 Object.assign(BooleanLiteral.prototype, {
@@ -249,13 +249,13 @@ Object.assign(Parameter.prototype, {
 
 Object.assign(Program.prototype, {
     gen() {
-        return prettyJs(this.statements.map(statement => statement.gen()).join("\n"), { indent: "   "});
+        return beautifyJs(this.statements.map(statement => statement.gen()).join("\n"), { indent: "   "});
     },
 });
 
 Object.assign(ReturnStatement.prototype, {
     gen() {
-        return `return ${this.returnValue ? this.returnValue.gen() : ""};`;
+        return `return ${this.returnValue ? this.returnValue.gen(true) : ""};`;
     },
 });
 
