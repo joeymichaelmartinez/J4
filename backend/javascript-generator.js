@@ -33,7 +33,11 @@ const ChainedExpression = require("../ast/chained-expression");
 const UnaryExpression = require("../ast/unary-expression");
 const IdentifierExpression = require("../ast/identifier-expression");
 const SubscriptedExpression = require("../ast/subscripted-expression");
+<<<<<<< HEAD
 // const dotOperatorExpression = require("../ast/dot-operator-expression");
+=======
+const DotOperatorExpression = require("../ast/dot-operator-expression");
+>>>>>>> 59d1c20580ce19b558296d954ef57b918ec7e3e3
 const Call = require("../ast/call");
 const ObjectInstantiation = require("../ast/object-instantiation");
 const ArrayInstantiation = require("../ast/array-instantiation");
@@ -78,9 +82,14 @@ Object.assign(Argument.prototype, {
 
 Object.assign(AssignmentStatement.prototype, {
     gen(isInFor) {
+        let initialVal = "";
+        if (this.targets[0].variable.id === "self") {
+            initialVal = ` || ${this.targets[0].referent.value.value}`;
+        }
+
         const targets = this.targets.map(t => t.gen());
         const sources = this.sources.map(s => s.gen());
-        let result = `${bracketIfNecessary(targets)} = ${bracketIfNecessary(sources)}`;
+        let result = `${bracketIfNecessary(targets)} = ${bracketIfNecessary(sources)}${initialVal}`;
         if (!isInFor) {
             result += ";";
         }
@@ -151,10 +160,20 @@ Object.assign(FunctionDeclaration.prototype, {
 });
 
 Object.assign(FunctionObject.prototype, {
-    gen() {
-        return `function ${jsName(this)}(${this.params.map(p => p.gen()).join(", ")}) {
-            ${this.body.map(s => s.gen()).join("\n")}
-        }`;
+    gen(isMethod) {
+        let params = "";
+        if (this.params !== "Nothing") {
+            params = this.params.map(p => p.gen()).join(", ");
+        }
+        if (isMethod) {
+            return `${jsName(this)}(${params}) {
+                ${this.body.map(s => s.gen()).join("\n")}
+            }`;
+        } else {
+            return `function ${jsName(this)}(${params}) {
+                ${this.body.map(s => s.gen()).join("\n")}
+            }`;
+        }
     },
 });
 
@@ -177,22 +196,42 @@ Object.assign(NumericLiteral.prototype, {
     gen() { return `${this.value}`; },
 });
 
+Object.assign(DotOperatorExpression.prototype, {
+    gen() {
+        if (this.variable.id === "self") {
+            return`this.${jsName(this.referent)}`;
+        } else {
+            let methods = this.referent.value.id.referent.methods;
+            let method;
+            for (let i = 0; i < methods.length; i++) {
+                if (methods[i].id === this.id) {
+                    method = methods[i];
+                }
+            }
+            return`${jsName(this.referent)}.${jsName(method)}(${this.args.map(a => a.gen()).join(", ")})`;
+        }
+    }
+});
+
 Object.assign(ObjectDeclaration.prototype, {
     gen() {
-        let fields = "";
-        for (let i = 0; i < this.fields.length; i++) {
-            fields += `let ${this.fields[i].gen()} = `;
-            fields += `${this.fields[i].value.gen()};\n`;
+        let constructor = this.constructor.gen() + "\n";
+        let methods = "";
+        for(let i = 0; i < this.methods.length; i++) {
+            methods += this.methods[i].gen(true) + "\n";
         }
-        return`class ${jsName(this)} { ${fields} };`;
+        return`class ${jsName(this)} {
+            ${constructor}
+            ${methods}
+        };`;
     },
 });
 
 Object.assign(ObjectConstructor.prototype, {
     gen() {
-        return `constructor(${
-            this.params.map(p => p.gen()).join(", ")
-        }) {${this.suite.map(s => s.gen()).join("\n")}}`;
+        return `constructor(${this.params.map(p => p.gen()).join(", ")}) {
+            ${this.suite.map(s => s.gen()).join("\n")}
+        }`;
     },
 });
 

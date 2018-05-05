@@ -10,6 +10,9 @@ module.exports = class ObjectConstructor {
         context.assertInObject("constructor declared outside object");
         this.params.forEach(p => p.analyze(context));
         this.suite.forEach(s => s.analyze(context));
-        object.constructors.push(this);
+        if (object.constructor !== undefined) {
+            throw new Error("multiple constructors in object");
+        }
+        object.constructor = this;
     }
 };

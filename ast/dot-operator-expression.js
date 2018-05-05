@@ -38,17 +38,24 @@ module.exports = class DotOperatorExpression {
             //if we find a function with the right id
             if (s.id === id) {
                 let params = s.function.params;
-                //check that args and parameters map to each other
-                if (params.length !== args.length) {
-                    throw new Error("method call arguments does not match method parameters");
-                }
-                //now check that our types match
-                for (let j = 0; j < params.length; j++) {
-                    if(params[j].type.toString() !== args[j].type.toString()) {
-                        throw new Error("type of method call argument does not match method call parameter");
+                if (params === "Nothing") {
+                    if (args.length !== 0) {
+                        throw new Error("method call arguments passed to method without parameters");
                     }
+                    hasNoMatch = false;
+                } else {
+                    //check that args and parameters map to each other
+                    if (params.length !== args.length) {
+                        throw new Error("method call arguments does not match method parameters");
+                    }
+                    //now check that our types match
+                    for (let j = 0; j < params.length; j++) {
+                        if(params[j].type.toString() !== args[j].type.toString()) {
+                            throw new Error("type of method call argument does not match method call parameter");
+                        }
+                    }
+                    hasNoMatch = false;
                 }
-                hasNoMatch = false;
             }
         }
         if (hasNoMatch) {
