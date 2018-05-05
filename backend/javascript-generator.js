@@ -33,11 +33,7 @@ const ChainedExpression = require("../ast/chained-expression");
 const UnaryExpression = require("../ast/unary-expression");
 const IdentifierExpression = require("../ast/identifier-expression");
 const SubscriptedExpression = require("../ast/subscripted-expression");
-<<<<<<< HEAD
-// const dotOperatorExpression = require("../ast/dot-operator-expression");
-=======
 const DotOperatorExpression = require("../ast/dot-operator-expression");
->>>>>>> 59d1c20580ce19b558296d954ef57b918ec7e3e3
 const Call = require("../ast/call");
 const ObjectInstantiation = require("../ast/object-instantiation");
 const ArrayInstantiation = require("../ast/array-instantiation");
