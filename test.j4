@@ -1,19 +1,11 @@
-struct Color
-  Number red, green, blue <- 0, 0, 0
+Function twoSum(nums: Number[], target: Number) -> Number[]
+    for Number i <- 0, i < 4, i <- i + 1
+        for Number j <- i + 1, j < 4, j <- j + 1
+            if nums[j] = target - nums[i]
+                Number[] nums_2 <- [i,j]
+                return nums_2
 
-  init(r: Number, g: Number, b: Number)
-    self.red   <- r
-    self.green <- g
-    self.blue  <- b
 
-  init(shade: Number)
-    self.red   <- shade
-    self.green <- shade
-    self.blue  <- shade
+Number[] nums <- [2,7,11,15]
 
-  Function getColor(Nothing) -> Number[]
-    Number[] rgb <- [self.red, self.green, self.blue]
-    return rgb
-
-Color magenta <- new Color(1.0, 0.0, 1.0)
-Color halfGray <- new Color(0.5)
+print(twoSum(nums, 17))

@@ -14,7 +14,8 @@ describe("The generator", () => {
                 const program = parse(fs.readFileSync(`${__dirname}/${name}`, "utf-8"));
                 program.analyze();
                 let expectedOutput = eval(program.gen());
-                assert.deepEqual(`${expectedOutput}`, fs.readFileSync(`${__dirname}/${name}.txt`, "utf8"));
+                let actualOutput = eval(fs.readFileSync(`${__dirname}/${name}.js`, "utf8"));
+                assert.deepEqual(expectedOutput, actualOutput);
                 assert.deepEqual();
                 // assert.throws(() => program.analyze(), errorPattern);
                 // fs.readFile(`${__dirname}/${name}.json`, "utf-8", (_err, expected) => {

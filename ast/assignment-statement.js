@@ -11,11 +11,11 @@ module.exports = class AssignmentStatement {
         this.sources.forEach(e => e.analyze(context));
         for (let i = 0; i < this.targets.length; i++) {
             if (this.sources[i].id) {
-                if (this.sources[i].referent.type.toString() !== this.targets[i].referent.type.toString()) {
+                if (this.sources[i].referent.type.toString() !== this.targets[i].type.toString()) {
                     throw new Error("type of variable does not match type of value");
                 }
             } else {
-                if (this.sources[i].type.toString() !== this.targets[i].referent.type.toString()) {
+                if (this.sources[i].type.toString() !== this.targets[i].type.toString()) {
                     throw new Error("type of variable does not match type of value");
                 }
             }

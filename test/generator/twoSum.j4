@@ -1,0 +1,11 @@
+Function twoSum(nums: Number[], target: Number) -> Number[]
+    for Number i <- 0, i < 4, i <- i + 1
+        for Number j <- i + 1, j < 4, j <- j + 1
+            if nums[j] = target - nums[i]
+                Number[] nums_2 <- [i,j]
+                return nums_2
+
+
+Number[] nums <- [2,7,11,15]
+
+twoSum(nums, 17)
