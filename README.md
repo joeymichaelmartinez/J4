@@ -14,7 +14,6 @@ J4 pulls inspiration from Swift, ELM, Python, and Lua
 * Higher Order Functions
 * Static Typing
 * Strong Typing
-* Optional Parameters
 
 ### Operators
 
