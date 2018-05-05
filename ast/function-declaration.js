@@ -7,10 +7,14 @@ module.exports = class FunctionDeclaration {
         this.function = new FunctionObject(id, params, returntype, body);
     }
 
-    analyze(context) {
+    analyze(context, object) {
         // First put the function in the current context, then analyze it in
         // a new child context.
         context.add(this.function);
-        this.function.analyze(context.createChildContextForFunctionBody(this, context.isInObject()));
+        let functionContext = context.createChildContextForFunctionBody(this, context.isInObject());
+        this.function.analyze(functionContext);
+        if (object) {
+            object.methods.push(this.function);
+        }
     }
 };

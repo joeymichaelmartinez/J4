@@ -1,15 +1,15 @@
 struct Color
-  Number red, green, blue <- 0, 0, 0
+  Number red, green, blue <- 0, 1, 0
 
   init(r: Number, g: Number, b: Number)
     self.red   <- r
     self.green <- g
     self.blue  <- b
 
-  init(shade: Number)
+  (~init(shade: Number)
     self.red   <- shade
     self.green <- shade
-    self.blue  <- shade
+    self.blue  <- shade~)
 
   Function getColor(Nothing) -> Number[]
     Number[] rgb <- [self.red, self.green, self.blue]
@@ -17,3 +17,4 @@ struct Color
 
 Color magenta <- new Color(1.0, 0.0, 1.0)
 Color halfGray <- new Color(0.5)
+print(halfGray.getColor())

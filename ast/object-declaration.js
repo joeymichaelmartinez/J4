@@ -5,8 +5,9 @@ module.exports = class ObjectDeclaration {
     constructor(id, body) {
         this.id = id;
         this.body = body;
-        this.constructors = [];
         this.fields = [];//Just an array of variables
+        this.constructors = [];//an array of object constructors
+        this.methods = [];//an array of function objects
     }
 
     analyze(context) {
