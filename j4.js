@@ -27,7 +27,7 @@
  * built into Node.js.
  */
 const soundsDir = "./SoundClips";
-const player = require("play-sound")({player: "./mplayer/mplayer.exe"});
+const player = require("play-sound")({});
 
 const { argv } = require("yargs")
     .usage("$0 [-a] [-o] [-i] filename")
