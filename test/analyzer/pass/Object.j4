@@ -6,11 +6,6 @@ struct Color
     self.green <- g
     self.blue  <- b
 
-  init(shade: Number)
-    self.red   <- shade
-    self.green <- shade
-    self.blue  <- shade
-
   Function getColor(Nothing) -> Number[]
     Number[] rgb <- [self.red, self.green, self.blue]
     return rgb
