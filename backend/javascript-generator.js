@@ -25,17 +25,17 @@ const WhileStatement = require("../ast/while-statement");
 const ForStatement = require("../ast/for-statement");
 const FunctionDeclaration = require("../ast/function-declaration");
 const FunctionObject = require("../ast/function-object");
-// const ObjectDeclaration = require("../ast/object-declaration");
-// const ObjectConstructor = require("../ast/object-constructor");
+const ObjectDeclaration = require("../ast/object-declaration");
+const ObjectConstructor = require("../ast/object-constructor");
 const ForParam = require("../ast/for-loop-param");
 const BinaryExpression = require("../ast/binary-expression");
 const ChainedExpression = require("../ast/chained-expression");
 const UnaryExpression = require("../ast/unary-expression");
 const IdentifierExpression = require("../ast/identifier-expression");
 const SubscriptedExpression = require("../ast/subscripted-expression");
-// const dotOperatorExpression = require("../ast/dot-operator-expression");
+const dotOperatorExpression = require("../ast/dot-operator-expression");
 const Call = require("../ast/call");
-// const ObjectInstantiation = require("../ast/object-instantiation");
+const ObjectInstantiation = require("../ast/object-instantiation");
 const ArrayInstantiation = require("../ast/array-instantiation");
 const Parameter = require("../ast/parameter");
 const Argument = require("../ast/argument");
@@ -175,6 +175,10 @@ Object.assign(IfStatement.prototype, {
 
 Object.assign(NumericLiteral.prototype, {
     gen() { return `${this.value}`; },
+});
+
+Object.assign(ObjectDeclaration.prototype, {
+    gen() { return""; }
 });
 
 Object.assign(Parameter.prototype, {
