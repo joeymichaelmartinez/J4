@@ -11,7 +11,7 @@ struct Color
     return rgb
 
 Color magenta <- new Color(1.0,0.0,1.0)
-Function objectReturn(three: Color) -> Color
-    return three
+Function objectReturn(colored: Color) -> Color
+    return colored
 
-print(objectReturn(magenta.getColor()))
+objectReturn(magenta.getColor())
