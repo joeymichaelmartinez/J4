@@ -108,3 +108,25 @@ struct Color
 Color magenta <- new Color(1.0, 0.0, 1.0)
 Color halfGray <- new Color(0.5)
 ```
+
+### Semantic Analysis
+* changedImmutableType : tried to change x from type Number to String.
+* isNotAFunction : f is not a function
+* isNotAnArray : l is not an array
+* isNotAnObject : d is not an object
+* doesNotHaveProperty : x does not have property x.size
+* invalidBinaryOperands : List and Number cannot be used with +
+* invalidUnaryOperand : String cannot be used with ‘not’
+* parameterArgumentMismatch : f has signature Number, Array but was called with signature String, Array, Number
+* expressionIsNotTypeBoolean : x + 3 is type Number but must be type Boolean
+* ~unusedVariable : variable x is declared but never used
+* notDeclared : tried to use x before it was declared
+* notInitialized : x is not given a value
+* returnOutsideFunction : found a return statement outside of a function
+* ~multipleReturnsInABlock : found more than one return statement in a block
+* typeMismatch : expected String got Number
+* typeDoesNotExist : X y expects object ‘X’ is a type for variable y
+* noClassConstructor : did not find a constructor in class C
+* arrayIndexOutOfBounds : tried to access an element outside of the bounds of the array
+
+(~) means warning
