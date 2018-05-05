@@ -211,16 +211,13 @@ Object.assign(DotOperatorExpression.prototype, {
 
 Object.assign(ObjectDeclaration.prototype, {
     gen() {
-        let constructors = "";
-        for (let i = 0; i < this.constructors.length; i++) {
-            constructors += this.constructors[i].gen() + "\n";
-        }
+        let constructor = this.constructor.gen() + "\n";
         let methods = "";
         for(let i = 0; i < this.methods.length; i++) {
             methods += this.methods[i].gen(true) + "\n";
         }
         return`class ${jsName(this)} {
-            ${constructors}
+            ${constructor}
             ${methods}
         };`;
     },
