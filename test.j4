@@ -1,7 +1,8 @@
-struct Color
-  Number red, green, blue <- 0, 1, 0
+Function test(x: Number) -> Number
+  Number y <- 7
+  if x = 0
+    x <- 2
+    return x^y
+  return 1
 
-
-Number[] nums <- [2,7,11,15]
-
-print(twoSum(nums, 17))
+test(0)

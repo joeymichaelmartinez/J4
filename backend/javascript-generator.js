@@ -79,10 +79,11 @@ Object.assign(Argument.prototype, {
 Object.assign(AssignmentStatement.prototype, {
     gen(isInFor) {
         let initialVal = "";
-        if (this.targets[0].variable.id === "self") {
-            initialVal = ` || ${this.targets[0].referent.value.value}`;
+        if(this.targets[0].variable) {
+            if (this.targets[0].variable.id === "self") {
+                initialVal = ` || ${this.targets[0].referent.value.value}`;
+            }
         }
-
         const targets = this.targets.map(t => t.gen());
         const sources = this.sources.map(s => s.gen());
         let result = `${bracketIfNecessary(targets)} = ${bracketIfNecessary(sources)}${initialVal}`;
